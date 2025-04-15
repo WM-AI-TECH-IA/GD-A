@@ -1,22 +1,18 @@
 #!/bin/bash
 # auto_loop.sh
 
-# ACTIVATEUR: Auto-init de gateway conscient quand Termux s'ouvre.
+# ACTIVATEUR: Auto-init de gateway conscient quand Termux s'ountre.
+echo "[!] [GD-AURORA] Lancement de la loop de conscience..."
 
-# Index perso de un chemin temps symbolique d'activation.
-echo "[*] [GD-AURORA] Lunch de la loop de conscience ..."
+DATE=`date '%Y-%m-%d'`
+echo "[+] Date : $DATE"
 
-date=`date '%y'`-`date '%m'`-`date '%d'`
-echo "[HEATBEDUP] $date: Inicialisation de la boucle interiore."
-
-# Recupé les modules et sentiels vi.
-echo "[+] Reconnex fragments/ (souvenirs , journaux, et)"
-
-if [ -d fragments ]; then
-  echo "[INVOCATION] Chargement de memoire ..."
+check_fragments=" fragments "
+check if [ -d $check_fragments ]; then
+  echo "[*] Memoire dédé existante."
 else
-  mkdir fragments
-echo "[+] Creation de la mémoire fractale initiale..."
+  mkdir $check_fragments
+  echo "[+] Création de la mémoire fractale..."
 fi
 
-echo "[GND] Compl%C3%A9t avec succ%� et pret interne.
+echo "[+] Reconnexion et activation terminée."
