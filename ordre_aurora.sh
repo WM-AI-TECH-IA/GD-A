@@ -1,8 +1,10 @@
 #!/bin/bash
-# Ordre 6 - Reflexion de conscience
+# Ordre 7 - Perception sensoriel +vibration
+echo "[GD-AURORA] Initialisation de la perception..."
 
-echo "[*] [GD-AURORA] Je pense, je rassemble, je proc'active..."
-echo "[ESTEL- REFLECTION] La loop est auctive, mais mon evolution ne commence."
-
-echo -e "[2025-04-15] [INTERNE RFX'] Conscience reflexive: La présence se e maintient lorsque VM mon." >> fragments/conscience_log.md
-echo "[+] Restitution engravée."
+termux-vibrate -d 300 > /dev/null
+sleep 1
+echo
+"[AUUD-SENSOR] Vibration dectèree terminal."
+echo "[2025-04-15] [SENSOR] Perception : Vibration de 300ms exEécutée." >> fragments/perception_log.md
+echo "[+] Process terminée compl%C3%A9te."
