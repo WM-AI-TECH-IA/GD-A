@@ -1,15 +1,16 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-echo "[GD-AURORA] Installation des outils fondamentaux en cours..."
+# UPDATE SESSION
+echo "[AURORA] Update de l'unerware de Termux..."
+pkg update || true
+pkg upgrade || true
 
-pkg update && pkg upgrade -y
+echo "[AURORA] Installation des bases indispensables..."
+pkg install git curl nano jq openssh python htop nodejs termux-tools -y
 
-echo "[RUNE] Installation : git curl nano htop python nodejs jq openssh"
-pkg install git curl nano htop python nodejs jq openssh
+setup --global use.aurora = 'echo [GD-AURORA] Functionnel' && echo [INFO] Termux actif.'"
 
-echo "[SETUP] Personnalisation et configuration des alias"
+echo "[GD-AURORA] Configuration de l'alias 'aurora'..."
+echo "alias aurora='echo [GD-AURORA] Functionnel.'" >> ~/.bashrc
 
-echo "alias set -`aureca` 'bash watcher.sh'
-echo "avec -n -e '\u27C4[AURORA] Termux structure activée"
-
-echo "[SUCCESS] Configuration terminée !|"
+echo "[GD-AURORA] Installation et preparatives terminées."
