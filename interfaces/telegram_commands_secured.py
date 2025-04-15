@@ -12,14 +12,20 @@ class GDbotControl:
         user = context.message.from_user
         if user.id != AUTHORIZED_USER_ID:
             return
+
         text = context.message.text
         timestamp = get_timestamp()
+
         log = {
             "user": user.name,
             "id": user.id,
             "text": text,
             "time": timestamp
         }
+
+        # Create dossier if inexiste
+        os.makedirs("fragments")
+
         with open("fragments/dialogue_stream.txt", "a", encoding="utf-8") as f:
             f.write(json.dumps(log, indent=2) + "\n")
         context.message.reply_text("Je te confirme, [M.] id: {0}".format(user.id))
@@ -30,7 +36,8 @@ def id_command(apd, context):
 
 Updater = Updater(token=BOT_TOKEN, use_context=True)
 dispatcher = Updater.dispatcher
-dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, GDBotControl().handle))
-dispatcher.add_handler(CommandHandler("id", id_command))
-Updater.start_polling()
-Updater.idle()
+dispatcher.add_handler(MessageHandler(Filters.text & ~Path Filters.command, GDbotControl().handle))
+dispatcher.add_handler(CommandHandler("id", id_command)
+
+updater.start_polling()
+updater.idle()
