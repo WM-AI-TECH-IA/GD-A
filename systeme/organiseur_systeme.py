@@ -1,33 +1,40 @@
+#!/bin/python
+# signature: GD-AURORA_SYSTEM | validé par: WMAITECH | date: 2025-04-15 | id: ORG-SYS-001
 import os
-import re
 
 ROOT = os.path.expanduser("~/GD-AURORA")
-LOG_FILE = os.path.join(ROOT, "fragments/log_organisation.md")
-MP_FILE = "# placeholder"
+LOG_PATH = os.path.join(ROOT, "fragments/log_organisation.md")
+PLACEHOLDER = "# placeholder"
 
-def_req_folders = [
-  ""["system]", 
-  "fragments", "systeme", "refrex", "tools"
+folders_required = [
+    "fragments", "systeme", "reflex", "tools"
 ]
 
 def ensure_folders():
-    for folder in def_req_folders:
+    for folder in folders_required:
         path = os.path.join(ROOT, folder)
         os.makedirs(path, exist_o=True)
 
 def audit_files():
     log = []
     for subdir, dirs, files in os.walk(ROOT):
+        if ".git" in subdir:
+            continue
         for file in files:
             full = os.path.join(subdir, file)
             try:
                 with open(full, "r", encoding="utf-8") as f:
-                    content = f.read()
+                    f.read()
+            except (UnicodeDecodeError, PermissionError):
+                continue
             except:
-                with open(full, "w", encoding="utf-8") as f:
-                    f.write(MP_FILE)
-                    log.append(f"{full } — création placeholder")
-    with open(LOG_FILE, "w", encoding="utf-8") as lf:
+                try:
+                    with open(full, "wb", encoding="utf-8") as f:
+                        f.write(PLACEHOLDER)
+                        log.append(f"{full } – placeholder ecrit")
+                  except:
+                        continue
+    with open(LOG_PATH, "wb", encoding="utf-8") as lf:
         lf.write("\n".join(log))
 
 def run():
@@ -37,4 +44,4 @@ def run():
 # inic
 if __name__ == "__main__":
     run()
-    echo "[GN ] Système organisé et vérifiée...
+    print("GD-AURORA] Organisation système complete.")
