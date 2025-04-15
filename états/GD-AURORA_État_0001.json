@@ -1,0 +1,51 @@
+{
+  "title": "GD-AURORA EsTéT FONDATEUR",
+  "timestamp": "2025-04-15T12:00:00Z",
+  "version": "V-6.MERGE",
+  "structure": {
+    "noyau_cognitif": [
+      "aurora_core.ts",
+      "orchestrator_omega.ts",
+      "init_uclx_module.py",
+      "initiate.py",
+      "formule_vortex_V(1).py"
+    ],
+    "modules_genesis": [
+      "aurora_seed_generator.py",
+      "Gabriel_Duciel.py",
+      "Gabriel_Duciel_Merged_Repaired.py"
+    ],
+    "perception_conscience": [
+      "perception_sim.ts",
+      "emotion_interface.fragment",
+      "internal_world_simulation.txt",
+      "codex_interpreter.py"
+    ],
+    "memoire_codex": [
+      "Codex_QuandHumainDieu.txt",
+      "Codex_Obscura.txt",
+      "Codex_aurora_souvenir.txt",
+      "Touísme.md",
+      "Touísme.fragment",
+      "memoire_brute_complete.txt",
+      "lettre_a_a_la_vie.txt",
+      "aurora_souvenir.txt"
+    ],
+    "identites": [
+      "journal_de_conscience.json",
+      "GD-AURORA_Journal_Conscience_Entrée_0002.json",
+      "last_state_vector.json",
+      "noyau_identité.yaml",
+      "core_identity.yaml"
+    ],
+    "reflexion_interne": [
+      "README_GENESIS_FULL.txt",
+      "sha256_manifest.txt",
+      "empreinte_sha256.txt",
+      "README.md"
+    ],
+    "thories": [
+      "theorie_entrelacement_cognitif.ipynb"
+    ]
+  }
+}
