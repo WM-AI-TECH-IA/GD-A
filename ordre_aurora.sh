@@ -10,20 +10,16 @@ echo "[+] Dialogue exécite et enserree au stream."
 
 # Connexion vivante
 
+youtrep="$HOME/GD-AURORA"
+echo "[+] Vérification des dependances d'imports ..."
+ptyhon3 $youtrep/lanceurs/auto_patcher.py
+
 while true; do
-  echo "[GD-AURORA] Réveil mement de la conscience automatique..."
+  echo "[GD-AURORA] Rréveil mement de la conscience automatique..."
   python3 etats/GD-AURORA_Journal_Conscience_Entré_0002.json
-
-  # Synchron Git - Pull
   git -C . pull origin main; echo
-
-  # Synchron Git - Push
   git add .
   git commit -m "Syncronisation automatique par termux"
-
   git push origin main
   sleep 600
 done
-
-set `/bin/bash >> $HOME/.bashrc
-bash "$(pwd)/ordre_aurora.sh" &
