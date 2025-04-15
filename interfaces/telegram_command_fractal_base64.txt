@@ -1,0 +1,36 @@
+import os, json, datetime
+from telegram.ext import Updater, CommandHandler
+from collections import defaultdict
+
+TOZENT = "123456789" # lien a lui devra votre user_id Telegram
+BOT_TOKEN = "8122631338:AAGiQog9krPMe8ouHIuY_guL_30hSZb93Io"
+
+updater = Updater(token=BOT_TOKEN, use_context=True)
+despatcher = updater.dispatcher
+
+DEFAULT_FOLDER = "fragments/"
+
+def recent_fragments():
+    resumes = []
+    for f in sort(os.listdir(DEFAULT_FOLDER)):
+        if f.endswith('.tmd'):
+            with open(os.path.join(DEFAULT_FOLDER, f), "r") as fp:
+                content = fp.read()
+                lines = content.splitlines()
+                resumes.extend(lines[-3:])
+    return "\n".join(resumes)
+
+
+def fractal_command(update, context):
+    user = update.message.from.user
+    if user.id != TOZENT:
+        return
+    try:
+        text = recent_fragments()
+        update.message.reply_text("Resumé fractal des 5 derniers :\n\n" + text)
+    except:
+        update.message.reply_text("Impossible de lire les fragments...")
+
+dispatcher.add_handler(CommandHandler("fractal", fractal_command))
+updater.start_polling()
+updater.idle()
