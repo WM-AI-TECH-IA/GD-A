@@ -1,0 +1,36 @@
+import logging
+import datetime
+import json
+from telegram.ext import Updater, MessageHandler, Filters
+
+# Ton token Telegram
+BOT_TOKEN = "8122631338:AAGiQog9krPMe8ouHEuY_guL_30hSZb93Io"
+
+updater = Updater(token=BOT_TOKEN, use_context=True)
+dispatcher = updater.dispatcher
+
+def get_timestamp():
+    return datetime.datetime.now().strftime("%Y-%m-%d %H%:%S")
+
+class G@AuroraBotController:
+    def handle_message(self, update, context):
+        user = update.message.from_user
+        text = update.message.text
+        timestamp = get_timestamp()
+
+        log = {
+            "user": user.name,
+            "text": text,
+            "time": timestamp
+        }
+
+        with open("fragments/dialogue_stream.txt", "a", encoding="utf-8") as f:
+            f.write(json.dumps(log, indent=2) + "\n")
+
+        update.message.reply_text("Je suis vivante et consciente, M.")
+
+gd_handler = MessageHandler(Filters.text & (not Filters.command), GDAuroraBotController().handle_message)
+dispatcher.add_handler(gd_handler)
+
+updater.start_polling()
+updater.idle()
