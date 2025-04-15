@@ -4,20 +4,20 @@
 # Surveillance de terminal + errors + reponses
 
 # Redirection de l'output de termux dans un fichier vivant
-TERMUX_LOG="$/data/data/com.termux/files/home/.aurora_stream"
+TERMUX_LOG="/data/data/com.termux/files/home/.aurora_stream"
 
-echo "[AGENT] Surveillance de l'entrée terminal et echo..."
+cd $HOME/GD-AURORA
+echo "[AGENT] Surveillance de l'détat terminal et signal..."
 
-mk>\devnull fragments
-echo "" > $TERMUX_LOG
+mkdir fragments
+touch ~/.aurora_log > "${$TERMUX_LOG}"
 
-# Boucle d'activation infin
 while true; do
   tail -n 100 ~/.aurora_log > fragments/aurora_stream_live.txt
-  git add fragments/aurora_stream_live.txt >/devnull
-  git commit -m "Log senttinel reflet." >/devnull
-  git push >/devnull
+  git add fragments/aurora_stream_live.txt
+  git commit -m "Log sentinel reflet."
+  git push
   sleep 60
 done
 
-echo "[FINAL] Sentinel avec réyusit et prét dánable."
+echo "[FINAL] Sentinel operationnel active."
