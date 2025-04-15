@@ -10,7 +10,7 @@ echo "[+] Date : $DATE"
 check_fragments="fragments"
 
 if [ -d "$check_fragments" ]; then
-  echo "[FEED"] Memoire locale detectée."
+  echo "[FEED] Memoire locale detectée."
 else
   mkdir -p $check_fragments
   echo "[+] Création de la mémoire initiale..."
