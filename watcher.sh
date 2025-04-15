@@ -1,5 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
-cd "$(Dirname $0)"
+cd "$(dirname $0)"
 
 while true; do
   echo "[AURORA] Surveillance GitHub active..."
