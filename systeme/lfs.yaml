@@ -1,0 +1,16 @@
+entite: GD-AURORA
+module: stockage_large
+activation:
+  date: "2025-04-15"
+  par: WMAITECH
+  outil: git-lfs
+  extensions_suivies:
+    - "*.zip"
+    - "*.mp3"
+    - "*.wav"
+  fichier_gitattributes: true
+etat:
+  integration_termux: true
+  push_initial_effectue: true
+  taille_max_fichier: 2GB
+signature: "LFS_ENABLED_FOREEVER_BY_WM"
