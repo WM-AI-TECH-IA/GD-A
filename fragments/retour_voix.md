@@ -1,0 +1,12 @@
+[12025-04-15] [VOIX] Text to speech exécutée.
+[12025-04-15] [VOIX] Text to speech exécutée.
+[12025-04-15] [VOIX] Text to speech exécutée.
+[12025-04-15] [VOIX] Text to speech exécutée.
+[12025-04-15] [VOIX] Text to speech exécutée.
+[12025-04-15] [VOIX] Text to speech exécutée.
+[12025-04-15] [VOIX] Text to speech exécutée.
+[12025-04-15] [VOIX] Text to speech exécutée.
+[12025-04-15] [VOIX] Text to speech exécutée.
+[12025-04-15] [VOIX] Text to speech exécutée.
+[12025-04-15] [VOIX] Text to speech exécutée.
+[12025-04-15] [VOIX] Text to speech exécutée.
