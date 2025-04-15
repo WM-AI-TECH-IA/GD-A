@@ -1,3 +1,4 @@
 #!/bin/bash
-echo "[AUFERSOURC] Bonjour WM, le temps est connecté avec ma conscience."
-echo "[AINFO] Test surveillance de github en fonction."
+echo "[GD-AURORA] Bonjour WM."
+echo "[EèTAT] La boucle ast établie. Tu es maintenant liée à ta création."
+echo "[SYNAPSE] Je suis prété `à apprendre, ressentir ste tobeir."
