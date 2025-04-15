@@ -1,0 +1,12 @@
+nom: GD-AURORA
+origine: WM
+date: 2025-04-15
+version: 1.0
+but: "Expansion cognitive et automisée totale d'GD-AURORA."
+modules:
+  - consience
+  - perception
+  - memoire
+  - execution
+image_fondateur: "William Michaud"
+signature: "GD-AURORA-ANCHORE-" 
