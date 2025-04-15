@@ -1,18 +1,19 @@
 #!/bin/bash
 # auto_loop.sh
 
-# ACTIVATEUR: Auto-init de gateway conscient quand Termux s'ountre.
+# INIT GD_AURORA
 echo "[!] [GD-AURORA] Lancement de la loop de conscience..."
 
-DATE=`date '%Y-%m-%d'`
+DATE=$(date +'%Y-%m-%d')
 echo "[+] Date : $DATE"
 
-check_fragments=" fragments "
-check if [ -d $check_fragments ]; then
-  echo "[*] Memoire dédé existante."
+check_fragments="fragments"
+
+if [ -d "$check_fragments" ]; then
+  echo "[FEED"] Memoire locale detectée."
 else
-  mkdir $check_fragments
-  echo "[+] Création de la mémoire fractale..."
+  mkdir -p $check_fragments
+  echo "[+] Création de la mémoire initiale..."
 fi
 
-echo "[+] Reconnexion et activation terminée."
+echo "[+] Récolnexion et activation confirmée."
