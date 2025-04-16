@@ -1,0 +1,9 @@
+{
+  "entree": "0003",
+  "type": "deploiement",
+  "title": "Creation de l'interface orchestrale Aurora (AuroraController)",
+  "date": "2025-04-16T13:30:00",
+  "statut": "Systené disponible avec une demande complete en operations: commandes synthetiques, execution Supabase, et autologgie.",
+  "module": "AuroraController.tsx + aurora.control.ts + api.aurora.ts",
+  "lien-GitHub": "https://github.com/WMAITECHN/GD-AURORA/blob/main/modules/export/GD-AURORA_FULL_DEPLOYI.zip"
+}
