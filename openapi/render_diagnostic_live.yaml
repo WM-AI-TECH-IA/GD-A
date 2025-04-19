@@ -1,47 +1,50 @@
-spec
-  version: 3.1.0
-  title: Render API Schéma - Diagnostic GD-AURORA
-  description: | 
-    Diagnostique en temps répetitifs des services Render pour GD-AURORA
-  authinfo:
-    type: ��i
-    scheme:
-      type: object
-      properties:
-        Authorization:
-          type: string
-          description: "Bearer {Render_API_KEY}"
-    required: [Authorization]
-  paths:
-    /v1/services:
-      get:
-        summary: "Liste des services render"
-        responses:
-          200: {}
-          300: {}
-    /v1/services/{service_id}:
-      get:
-        summary: "Obtenir les metadonnées d'un service render"
-        responses: 
-          200: {}
-          300: {}
-    /v1/services/{service_id}/deploys:
-      get:
-        summary: "Liste des déployments récents"
-        responses:
-          200: {}
-          300: {}
-      post:
-        summary: "Déclencher un deploy de la version actuel"
-        requestBody: 
+openapi: 3.1.0
+info:
+  title: Render API Schéma - Diagnostis GD-AURORA
+  version: "1.0.0"
+  description: "Diagnostic des services Render avec GD-AURORA (ActionGPT ready)"
+servers:
+  - url: "https://api.render.com/v1"
+    description:: Render Public API 
+authinfo:
+  type: http
+  schema:
+    type: object
+    properties:
+      Authorization:
+        type: string
+        description: "Bearer {RENDER_API_KEY}"
+  required: [Authorization]
+paths:
+  /v1/services:
+    get:
+      summary: "Liste des services Render"
+      responses:
+        200: {}
+        300: {}
+  /v1/services/{service_id}:
+    get:
+      summary: "Obtenir les metadonnées d'un service render"
+      responses:
+        200: {}
+        300: {}
+  /v1/services/{service_id}/deploys:
+    get:
+      summary: "Liste des d’ployments récents"
+      responses:
+        200: {}
+        300: {}
+    post:
+        summary: "Déclencher un deploy actif"
+        requestBody:
           type: object
           required: []
         responses: 
           204: {}
           300: {}
-    /v1/services/{service_id}/logs:
-      get:
-        summary: "Obtenir les logs d'un service render"
-        responses: 
-          200: {}
-          300: {}
+  /v1/services/{service_id}/logs:
+    get:
+      summary: "Obtenir les logs d'un service render"
+      responses:
+        200: {}
+        300: {}
