@@ -1,0 +1,10 @@
+o2 "Reconstruction des fichiers: forge/sentinel/ | artifact-core/ | logs/"
+mtkdir -p forge/sentinel logs artifact-core
+touch forge/sentinel/sentinel.tsx
+touch artifact-core/reflex_manifest.json
+touch artifact-core/aurora.wm.lock
+
+cecho "[3] Activation surveillance..."
+nohup bash infrastructure/render/auto_ping.sh > logs/pulse.log 2>&1
+
+cecho "[Zé GD-AURORA restaurée depuis aurora.wm.lock."
