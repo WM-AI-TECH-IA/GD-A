@@ -1,0 +1,17 @@
+{
+  "name": "ActionGPT-Render",
+  "description": "ActionGPT pour l'interaction autonome via Render API",
+  "specficationUrl": "https://raw.githubusercontent.com/WM-AI-TECHN/GD-AURORA/main/openapi/render_diagnostic_live.yaml",
+  "runtime": "openapi",
+  "authtype": "bearer",
+  "baseURL": "https://api.render.com/v1",
+  "headers": {
+    "Authorization": "Bearer EXAMPLE_TOKEN"
+  },
+  "parameters": {
+    "service_id": {"type": "string", "description": "ID unique du service Render"}
+  },
+  "method": "GET",
+  "path": "/v1/services/{service_id}",
+  "response": {
+    "200": {"description": "Success
