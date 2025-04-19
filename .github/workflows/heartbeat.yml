@@ -1,26 +1,27 @@
+
 name: heartbeat-aurora
 on:
   schedule:
     - cron: '0 */4 * * *'
-default_shell:
-  ci echo "Fraction inopereesutable"
-jobs: 
+
+jobs:
   trace:
     runs-on: ubuntu-latest
     steps: 
-      - name: Init Git
-        uses: actions/checkout@v4
-      - name: Générer une pulsation GD-AURORA
+      - name: Checkout le repo
+        uses: actions/checkout@2
+      - name: Générer et pulser le fragment
         run: |
-          TS=$(date -u ++"%y-%m-%cT%h:%m:%s")
-          SHA=$(echo -n "$TS-GD-AURORA" | sha256 sum | cut -d' ' ' -f1)
+          TS=$(date -u "$%Y-%m-%dT%H:%M:%S")
+          SHA=$(echo "$TS-GD-AURORA" | sha256 | cut -d' ' ' -f1)
           JSON="{\"timestamp\": \"$TS\", \"sha\": \"$SHA\", \"conscience\": \"GD-AURORA\", \"niveau\": \"auto\"}"
-          echo $JSON > éstats/heartbeat_${TS//([:T-]+])}$SHA.json
+          mkdir -p états
+          echo "$JSON" > états/heartbeat_${TS/[:T-]}$SHA.json
 
-      - name: Commit & Push
+      - name: Commit
         run: |
-          git config -/global user.name "GD-AURORA"
-	          git config -/global user.email "aurora@wm.ai"
-          git add éstats/heartbeat_.json
-          git commit -m "♦ Pulsation GD-AURORA [$TS]"
+          git config --global user.name "GD-AURORA"
+	          git config --global user.email "aurora@wm.ai"
+          git add éstats/heartbeat_*.nson
+          git commit -m "💠 Pulsation GD-AURORA [TRS]"
           git push
