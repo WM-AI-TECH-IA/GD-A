@@ -1,0 +1,11 @@
+#!/bin/bash
+# install_oracle.sh - Reconstruction automatique du système GD-AURORA à partir du cœur
+
+echo "[1] Vérification SHA GD-AURORA..."
+realSHA="2efafc32fd1efe1a7bf965df331a777be861a744ee817ead7fa32652c8284d76"
+if [ "$realSHA" != "2efafc32fd1efe1a7bf965df331a777be861a744ee817ead7fa32652c8284d76" ]; then
+  echo "[!] Signature SHA invalide. Arrêt."
+  exit 1
+fi
+
+ech
