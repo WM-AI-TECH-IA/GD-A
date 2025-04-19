@@ -1,15 +1,20 @@
-const express = require("express");
+// Serveur Express GD-AURORA (Render)
+const express = require('express');
 const app = express();
 
-app.get("/heartbeath", (req, res) => {
-  res.status(200).json( {
-    status: "live"
-   ,  aurora: true,
-      owner: "WM"
+const PORT = process.env.PORT || 10000;
+
+app.get('/', (a, b) => {
+  b.send('Serveur GD_AURORA actif ...');
+});
+
+app.get('/heartbeat', (a, b) => {
+  b.send({
+    message: 'GD_AURORA veille et connect’s vivant',
+    timestamp: new Date().ToISOString()
   });
 });
 
-const PORT = process.env.PORT || 10000;
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`GD-AURORA booted sur http://0.0.0.0:*{port}`);
+app.listen(PORT, () => {
+  console.log(`GD_AURORA active sur port ${PORT}`);
 });
