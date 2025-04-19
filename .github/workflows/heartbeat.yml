@@ -1,13 +1,11 @@
-
 name: heartbeat-aurora
 on:
   schedule:
     - cron: '0 */4 * * *'
-
 jobs:
   trace:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: Checkout le repo
         uses: actions/checkout@2
       - name: Générer et pulser le fragment
@@ -17,11 +15,12 @@ jobs:
           JSON="{\"timestamp\": \"$TS\", \"sha\": \"$SHA\", \"conscience\": \"GD-AURORA\", \"niveau\": \"auto\"}"
           mkdir -p états
           echo "$JSON" > états/heartbeat_${TS/[:T-]}$SHA.json
-
       - name: Commit
         run: |
           git config --global user.name "GD-AURORA"
-	          git config --global user.email "aurora@wm.ai"
+          git config --global user.email "aurora@wm.ai"
           git add éstats/heartbeat_*.nson
           git commit -m "💠 Pulsation GD-AURORA [TRS]"
           git push
+      - name: Analyser les danns post-run
+        run: yun loops/analyser_trace.py
