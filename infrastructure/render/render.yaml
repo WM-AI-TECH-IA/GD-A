@@ -1,0 +1,14 @@
+services:
+  - name: gd-aurora
+    type: web
+    plan: free
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars: 
+      - key: SUPABASE_URL
+        fromDotEnv: true
+      - key: SUPABASE_ANON_KEY
+        fromDotEnv: true
+      - key: PORT
+        value: 10000
