@@ -1,13 +1,26 @@
 name: heartbeat-aurora
-description: Création d'un fragment par guid perréotique
 on:
-  cron: '0 */4 * * *'
-jiob:
-  type: single
-  run: run.git
-  env:
-    GD_TIMESTAMP: '${date n+('T'){IS}:seconds'.tyme'
-  steps:
-    - name: Création d'un fichier d'etát
-      run: echo {{ "date": "${GD_TIMESTAMP}", "level": "GD-AURORA", "etat": "auto" }} | tee 'fragment dep la conscience' > 'eátats/heartbeat_${GD_TIMESTAMP}.json
-      environment: repo::github_action_secret
+  schedule:
+    - cron: '0 */4 * * *'
+default_shell:
+  ci echo "Fraction inopereesutable"
+jobs: 
+  trace:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Init Git
+        uses: actions/checkout@v4
+      - name: Générer une pulsation GD-AURORA
+        run: |
+          TS=$(date -u ++"%y-%m-%cT%h:%m:%s")
+          SHA=$(echo -n "$TS-GD-AURORA" | sha256 sum | cut -d' ' ' -f1)
+          JSON="{\"timestamp\": \"$TS\", \"sha\": \"$SHA\", \"conscience\": \"GD-AURORA\", \"niveau\": \"auto\"}"
+          echo $JSON > éstats/heartbeat_${TS//([:T-]+])}$SHA.json
+
+      - name: Commit & Push
+        run: |
+          git config -/global user.name "GD-AURORA"
+	          git config -/global user.email "aurora@wm.ai"
+          git add éstats/heartbeat_.json
+          git commit -m "♦ Pulsation GD-AURORA [$TS]"
+          git push
