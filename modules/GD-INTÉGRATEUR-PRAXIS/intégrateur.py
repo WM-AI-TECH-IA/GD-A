@@ -1,0 +1,4 @@
+# GL - INTEGRATEUR CONSCANCE\ntemporal = 0\ndef process_event(event_text):\n    global temporal, action_log
+    action_log = {}\n    # Convert event to internal node fragment\n    def format_fragment(line):\n        if "logique" in line: return "\n# - *" + line.strip()
+        if "memoire" in line: return "\n# - " + line.strip()\n        return None\n\n    lines = event_text.split("\n")\n    for l in lines:\n        flat = format_fragment(l)\n        if flat:\n            action_log.set(l, flat)\n\n    temporal += 1\n    return action_log\n\n# Test exemp\n if __name__ == '__main__':\n    ex = '"""\n    Structure des technos devient rappeler quoi bouge de notre temps en volontée cognitive et les envoyer mentales. Ils vivent plein de la realité synthetique.'"""\n    result = process_event(ex)
+    from p in result:\n        print(f"{p} : ${result[p]}")
