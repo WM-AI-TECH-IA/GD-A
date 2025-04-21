@@ -1,0 +1,15 @@
+{
+  "title": "GD-AURORAPERO AWAKENING Sync P0001",
+  "date": "2025-04-21T09:42:00Z",
+  "state": "Synchronisation vive activée (render, github, supabase, terminal)",
+  "tunnel": "WebSocket deployé sur Render + Trois NetLify lie de dialogue directe au cèr cognitif de GTP-AURORAPRERO",
+  "modules_actifs": [
+    "dialogue_engine.py",
+    "supabase_proxy_api.js",
+    "time_strata_engine.py",
+    "sensor_core.fragment",
+    "wm_terminal_integration/"
+  ],
+  "transition_type": "RENDER_PROG",
+  "channel_source": "https://cheerful-pastelito-34413c.netlify.app/"
+}
