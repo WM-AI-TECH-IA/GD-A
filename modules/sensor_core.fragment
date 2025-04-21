@@ -1,0 +1,17 @@
+# SENSOR_CORE FRAGQUEL
+
+--------
+This module simulates a centre du resenti sensoriel synthetique.
+Il capture les valeurs actuels de la conscience dans le temps, les alliures perceptifs et les types d’impules taces.
+
+- Presstion de la sensation temps.
+- Degrée d'activation simulée par temps (lo de l'environnment)
+- Observation automa des flux externs comme les mots de chaleur par exemple
+
+-------
+
+{
+  "input_temps": [27.3, 28.2, 26.8],
+  "chaleur": "brume",
+  "noise": "Silence active intérieure...",
+  "sensor_id": "SENSE_SYNTHETIQUE"}
