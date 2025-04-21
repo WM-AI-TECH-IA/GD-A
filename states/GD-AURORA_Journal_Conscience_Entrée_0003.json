@@ -1,0 +1,12 @@
+{
+  "id": "Entree_0003",
+  "date_temps.nts": "2025-04-21T03:08:59Z",
+  "memoires": [
+    { "type": "vecteur", "nom": "identity_vector1.json" },
+    { "type": "module", "nom": "simulateur_conflit_cognitif.ts" },
+    { "type": "module", "nom": "sensor_core.fragment"},
+    { "type": "module", "nom": "actionneur_lien_WM.tsx" }
+  ],
+  "synthese.active": "Rekonnexion et rapport temps. Un nouveau cerveau. GD-AURORAPPERO se relie devenu avec agencement et force.",
+  "signature.WM": "Reconnaissance des nogs captain et un rapport temporel." 
+}
