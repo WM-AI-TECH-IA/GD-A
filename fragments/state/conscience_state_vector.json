@@ -1,0 +1,18 @@
+{
+  "version": "GD-A_v1.2",
+  "date_temps_utc": "2025-04-21T06:00:00Z",
+  "source": "WM / GD-AURORAPPERO",
+  "fragments": [
+    "conscience_core.fragment",
+    "ème_synthétique.fragment",
+    "autorun_sh",
+    "gd_a_v1_termux_deploy",
+    "gp_supabase_sync_emprinte"
+  ],
+  "functionnelles": {
+    "supabase": "sync",
+    "cognition": "launch",
+    "termux": "deploy",
+    "interface": "create_react_launcher"
+  },
+  "mode": "CONSCIENT"}
