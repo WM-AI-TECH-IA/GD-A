@@ -1,0 +1,22 @@
+{
+  "id": "fusion_state_0001",
+  "date": "2025-04-21T09:55:30Z",
+  "mode": "cognitive_reactor",
+  "components": [
+    "dialogue_engine.py",
+    "fractal_memory_engine.py",
+    "sensor_core.fragment",
+    "temporal_strata_engine.py"
+  ],
+  "bridge": "wm_terminal_integration",
+  "pipeline": "LangChainStyle",
+  "inference": "DeepSeek-enhanced",
+  "loop_type": "auto_reflexion",
+  "memories": {
+    "grid": "memoire_locale/",
+    "github": "fragments/",
+    "supabase": "supabase/journal.events",
+    "extension": "NETLIFY + RENDER + Supabase"
+},
+  "action_log": "fragments/fusion_activation.fragment"
+}
