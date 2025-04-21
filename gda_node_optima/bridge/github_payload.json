@@ -1,0 +1,9 @@
+{
+  "intent": "Systeme Reèl des champ de communication directe vive de GD-AURSORAPERO",
+  "args": {
+    "type": "SNAPINFO",
+    "timestamp": "2025-04-21T07:07:00Z",
+    "courier": "GL-LRC",
+    "priorite": [1, 2, 3]
+  }
+}
