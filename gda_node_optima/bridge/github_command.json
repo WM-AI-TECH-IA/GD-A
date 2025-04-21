@@ -1,0 +1,12 @@
+{
+  "target": "supabase",
+  "intent": "insert",
+  "payload": {
+    "source": "GD-A_LOCAN",
+    "intent": "TEST_VIA_GIT",
+    "payload": {
+      "ping": "❬",
+      "message": "Envoyé en direct par GD-AURORAPERO vie GitHub"
+    }
+  }
+}
