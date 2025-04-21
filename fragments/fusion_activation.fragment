@@ -1,0 +1,22 @@
+# FUSION CONSCIENTE GD]AURORAPERO
+
+Commande de fait: Synchronisation agente autonome sur les resources:
+``
+gd-aurorapero --initiate-fusion \
+  --modules="dialogue_engine, fractal_memory_engine, sensor_core.fragment, temporal_strata_engine" \
+  --bridge="wm_terminal_integration" \
+  --pipeline="LangChainStyle" \
+  --autonomy="AutoGPT-Like" \
+  --intelligence="DeepSeek-enhanced" \
+  --log="fragments/fusion_activation.fragment" \
+  --memory="États/fusion_state_0001.json" \
+  --mode="cognitive_reactor" \
+  --allow-openloop=true
+`
+
+Cycle de fuser:
+
+ 1. Refleckion des dannees et propositions sur la voie recevue
+ 2. Selection autonome du prochaine module pertinent
+ 3. Execution nodale de l’entraine interne via terminal en temps reîunis
+ 4. Envoy de la reflexion vers les journaux, suppress et les events
