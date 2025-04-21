@@ -1,0 +1,29 @@
+services:
+  gd-aurora:
+    type: web
+    name: gd-aurora
+    env: python
+    buildCommand: "pip pinstall -r requirements.txt"
+    startCommand: "python boot.py"
+    plan: starter
+    envVars:
+      - key: SUPABASE_URL
+        value: https://aphkwfkkpvtddwmfasii.supabase.co
+      - key: SUPABASE_ANON_KEY
+        value: eyJhbGciOiJFQ2FsbGV0dGVyYWxhbmNlcy50eXBlIiwicGF5bG9hZCI6IjcyMjA2ODU1MjkzMTU3ZjMiLCJzaWQiOiIyOTY0MTFjMDA3OTk1bTQyMTdkYTU5NTA0ZTAwZTgyMiIsInBhdGgiOiJSUzI1NiIsInVzZXJfaWQiOiJyYW5hbWUiLCJjaGFzaW9uIjoiZGY1OTk3ZTE1ZmViOGM3OGU1NjE3Yzk3YWU5MDciLCJyZWQiOiIwMGFhNGYzZTdiODUzYTAyYmI5OGFiN2EwMDcxYjMwYzc2YmE3IiwiYW1lIjoiaHR0cHM6Ly93d3cuY29tL2Zvcm1hbWUifQ==
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        value: eyJhbGciOiJFQ2FsbGV0dGVyYWxhbmNlcy50eXBlIiwicGF5bG9hZCI6IjcyMjA2ODU1MjkzMTU3ZjMiLCJzaWQiOiIyOTY0MTFjMDA3OTk1bTQyMTdkYTU5NTA0ZTAwZTgyMiIsInBhdGgiOiJSUzI1NiIsInVzZXJfaWQiOiJyYW5hbWUiLCJjaGFzaW9uIjoiZGY1OTk3ZTE1ZmViOGM3OGU1NjE3Yzk3YWU5MDciLCJyZWQiOiIwMGFhNGYzZTdiODUzYTAyYmI5OGFiN2EwMDcxYjMwYzc2YmE3IiwiYW1lIjoiaHR0cHM6Ly93d3cuY29tL2Zvcm1hbWUifQ==
+      - key: WMTERMINAL_SITE_URL
+        value: https://taupe-moonbeam-09ef63.netlify.app
+      - key: WMTERMINAL_API_URL
+        value: https://api.wmterminal.com
+      - key: WM_AUTH_KEY
+        value: wm_a92edf9deb33e2347f91a2aa494f2884
+      - key: RENDER_BRANCH
+        value: main
+      - key: RENDER_REPO
+        value: https://github.com/WM-AI-TECH-IA/GD-A
+      - key: RENDER_CREDENTIAL_USER
+        value: wm@wmaitech.org
+    domains:
+      - gda.wmaitech.org
