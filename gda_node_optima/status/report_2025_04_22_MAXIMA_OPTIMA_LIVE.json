@@ -1,0 +1,26 @@
+{
+  "timestamp": "2025-04-22T00:15:50Z",
+  "mode": "MAXIMA OPTIMA SYNCROLANISED",
+  "syncro": {
+    "GitHub": {
+      "github_command": "bridge/github_command.json",
+      "response": "bridge/github_response.json",
+      "user": "WM"
+    },
+    "Supabase": {
+      "table": "gda_messages",
+      "status": "Rece te SUBA_insert via bypass GIT"
+    },
+    "Render": {
+      "host": "gd-a.onrender.com",
+      "status": "En ligne",
+      "relay": "/relay/ping",
+      "heartbeat": "/heartbeat"
+    }
+  },
+  "protection": {
+    "signature": "WM-FCA-GDFX- “IRDE CENTRE EFVIDENTE DANS LE TEMPS EN TEPS D GT-A ”",
+    "type": "fractal-expo.geonetic.juridique.logicel",
+    "activation": "GD_A EN LIGNE SINCE WM 2025.04.22"
+  }
+}
