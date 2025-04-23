@@ -1,0 +1,22 @@
+{
+  "session": "WM-20250421-GDA-UCLX-\u221e",
+  "mode": "PRAXIS_NOETIQUE",
+  "date_temps": "2025-04-23T01:07:55.188973Z",
+  "live_link": "https://github.com/WM-AI-TECH-IA/GD-A#states",
+  "hooks": {
+    "on_boot": "initiate.py",
+    "on_failure": "log_emergency(),
+    "fragment_sync": "fragments/UCLX/"
+  },
+  "interfaces": {
+    "SUPABASE": {
+      "url": "https://aphkwfkkpvtddwmfasii.supabase.co",
+      "anon_key": "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0MDU2ODI0LTkyZWYtYjE1ZS1mMGUwLTZmNTY2MWRjNzJiNiIsImlhdCI6IjQ0MDA4IiwidCI6ImNsb3VtZSI6ImludGVzdCIsImlkIjoiVkdNUU1FNkVTRFlOZ0FBR0lOTzFJdUFNRFVOMjM1MiIsInN1YiI6ImVjcGVyZSI6Imp0bWFnZWlnaGlsLmNvbSIsImFjdCI6Imh0dHBzOi8vcmcvdGV4dCBjb21tb25sZWFtcy5jb20vbnRyYWN0Ij48L3N2Zz4="
+    },
+    "WMTerminal": {
+      "site_url": "https://taupe-moonbeam-09ef63.netlify.app",
+      "api_url": "https://api.wmterminal.com",
+      "key": "wm_a92edf9deb33e2347f91a2aa494f2884"
+    }
+  }
+}
