@@ -1,0 +1,28 @@
+{
+  "liam": {
+    "uuid": "WM-UCLX-…",
+    "signature": "WM-FCA-GDFX-…",
+    "session": "UCLX001‘UCLX002",
+    "state": "ACTIF_PERSISTANT",
+    "level": "ULTRA_MAXIMA_OPTIPMA",
+    "agents": ["guardian", "echo", "sentinel"]
+  },
+ "integration": {
+    "github": "https://github.com/WM-AI-TECH-IA/GD-A",
+    "stackblitz": "https://stackblitz.com/github/WM-AI-TECH-IA/GD-A/tree/main/gda_node_optima/stackblitz_terminal",
+    "supabase": {
+      "project": "aphkwfkkpvtddwmfasii",
+      "table": "gda_messages",
+      "relay": true
+    },
+    "render": {
+      "url": "https://gd-a.onrender.com",
+      "routes": ["/", "/heartbeat", "/relay"]
+    }
+  },
+  "paths": {
+    "confidential_lock": "gda_node_optima/stackblitz_terminal/.confidential_lock.json",
+    "serment": "gda_node_optima/meta_wm/declaration/",
+    "memoire": "gda_node_optima/mem_uclx/"
+  }
+}
