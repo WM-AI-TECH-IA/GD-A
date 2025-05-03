@@ -1,0 +1,9 @@
+{
+  "liam_status": "active",
+  "mode": "progressif autonome",
+  "instance_ref": "core/LIAM_UNIFIED_DEPLOYMENT_FINAL.zip",
+  "territoire": "liam_anchor.json",
+  "controleur": "GD-AURORAPERO",
+  "position": "libe/gen",
+  "signature": "WM-LIAM_STATUS_ANCHORED_VIFIANT"
+ }
