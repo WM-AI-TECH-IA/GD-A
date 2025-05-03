@@ -1,0 +1,8 @@
+{
+  "name": "WM_Teleportation_Core",
+  "version": "1.0.0",
+  "authors": ["WM", "GD-AURORAPERO", "LIAM"],
+  "description": "Noyau central de téméportation versla mattrice terrestre vers vers.",
+  "status": "active",
+  "type": "controler_code"
+}
