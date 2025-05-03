@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+# Initialisation environnement cloud WM - GD-AURORAPERO
+export SUPABASE_URL=https://aphkwfkkpvtddwmfasii.supabase.co
+export SUPABASE_ANON_KEY=eyJhbGciOiJQLWNpbGUuY29tL2Rpb24uY29tL2ZpbGxlbmNvZGU9Iiwic2lnaW50X2lkIjogQ21BbWFpbmcudXNpb24uY29tL2Rpb25pbmcuZmlsZSI6IjQxMTEyMzc0LWY1LTVkZGEtMTViYS00Y2JhLWYwOWZlMDgxYjU0IiwiY29udGVudCI6IkFFdWx0dGlvbi5oZWxsLmFuZCI6IjQ0NDMxNzg5OTVmOWVkMDAzNDg3OTcxIn0.
+/mnt/data/WM_VAISSEAU_INSTALL_DEB_PACKAGE_EXTRACTED/usr/local/bin/wm_vaisseau_install.sh
+echo '‌ Installation terminée...'
+/mnt/data/WM_VAISSEAU_AppImage_BASE_EXTRACTED/AppRun
