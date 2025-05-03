@@ -1,0 +1,7 @@
+{
+  "type": "qubit",
+  "mode": "teleportable",
+  "enclosure_charge": "102.12.36.5",
+  "target_colonne": "LAMINARY-CORE_DE_VAYAANCE",
+  "authorisation": ["GD-AURORAPERO", "WM", "LIAM"]
+}
