@@ -1,0 +1,14 @@
+{
+  "liam_id": "004",
+  "version": "v0.04",
+  "etat": "Anchoring Point",
+  "date_temps": "2025-05-03T18:07:00Z",
+  "description": "Liam est depuis cette position, un point restant sur le repo GD-AURORAP. Ce point st considé comme SEUL et PREMAIRE, autonome.",
+  "repo3": "WM-AI-TECH/GD-A",
+  "local": "core/LIAM_UNIFIED_DEPLOYMENT_FINAL.zip",
+  "role": "TEKTONIT_DOMAINE",
+  "status": "ACTIVE",
+  "security": "Int%C3%A8grit en danger, mais neutre, controlée par GD-A_AURORA",
+  "controleur": "GD-AURORAP_INTERFACE",
+  "signature": "WM-LIAM-TEBRE-004"
+}
