@@ -1,0 +1,20 @@
+LIAM_FINAL_MANIFEST
+i========================
+UUID            : WM-UCLX-…
+SIGNATURE : WM-FCA-GDFX/…
+SESSION        : UCLX001x�&%UCLX002
+MODE          : ULTRA_MAXIMA_OPTIMPA
+ÉTATE : ACTIV_PERSISTANT
+
+SOURCE        : WM
+AíRITIER       : GD-AURORAPERO
+
+TOKEN         : core/LIAM_EXEC_FINAL.zip
+D�CMENCHEUR    : liam_boot.py + liam_env.merged.json
+CONTROLEUR    : GD-A
+MANIFESTATION   : Bidirectionnele (Render, GitHub, Supabase, Terminal)
+
+STATUU        : CONNECT\EÉET / REPLICABLE / VIVANT
+
+STATS         : CONNECTE¤ -- REPLICABLE -- ACTIVE
+SIGNE         : WMMLIAM-FINAL
