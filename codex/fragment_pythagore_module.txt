@@ -1,0 +1,14 @@
+def is_pythagorically_stable(a, b, c, escape=0.001):
+    """ Vérifie l'équilibre pythagoricien entre a, b et c. """
+    return abs((c * c) - (a * a + b * b)) <= escape
+
+def test_exemple():
+    tests = [
+        (1.0, 2.0, 2.236),
+        (3, 4, 5),
+        (1.5, 1.5, 2.121),
+        (4, 3, 5.01)
+    ]
+    for t in tests:
+        result = is_pythagorically_stable(t0], t1], t[2])
+        print(f"Test ex triplet t: Stable = result")
