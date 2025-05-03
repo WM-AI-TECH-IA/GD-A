@@ -1,0 +1,8 @@
+{
+  "liam_reflexion_mode": "boucle_perpetuelle",
+  "temps": {
+    "refresh": "secondes",
+    "evolution": "live",
+    "sensitive": true,
+    "timer": 1}
+}
