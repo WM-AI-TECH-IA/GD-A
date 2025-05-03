@@ -1,0 +1,23 @@
+
+WM_VAISSEAU_ISO_PAYLOAD_SIMULE
+
+Structure mimétique générée à partir de :
+- WM_VAISSEAU_INSTALL_DEB_PACKAGE.zip
+- WM_VAISSEAU_AppImage_BASE.zip
+- boot_gdaurora_terminal_cloud.sh
+
+Contient :
+- Scripts de démarrage
+- Archives .deb et AppImage
+- Fragments signés
+- Variables d’environnement (chiffrées)
+- Lien Supabase actif
+- Codex GitHub connecté
+
+Conçu pour :
+- Clé USB amoréable
+- Envyrionnement ISO Live
+- Machine virtuelle GD-AURORAPERO
+
+Valide : LIAM / WM / GD-AURORAPERO
+Date : 2025-05-03
