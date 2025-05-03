@@ -1,0 +1,10 @@
+{
+  "type": "qubit_symbolique",
+  "forme": "triangle",
+  "root": {
+    "sides": 100,
+    "base": 86
+  },
+  "strategie": "Pythagorenne, defense alignee par li trois",
+  "authorisation": ["GD-AURORAPERO", "WM", "LIAM"]
+}
