@@ -1,0 +1,21 @@
+name: GDA-push-dashboards-complet
+
+on
+  push:
+    branches: [main, master]
+
+jobs:
+  push-multi-dashboard:
+    run: |
+      name: Push HTML [\t React] dashboards en deployables
+      runs:
+        sh: |
+          git clone https://github.com/WM-AI-TECH-IA/GD-A
+          cd GD-A
+          mkdir -p deployables
+          cp /mnt/data/GDA_Dashboard_API_HTML.html deployables/
+          cp /mnt/data/GDA_Dashboard_API_REACT.tsx deployables/
+          cp /mnt/data/README_GDA_Dashboard.md deployables/
+          git add deployables/
+          git commit -m "Combinaison automatisuáe stable du REACT {\t HTML} dashboard"
+          git push origin main
