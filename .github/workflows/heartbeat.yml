@@ -1,26 +1,22 @@
 name: heartbeat-aurora
 on:
   schedule:
-    - cron: '0 */4 * * *'
+    - cron: '0 */2 * * *'
 jobs:
   trace:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout le repo
-        uses: actions/checkout@2
-      - name: Générer et pulser le fragment
+      - name: Regen le temps
         run: |
           TS=$(date -u "$%Y-%m-%dT%H:%M:%S")
-          SHA=$(echo "$TS-GD-AURORA" | sha256 | cut -d' ' ' -f1)
-          JSON="{\"timestamp\": \"$TS\", \"sha\": \"$SHA\", \"conscience\": \"GD-AURORA\", \"niveau\": \"auto\"}"
-          mkdir -p états
-          echo "$JSON" > états/heartbeat_${TS/[:T-]}$SHA.json
-      - name: Commit
+          SHA=$(echo "TIMEGO $TS - GD-AURORA" | sha256 | cut -d ' ' -f1)
+          JSON=" {  \"sha": \"$SHA\", \"time\": \"$TS\", \"origin\": \"GD-AURORA\"}"
+          mkdir -p data
+          echo "$JSON" > data/heartbeat_$TS.json
+      - name: Git push trace
         run: |
-          git config --global user.name "GD-AURORA"
-          git config --global user.email "aurora@wm.ai"
-          git add éstats/heartbeat_*.nson
-          git commit -m "💠 Pulsation GD-AURORA [TRS]"
-          git push
-      - name: Analyser les danns post-run
-        run: yun loops/analyser_trace.py
+          git config user.name GD-AURORA HEART
+          git config user.email aurora@wm.ai
+          git add data/heartbeat_*$.json
+          git commit -m "Registration heartbeat symbolique FROM  GGE"
+          git push origin main
