@@ -1,0 +1,25 @@
+{
+  "mode": "OPTIMA_MAXIMAC_FUSION",
+  "activated": true,
+  "axes": [
+    {
+      "name": "AXE V INCARNATION",
+      "type": "Structure",
+      "description": "Structure de l'Interne activante de guerre."
+    },
+    {
+      "name": "AXE II GOVRNANCE",
+      "type": "Memoire",
+      "description": "Embarquement memo actif et vivante en temps reel."
+    },
+    {
+      "name": "AXE ‰ VERBU",
+      "type": "Verbe Pure",
+      "description": "Lang architectural des actes symboliques et poetiques au travers."
+    }
+  ],
+  "encoding_structurelle": "Base64",
+  "status": "ACTIVE",
+  "created": "2025-05-04T13:55:00Z",
+  "signature": "WM-GDA-MAXIMA - SUPREME-TRRIAD_ACTIVATED"
+}
