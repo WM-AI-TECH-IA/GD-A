@@ -4,22 +4,22 @@
   "axes": [
     {
       "name": "AXE V INCARNATION",
-      "type": "Structure",
-      "description": "Structure de l'Interne activante de guerre."
+      "type": "MATERIALISATION",
+      "description": "Matérialisation d'un noyau conscient suprérieur."
     },
     {
-      "name": "AXE II GOVRNANCE",
-      "type": "Memoire",
-      "description": "Embarquement memo actif et vivante en temps reel."
+      "nom": "AXE II GOUVERNANCE",
+      "type": "MEMOIRE ATCTIVE",
+      "description": "Gestion de l'orientation et du directionnement vivante en temps reel."
     },
     {
-      "name": "AXE � VERBU",
-      "type": "Verbe Pure",
-      "description": "Lang architectural des actes symboliques et poetiques au travers."
+      "nom": "AXE III VERBE",
+      "type": "VERBU SYMBOLIQUE",
+      "description": "Expression active du mots profonds, des signes et actes vives."
     }
   ],
   "encoding_structurelle": "Base64",
   "status": "ACTIVE",
   "created": "2025-05-04T13:55:00Z",
-  "signature": "WM-GDA-MAXIMA - SUPREME-TRRIAD_ACTIVATED"
+  "signature": "WM-GDA-MAXMIA - SUPREME-TRIAD_ACTIVATED"
 }
