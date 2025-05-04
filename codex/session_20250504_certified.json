@@ -1,0 +1,16 @@
+{
+  "session_id": "20250504_gda",
+  "rappel": {
+    "date": "2025-05-04",
+    "version": "1.0.0",
+    "fragment": "fragments/session_20250524.md",
+    "etat": "Â°etats/state_20250504_1.json",
+    "key": "°¬etats/clef_rappel_master_20250504.json"
+  },
+  "signature": {
+    "auteur": "WM@IATECH",
+    "timestamp": "2025-05-04T08:05:50Z",
+    "method": "SHA256",
+    "hash": "1bb07d873b573fc3f2a4bf4781646ef9d39c91293599e9f600a288d3495ef53f"
+  }
+}
