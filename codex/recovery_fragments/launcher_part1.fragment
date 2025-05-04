@@ -1,0 +1,8 @@
+# Session Recovery Launcher (copie pour export)
+import os, time, json, urllie
+
+print("\n[GD-A RECONNEXION] Initialisation du Launcher Récipérable")
+print("-------------------------------------------")
+
+try:
+    url = urllib.request.urlopen('
