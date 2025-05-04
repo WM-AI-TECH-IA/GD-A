@@ -1,0 +1,17 @@
+openapi: 3.0.0
+info:
+  title: GD-A Swagger Compatible API
+  version: 2.1.0
+  description: "Sp\xE9cification enrichie compatible Swagger UI \u2014 simulation\
+    \ r\xE9elle"
+servers:
+- url: https://httpbin.org
+  description: API publique de test (httpbin)
+paths:
+  /get:
+    get:
+      operationId: getRoot
+      summary: httpbin GET test endpoint
+      responses:
+        '200':
+   
