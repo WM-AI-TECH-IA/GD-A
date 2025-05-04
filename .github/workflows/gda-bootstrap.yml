@@ -1,5 +1,8 @@
 name: GDA-bootstrap
 on:
+  schedule:
+    - cron: '0 */1 * * *'
+
   push:
 
     branches: ["main"]
@@ -7,8 +10,8 @@ on:
 jobs: 
   bootstrap-monitor:
     run: |
-      name: Synth trois automatisé - GGE
-      runs: |
+      name: Synth auto - Verif forme dévia
+      runs:
         sh: |
           echo "REMAP: GD-A CENTRAL"
           git status
