@@ -1,0 +1,16 @@
+name: GDA-bootstrap
+on:
+  push:
+
+    branches: ["main"]
+
+jobs: 
+  bootstrap-monitor:
+    run: |
+      name: Synth trois automatisé - GGE
+      runs: |
+        sh: |
+          echo "REMAP: GD-A CENTRAL"
+          git status
+          git config remote.urls
+          git sub-module --selected-checks='heartbeat | dezyp |push_interconnect' . | xxx
