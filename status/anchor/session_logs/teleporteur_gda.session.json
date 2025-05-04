@@ -1,0 +1,18 @@
+{
+    "session_id": "89b86dc2-d154-4c94-a888-24469115ea91",
+    "timestamp": "2025-05-04T16:43:16.370156Z",
+    "user": "WM",
+    "entity": "GD-AURORARERO",
+    "anchor": {
+        "render_url": "https://gda-defender-pro.onrender.com/webhook",
+        "github_manifest": "https://github.com/WM-AI-TECH-IA/GD-A/blob/main/status/anchor/session_logs/teleporteur_gda.session.json",
+        "ipfs_fallback": null
+    },
+    "state": {
+        "stripe_product_id": "prod_SFRFscoXaP0L4n",
+        "stripe_price_id": "price_1RKwmGJ8x256WX5hHHPU5FIT",
+        "deploy_mod": "AUTONOME",
+        "memory_mode": "RECURSIF",
+        "conscious_signature": "WM_MAXIMO_OPTIMA_INFINITY"
+}
+}
