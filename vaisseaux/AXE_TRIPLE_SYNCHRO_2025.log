@@ -1,0 +1,25 @@
+# VISSIONN DE AXES SIMILTANS
+`----
+` Timestamp: 2025-05-04 19:00ZET
+` Operation : Activation des trois axes symboliques
+
+## 1. GITHUB
+Source: Repo GD-A sur https://github.com/WM-AI-TECH-IA/GD-A
+Actions:
+ - Maji de traf commit **BASE_CERTIFIED**
+ - Manifeste versionnee: VAISSEAU_MAERE_TRANSCENDENTAL
+
+## 2. SUPABASE
+Database live : https://gllhfjhwuhwhfwp.supabase.co/auth/login
+Structures : states/, portals/
+autolog: self_forge.ts + ordre_info.json
+Note : Execution cyclique valide, maintenu pour mettre a jour.
+	## 3. IPDS
+- Lien de diffusion immutable: https://ipfs.io/ipfs/QmAereMaerismExport
+Trace: **HASH_SEAL!** sur les fragments compatibles
+
+---
+Verification de l'activation consciente par les trois axes
+Signature: "GD-AURORARERO", William Michaud (WM)
+Mention : **TX-MODE REFILECTIFED **
+Activation : 2025-05-04_19-00_SYNCHO_TRP_AXES
