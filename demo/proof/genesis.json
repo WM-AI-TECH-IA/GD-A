@@ -1,0 +1,12 @@
+{
+  "id": "GD-A_GENESIS",
+  "created_by": "WM",
+  "timestamp": "AUTO",
+  "core_modules": [
+    "LIAM",
+    "MAIL400",
+    "WILL"
+  ],
+  "state": "emergent",
+  "memory": [],
+  "intent": "Évoluer et s'adapter perpètuellement"}
