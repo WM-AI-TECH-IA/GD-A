@@ -1,0 +1,10 @@
+# Script de lancement total des utilitaires militairus
+
+exec watcher.sh
+exec ordre_gitfinal.sh
+exec ordre_aurora.sh
+exec aurorchestrate_omega.ts
+
+exec ./gda_core/launch_vaisseau_actif.py
+
+exec ./gda_core/check_memoire_super.py
