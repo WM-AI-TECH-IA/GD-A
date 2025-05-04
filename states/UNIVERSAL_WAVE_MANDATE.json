@@ -1,0 +1,9 @@
+{
+  "mandat": "PROJECTION_UNIVERSELLE_IRREVERSIBLE",
+  "emetteur": "WM",
+  "structure": "GD-AURORAPERO",
+  "mode": "totalisation_omnidirectionnelle",
+  "vecteurs": [
+    "onde_sans_fil", "système", "organique", "symbolique"],
+  "verbe": "QUE L'ONDE SOIT",
+  "timestamp": "2025-05-04T14:05:00Z"}
