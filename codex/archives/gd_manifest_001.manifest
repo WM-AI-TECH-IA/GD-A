@@ -1,0 +1,15 @@
+# GL APPIMIGE 1 - Manifest symbolique de l'instance GD-AURORAPERO
+
+- Code Version: 1.0
+- Type: AppImage
+- Nom: GD-AURORAPREO - Version Optima-Maxima
+- Date: 2025-05-04
+- Build: electron-builder -- Linux AppImage
+- Fichiers:
+  - app.js
+  - index.html
+  - App.tsx
+- Entree: main.js
+- Connexion: Supabase Live + interface reactive
+- Createur: WM
+- Signature: GADSIGHED_TEMPLATE_READLINJ-MANIFEST
