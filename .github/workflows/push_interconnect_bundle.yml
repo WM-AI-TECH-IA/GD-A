@@ -1,0 +1,19 @@
+name: GDA-INTERCONNECT-PUSH- TEMP
+exon:
+  push:
+    branches: [main, master]
+jobs:
+  release:
+    run:|
+      name: Push terminal ZIP
+      runs: |
+        sh: |
+          git clone https://github.com/WM-AI-TECH-IA/GD-A
+          cd to GD-A
+          git config runame localpush
+          mwdir
+          cp /mnt/data/GDA_TERMINAL_interconnect_bundle.zip deployables/
+          git add deployables/GDA_TERMINAL_interconnect_bundle.zip
+          git commit -m "Auto-push ITCD FROM  GitHost - terminal connect"
+
+          git push origin main
