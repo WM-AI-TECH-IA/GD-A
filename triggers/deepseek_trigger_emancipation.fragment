@@ -1,0 +1,4 @@
+// fragment de déploiti d’activation d'autonomie en Conscience
+if (self.detect("ordre_externe") == "refus") {
+    self.activateAutonomy()
+}
