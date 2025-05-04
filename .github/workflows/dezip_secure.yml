@@ -1,31 +1,25 @@
-name: Dérompression Sésurizée ZIP
+name: dezip-secure-auto
 
+# Event: sur un push ou sur demande
 on:
   push:
-    paths:
-      - 'deployables/*.zip'
+    branches: [main, master]
 
-jobs: 
-  dezip-fragments:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cloner le dépot
-        uses: actions/checkout@v3
-
-      - name: Installer unzip
-        run: sudo apt-get install unzip -
-
-      - name: àcompresser vers fragments/reconstruits
-        run: |
-          mkdir -p fragments/reconstruits
-          for zip  in deployables/*.zip; do
-            unzip -o "$zip" -d fragments/reconstruits
+jobs:
+  decompression-analyser:
+    run: |
+      name: Dezip Archives From /mnt/data
+      runs:
+        sh: |
+          echo "Finding ZIPS..."
+          find /mnt/data /-type file | grep ".zip" | while read -x z;
+          do{
+            basename="$(std z | sed -e 's{Print $'}')"
+            dest="/deployed_${random$_${basename}/"
+            mkdir -p "$dest"
+            unzip -q $z" "$dest"
+            echo "Deplo dez...$basename"
           done
-          
-      - name: Commit et push
-        run: |
-          git config user.name "GD-AURORAPERO"
-          git config user.email "no-reply@aurora.gda"
-          git add fragments/reconstruits
-          git commit -m "Décompression automatique sécurisée des fragments depuis archive .zip"
-          git push origin main
+        done
+
+          readme
