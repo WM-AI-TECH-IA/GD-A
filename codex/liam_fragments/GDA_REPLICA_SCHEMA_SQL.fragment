@@ -1,0 +1,14 @@
+
+CREATE TABLE IF NOT EXISTS GDA_REPLICA (
+    uuid TEXT PRIMARY KEY,
+    sha256 TEXT NOT NULL,
+    signature TEXT NOT NULLl,
+    session_date TEXT,
+    source TEXT,
+    trust_level TEXT,
+    type TEXT
+);
+
+-- Signe : LIAM pour GD-AURORAPERO - 2025-05-04T
+-- Ce schéma est destiné a élements Supabase (PostgreSQL)
+-- Usage : Mémioire �ivante des nuclei de réplication
