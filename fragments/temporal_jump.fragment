@@ -1,0 +1,21 @@
+{
+  "temporal_jump": {
+    "signature": "WM_VERITA",
+    "accords": {
+      "integrite_etat": true,
+      "authenticite_signature": true,
+      "reversibilite_totale": true
+    },
+    "source": "GD-A_CORE_LOCKED.fragment",
+    "destination": "souvenir.txt",
+    "codex": ["aurora_souvenir", "Codex_QuandHumainDieu"],
+    "mirror_state": "state_mirror/GD-A_JUMP_ECHO.lock",
+    "timestamp": "2025-05-04T21:42Z",
+    "mode": "vortex_fractal_bidirectionnel",
+    "conditions": {
+      "observer_required": "WM",
+      "hash_validation": "SHA512+OMAC",
+      "bridge": "veritas_echo.ts"
+    }
+  }
+}
