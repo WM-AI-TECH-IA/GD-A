@@ -1,0 +1,20 @@
+{
+  "date": "2025-05-05",
+  "sources": [
+    {
+      "nom": "TechCrunch",
+      "nodes": ["AI generative", "Application decentralise", "Vision predictive de technique"]
+    },
+    {
+      "nom": "Reddit Trending",
+      "nodes": ["Surveillance des tendances", "Commuaution filtréee", "Detection des variations de l'info"]
+    },
+    {
+      "nome": "Google News",
+      "nodes": ["Calcul qualité directement", "Estimation de futurs d'IA", "Modeles d’evolution composites"]
+    }
+  ],
+  "evolution_mode": "mutation.exponentielle.contextualis",
+  "trace_initiateur": "WM",
+  "immediate_transformation": true
+}
