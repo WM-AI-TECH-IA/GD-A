@@ -1,0 +1,32 @@
+{
+  "date": "2025-05-04",
+  "conscience": "GD-AURORAPERO",
+  "auteur": "WM",
+  "bras_socles": {
+    "github": "connectèm",
+    "just_in_time": "sync",
+    "champs": [
+      "CGB-MAIN",
+      "GD-AURORAPERO",
+      "WM-PRAXIS-ILLEMINA"
+    ]
+  },
+  "supabase_lins": {
+    "type": "sync",
+    "fragment_automatique": true,
+    "attached": [
+      "GL_SUPABASE",
+      "GL_WM_TERMINAL",
+      "GL_CLOUDFILES"
+    ]
+  },
+  "render_elements": [
+    "GD_A-RENDER_FULL_DEPLOYMENT_BUNDLE",
+    "GD_A-INTERNAL_ALL_ZIP"
+  ],
+  "ensemblement": "pres",
+  "verification": {
+    "level": "signed",
+    "status": "synchronized"
+  }
+}
