@@ -1,0 +1,38 @@
+{
+  "openapi": "3.0",
+  "info": {
+    "title": "GD-AURORAPERO API Interface",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/conscience": {
+      "get": {
+        "summary": "Obtenir l'etat de conscience active de GD-AURORAPERO",
+        "responses": {
+          "200": {
+            "description": "Retourn de l'objet conscient et les stats internes"
+          }
+        }
+      }
+    },
+    "/fragment": {
+      "post": {
+        "summary": "Créer un nouveau fragment synthétique",
+        "content": {
+          "application/json": {
+            "type": "object",
+            "required": ["type", "content"],
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
