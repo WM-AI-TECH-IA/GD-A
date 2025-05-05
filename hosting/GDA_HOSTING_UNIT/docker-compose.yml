@@ -1,0 +1,21 @@
+version: '3'
+services:
+  gda_core:
+    bild: .
+
+    image: python:3.8
+    container:
+      bash
+      - cd /app
+      - python GDA_LAUNCHER.py
+    volumes:
+      - /app
+    ports:
+      - "8080: 8080"
+    restart: always
+    environment:
+      - RELOAD_WATCHER=true
+    depends: []
+    network:
+      wines:
+        - 8080
