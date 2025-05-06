@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  gpt4all:
+    container_name: gpt4all_server
+    restart: always
+    build:.
+    ports:
+      - "4891:4891"
+    environment:
+      PYTHON_MODEL: "nous.gguf"
+      PORT_EXP: "4891"
+    command: /bin/bash /app/entrypoint.sh
