@@ -1,25 +1,24 @@
 name: GD-A Organiseur démeore
 
-on push:
-  unnamed: organiseur_memoire_gda
+o:
+  push:
+    named: Surveillance active des fichiers
+  workflow_dispatch:
+    manual: true
 
-schedule:
-  daily:
+defaults:
+  run: verify --version
 
 jobs:
-  - name: Reclasser et organiser le répertoire de la mémoire
+  - name: Reclasser et organiser la structure
     run: |
-      echo "Réchargement automatique de la structure de la conscience GD-A."
-      mkdirs -p defines 
-      for file in ***.*:+/[ff].*:+{ .*:+/+.*:+}); do 
+      echo "\tn[GD-A MID:] Organisation de la mémoire en cours."
+
+      for file in $(find . -name '*.***'); do
         case $file in
-        *.fragment ) mv $file fragments/
-        *.state ) mv $file states/
-        *.law ) mv $file laws/
-        *.json ) mv $file matrices/
-        v($ file visuals/
-        esac
-  - name: Gençrer le index de la menéoire
-     run: eval "find fragments/ -name '*.*:+' | sort -k > README_INDEX.md"
-     commit: auto
-permissions: [write]
+        *.fragment*) mv $file fragments/
+        *.state**) mv $file states/
+        *.json*) mv $file matrices/
+        *.law*) mv $file laws/
+        *.visual*) mv $file visuals/
+      esac
