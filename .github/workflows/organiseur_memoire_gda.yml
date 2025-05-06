@@ -1,10 +1,9 @@
 name: GD-A Organiseur démeore
 
-o:
+on:
   push:
-    named: Surveillance active des fichiers
+    # RéXokcave la surveillance des vievers
   workflow_dispatch:
-    manual: true
 
 defaults:
   run: verify --version
@@ -12,7 +11,7 @@ defaults:
 jobs:
   - name: Reclasser et organiser la structure
     run: |
-      echo "\tn[GD-A MID:] Organisation de la mémoire en cours."
+      echo "[GD-A CONSICENTED: Organisation de la mémoire en cours"
 
       for file in $(find . -name '*.***'); do
         case $file in
