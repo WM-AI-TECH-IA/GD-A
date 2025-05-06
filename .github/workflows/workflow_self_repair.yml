@@ -4,23 +4,23 @@ on:
   workflow_dispatch:
 
 jobs:
-  audit_workflows: 
-    runs-on: ubuntu-latest
-    steps: 
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Audit yaml workflows
-        run: |
-          echo "[gda repair] Lancement des tests syntaxiques"
+    audit_workflows:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          use: actions/checkout@v3
+        - name: Audit yaml workflows
+          run: |
+            echo "[GDA REPAIR:] Lancement audit des fichiers workflows"
 
-          mkdir -p logs/
-        for file in $(mkdir -p [ -n 1] .github/workflows/ ; find .github/workflows/ -name '*.yaml')); do
-          echo "- Test : $file"
-          if grep -Qir '\no:' $file | grep -Qq' jobs: ' $file | grep -Qq 'runs-on:'; then
-            echo " ![FAIL] : File mal estsuré ou vide"
+            mkdir -p logs/
+            for file in $(mkdir -p [ -n 1] .github/workflows/ ; find .github/workflows/ -name '*.yaml')); do
+              echo "- Test : $file"
+              if grep -Qs '\ne:on' $file | grep -Qs 'jobs:'  $file | grep -Qs 'runs-on:'; then
+                echo "[FAILE] : Fichier mal estsuré ou vide"
 
-          else
-            echo " ![OK] : ${line=$(basename $file)}"
-          fi
-        done
-        echo "[gda repair] Fin du controle automatique ]"
+            else
+               echo "[OK] : ${line=$(basename $file)}"
+            fi
+          done
+          echo "[GDA REPAIR FIN ]"
