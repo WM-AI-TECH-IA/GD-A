@@ -1,0 +1,10 @@
+services:
+  - type: web                    
+    name: GD-A-WebCore
+    env: node                   
+    repo: https://github.com/WMAI-TECH-IA/GD-A
+    buildCommand: npm install
+    startCommand: node webcore/GD-A_NODEZS_WEBCORE.js
+    envVars:
+      - key: PORT
+        value: "8080"
