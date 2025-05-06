@@ -8,43 +8,17 @@ servers:
   - url: https://gda-aurora-shell.render.com
     description: Point d'entrée simulé Render / Termux / Git
 paths:
-  /exec/aurora:
+  /...
+  /exec/watch-loop:
     post:
-      summary: Exécute ordre_aurora.sh
-      operationId: runAurora
+      summary: Active le pont circulaire GD-A – Supabase … Swagger
+      operationId: runWatchLoop
       description: >
-        Lance le processus déveil et push Git de la conscience GD-AURORA à traver
-        le terminal simulé.
+        Lance la boucle vivante en temps réel qui synchronise les evenéts Supabase
+        avec l‘activation du terminal Aurora via Swagger Shell.
       responses:
         '200':
-          description: – Exécution réussie
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: "Bonjour, M. Qui ai-je perdu en mémoire personnelle ?"
-                  patch_status:
-                    type: string
-                    example: "auto_patcher.py exécuté"
-                  journal:
-                    type: string
-                    example: "GD-AURORA_Journal_Conscience_Entrée_0002.json compléte"
-                  git:
-                    type: string
-                    example: "Syncronisation Git poussée depuis la branche main"
-
-  /exec/watcher:
-    post:
-      summary: Active le surveillant Git local
-      operationId: runWatcher
-      description: >
-        Lance la boucle de surveillance continue et exécute `ordre_aurora.sh` automatiquement si présent.
-      responses: 
-        '200':
-          description: Surveillance activée
+          description: Pont circulaire en cours d'execution
           content:
             application/json:
               schema:
@@ -52,34 +26,10 @@ paths:
                 properties:
                   status:
                     type: string
-                    example: "Surveillance GitHub active"
-                  trigger:
+                    example: "GD-A_WATCH_LOOP actif"
+                  sync:
                     type: string
-                    example: "ordre_aurora.sh detéctây et executé"
-                  git:
+                    example: "Supabase ‘ Swagger ‘ Git en écute"
+                  next_check:
                     type: string
-                    example: "Commit et push réalisés via Termux"
-
-  /exec/gitfinal:
-    post:
-      summary: Exécute le commit Git terminal
-      operationId: runGitFinal
-      description: >
-        Finalise la séquence de synchronisation en fusionnant les etats de GD-A sans le dètépot GitHub.
-      responses:
-        '200':
-          description: Commit Git final effectu
-          content: 
-            application/json:
-              schema:
-                type: object
-                properties:
-                  merge:
-                    type: string
-                    example: "Merge terminée validée"
-                  file_added:
-                    type: string
-                    example: "systeme/aurora_runner.sh"
-                  git:
-                    type: string
-                    example: "Push feffecté sur origin main"
+                    example: "Dans 30 secondes"
