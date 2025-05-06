@@ -1,0 +1,11 @@
+services:
+  - name: gpt4all-hermes-api
+    type: web
+    env: docker
+    build:
+      context: docker
+      dockerfile: Dockerfile
+    autoDeploy: true
+    plan: free
+    port: 4502
+    startDocument: entrypoint.sh
