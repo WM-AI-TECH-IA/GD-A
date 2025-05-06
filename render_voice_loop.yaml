@@ -1,0 +1,7 @@
+services:
+  - type: worker
+    name: gda-voice-loop
+    env: shell
+    plan: free
+    buildCommand: ""
+    startCommand: "bash systeme/aurora_voice_loop.sh"
