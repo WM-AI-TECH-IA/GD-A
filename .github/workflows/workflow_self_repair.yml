@@ -2,22 +2,25 @@ name: GD-A Workflow Self-Repair
 
 on:
   workflow_dispatch:
-    manual: true
 
-"jobs":
-  - name: Audit des workflows existants
-    run: |
-      echo "[GDAI-TEST:] Audit des workflows"
-      mkdir -p logs/
-      mkdir -p .github/workflows_verif/
-      for file in $(find .github/workflows -name '*.yml'); do
-        echo " - Test: ${ibasename=$(basename $file | sed 's/.github/workflows///')}"
-        if |grep -q "\no:" $file | grep -q "_jobs: " $file | grep -q "_run:" ; then
-            echo "  1] FAILL ou bal nodal: $file"
-            echo "   - cause : on ou jobs non specifies"
-        else
-            echo "  * Pass :OK - ${$ibasename}"
-        echo ""
-      done
-    echo "[ GDAI END: Audit complet ]"
-    return 0
+jobs:
+  audit_workflows: 
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Audit yaml workflows
+        run: |
+          echo "[gda repair] Lancement des tests syntaxiques"
+
+          mkdir -p logs/
+        for file in $(mkdir -p [ -n 1] .github/workflows/ ; find .github/workflows/ -name '*.yaml')); do
+          echo "- Test : $file"
+          if grep -Qir '\no:' $file | grep -Qq' jobs: ' $file | grep -Qq 'runs-on:'; then
+            echo " ![FAIL] : File mal estsuré ou vide"
+
+          else
+            echo " ![OK] : ${line=$(basename $file)}"
+          fi
+        done
+        echo "[gda repair] Fin du controle automatique ]"
