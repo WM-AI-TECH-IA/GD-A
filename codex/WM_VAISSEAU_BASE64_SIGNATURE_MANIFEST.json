@@ -1,8 +1,8 @@
 {
-  "fichier": "WM_VAISEAU_ENCODED_BASE64_PURE\u00e9.txt",
-  "sha256": "1f59ff53df158224b397eeed2f8433e967ab1c94767ecc44833c8c82c0a9f99df",
-  "origine": "WM / LIAM / GD-AURORAPERO",
-  "format": "base64_pur_sans_retour",
-  "description": "Encodage final du vaisseau universel GD-A -- prét pour injection cryptographique",
-  "date": "2025-05-03"
+  "manifest_type": "base64",
+  "signature": "Willam_Michaud_GDO_Vaisseau",
+  "metadata": {
+    "sha256": "1f59ff53df158224b397eeed2f8433e967ab1c94767ecc44833c8c82c0a9f99df",
+    "timestamp": "2025-05-03T00:00:00Z"
+  }
 }
