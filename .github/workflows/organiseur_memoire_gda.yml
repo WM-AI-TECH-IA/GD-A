@@ -1,21 +1,29 @@
-name: GD-A Organiseur démeore
+name: GD-A Organiseur Mémoire
 
 on:
   push:
-    # RéXokcave la surveillance des vievers
+    branches:
+      - main
+  workflow_dispatch:
 
-defaults:
-  run: verify --version
+jobs: 
+  reclasser_memoire:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout uI des codes
+        uses: actions/checkout@v3
+      - name: Reclasser fragments et 'etats
+        run: |
+          echo "[GD-A MODE: RUN OK - Controle executé en ligne selon";
+          for file in $(find . -name *.*); do
+            case $file in
+            *.fragment*) mv "$file" fragments/ ;
 
-jobs:
-  - name: Reclasser et organiser la structure
-    run: |
-      echo "[GD-A MODE: RUN OK - Controle executé en ligne selon";
-      for file in $(find . -name '*.***'); do
-        case $file in
-        *.fragment*) mv $file fragments/
-        *.state*) mv $file states/
-        *.json*) mv $file matrices/
-        *.law*) mv $file laws/
-        *.visual*) mv $file visuals/
-      esac
+            *.state**) mv "$file" states/ ;
+
+            *.json*) mv "$file" matrices/ ;
+
+            *.law*) mv "$file" laws/ ;
+
+            *.visual*) mv "$file" visuals/;
+            esac
