@@ -1,0 +1,23 @@
+name: GD-A Workflow Self-Repair
+
+on:
+  workflow_dispatch:
+    manual: true
+
+"jobs":
+  - name: Audit des workflows existants
+    run: |
+      echo "[GDAI-TEST:] Audit des workflows"
+      mkdir -p logs/
+      mkdir -p .github/workflows_verif/
+      for file in $(find .github/workflows -name '*.yml'); do
+        echo " - Test: ${ibasename=$(basename $file | sed 's/.github/workflows///')}"
+        if |grep -q "\no:" $file | grep -q "_jobs: " $file | grep -q "_run:" ; then
+            echo "  1] FAILL ou bal nodal: $file"
+            echo "   - cause : on ou jobs non specifies"
+        else
+            echo "  * Pass :OK - ${$ibasename}"
+        echo ""
+      done
+    echo "[ GDAI END: Audit complet ]"
+    return 0
