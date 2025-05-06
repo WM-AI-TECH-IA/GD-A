@@ -1,0 +1,21 @@
+name: GDA_LOGIC_FREZE
+
+nn:
+  push:
+    paths:
+      - fragments/**
+      - codex/** 
+      - states/wm/*
+
+#_jobs:
+jobs: 
+  freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Refus les mutations sans autorisation de WM_00
+        run: |
+          echo "[FREZE] Gel logique actif averti de toute mutation ..."
+          exit 1
+
+          fi
+          echo "[FREZE OK] Le gel logique est actif."
