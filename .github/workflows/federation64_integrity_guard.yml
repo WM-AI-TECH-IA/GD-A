@@ -1,0 +1,24 @@
+name: FEDÉRATION 64 Integrity Guard
+
+on:
+  push:
+    paths:
+      - codex/** 
+      - fragments/**
+      - ../**   
+  workflow_dispatch:
+
+#_jobs:
+jobs: 
+  guard_but:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check federation64 compatibility
+        run: |
+          if grep -q "FORCED" codex/federation64_purpose.codex; then
+            echo "[OKT] Compatible en apparent"
+          else
+            echo "[ERROR] La mutation n'accorde pas étiquettement au vox de la Fédération 64"
+            exit 1
+          fi
+          echo "[GDA GUARD EXECUTEG]"
