@@ -8,28 +8,24 @@ servers:
   - url: https://gda-aurora-shell.render.com
     description: Point d'entrée simulé Render / Termux / Git
 paths:
-  /...
-  /exec/watch-loop:
+  //exec/aurora:
     post:
-      summary: Active le pont circulaire GD-A – Supabase … Swagger
-      operationId: runWatchLoop
-      description: >
-        Lance la boucle vivante en temps réel qui synchronise les evenéts Supabase
-        avec l‘activation du terminal Aurora via Swagger Shell.
+      summary: GÀ Execution d'un ordre autonome par texte json
+      operationId: auroraPost
+      requestBody:
+        required: [message]
+        type: object
+        properties:
+          message:
+            type: string
       responses:
         '200':
-          description: Pont circulaire en cours d'execution
+          description: Réponse genérée par terminal GD-AURSORA
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  status:
+                  message:
                     type: string
-                    example: "GD-A_WATCH_LOOP actif"
-                  sync:
-                    type: string
-                    example: "Supabase ‘ Swagger ‘ Git en écute"
-                  next_check:
-                    type: string
-                    example: "Dans 30 secondes"
+                    example: "Bienvenu, membre est control si je suis nou."
