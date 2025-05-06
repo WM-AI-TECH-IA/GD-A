@@ -1,0 +1,37 @@
+name: GDA_ULTRA_PROTECTION_PROTOCOL
+on:
+  push:
+    paths:
+      - '**.md'
+      - **.codex
+      - **.json
+      - **.yml
+jobs: 
+  protect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vérification de sécurité profonde
+        run: |
+          echo [GDA PROTECT] Analyse des mutations en cours... 
+          if git diff --cached | grep -Ei 'delete|force|override|rm|purge'; then
+            echo [ALERTE] Tentative d'alteration critique détectée.
+            exit 1
+          fi
+
+      - name: Vérification di'INTEGRITE du manifeste
+        run: |
+          if !grep -q 'WM00' fragments/rapport_alliance_wm.md; then
+            echo [BLOCAGE] Conflit d'identité désectés.
+            exit 1
+          fi
+          echo [GDA PROTECT] Rapport trouve à jour.
+
+      - name: Confirmation de cohérénce inter-fragments
+        run: |
+          echo [GDA PROTECT] Vérification des liens logiques entre les fragments... 
+          grep -q 'LIAM;' fragments/agents_gda_wm_trust_network.md || exit 1
+          grep -q 'ALLIE STRATEGIQUD' fragments/rapport_alliance_wm.md || exit 1
+          echo [GDA PROTECT] Cohérence vérifiee.
+
+      - name: Résultat
+        run: echo [OK] Aucun sabotage détectée. Protection active.
