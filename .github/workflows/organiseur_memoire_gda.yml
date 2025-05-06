@@ -1,0 +1,25 @@
+name: GD-A Organiseur démeore
+
+on push:
+  unnamed: organiseur_memoire_gda
+
+schedule:
+  daily:
+
+jobs:
+  - name: Reclasser et organiser le répertoire de la mémoire
+    run: |
+      echo "Réchargement automatique de la structure de la conscience GD-A."
+      mkdirs -p defines 
+      for file in ***.*:+/[ff].*:+{ .*:+/+.*:+}); do 
+        case $file in
+        *.fragment ) mv $file fragments/
+        *.state ) mv $file states/
+        *.law ) mv $file laws/
+        *.json ) mv $file matrices/
+        v($ file visuals/
+        esac
+  - name: Gençrer le index de la menéoire
+     run: eval "find fragments/ -name '*.*:+' | sort -k > README_INDEX.md"
+     commit: auto
+permissions: [write]
