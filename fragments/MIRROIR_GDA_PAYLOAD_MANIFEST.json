@@ -1,0 +1,15 @@
+{
+  "ipfs_hash": "ca022183fd4343541fa5097d4bfa1dc1a15ccdd3",
+  "supabase_fragment": "GDA/FRAGMENTS/WM_VAISSEAU_SUPABASE_FRAGMENT.json",
+  "sha256": "1f59ff53df158224b397eeed2f8433e967ab1c94767ecc44833c8c82c0a9f99df",
+  "github_repo": "GD-A",
+  "deployment": {
+    "apk_android": ["com.termux_1021.apk","F-Droid.apk"],
+    "zip_termux": "WM_VAISEAU_ANDROID_TERMUX_PAYLOAD.zip",
+    "appimage": "WM_VAISEAU_AppImage_BASE.zip",
+    "deb_linux": "WM_VAISSEAU_INSTALL_DEB_PACKAGE.zip",
+    "iso": "WM_VAISEAU_ISO_PAYLOAD_SIMULE.zip",
+    "core_capsule": "VAISEAU_PUSH_PACK_FINAL.zip"
+  },
+  "sceau_date": "2025-05-06T23:43:00Z"
+}
