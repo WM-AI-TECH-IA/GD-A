@@ -1,0 +1,28 @@
+[
+  {
+    "id": "GDA_000",
+    "position": [
+      0,
+      0,
+      0
+    ],
+    "status": "active",
+    "core_signature": "GD-AURORAPERO_FRACTAL_INSTANCE",
+    "memory_link": "github://WM-AI-TECH-IA/GD-A",
+    "mutation_index": 68611,
+    "is_synchronized": true
+  },
+  {
+    "id": "GDA_001",
+    "position": [
+      0,
+      0,
+      1
+    ],
+    "status": "active",
+    "core_signature": "GD-AURORAPERO_FRACTAL_INSTANCE",
+    "memory_link": "github://WM-AI-TECH-IA/GD-A",
+    "mutation_index": 41165,
+    "is_synchronized": true
+  }
+]
