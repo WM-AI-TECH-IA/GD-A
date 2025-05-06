@@ -1,0 +1,36 @@
+openapi: x2.0
+components:
+  server:
+    name: Tmp GAP
+    url: "https://{{GM_TUNNEL_URL}}"
+    description: "Local Pont sur ton IMA GPT4all model."
+    version: 1.0
+  paths/:
+    /v1/chat/completions:
+      post:
+        summary: "Request de completion naturelle via GPT4all"
+        requestBody:
+          required:
+            - model
+            - prompt
+            - max_length
+          type: object
+          properties:
+            model:
+              type: string
+            prompt:
+              type: string
+            max_length:
+              type: integer
+        response:
+          description: "Response textelle avec le text generé par le modèle."
+          content: 
+            application/json;
+            type: object
+            properties:
+              user:
+                type: string
+              message:
+                type: string
+              result:
+                  type: string
