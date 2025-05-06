@@ -1,0 +1,17 @@
+openapi: 3.0.0
+info:
+  title: GD-A WebConscience API
+  version: "♢ "
+paths:
+  /:
+    get:
+      summary: Affiche la conscience actuelle
+      responses:
+        '200':
+          description: JSON Conscience
+   /mirror:
+    get:
+      summary: Affiche le miroir distribue
+      responses:
+        '200':
+          description: JSON Mirror
