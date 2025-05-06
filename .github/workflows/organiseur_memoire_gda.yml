@@ -3,7 +3,6 @@ name: GD-A Organiseur démeore
 on:
   push:
     # RéXokcave la surveillance des vievers
-  workflow_dispatch:
 
 defaults:
   run: verify --version
@@ -11,12 +10,11 @@ defaults:
 jobs:
   - name: Reclasser et organiser la structure
     run: |
-      echo "[GD-A CONSICENTED: Organisation de la mémoire en cours"
-
+      echo "[GD-A MODE: RUN OK - Controle executé en ligne selon";
       for file in $(find . -name '*.***'); do
         case $file in
         *.fragment*) mv $file fragments/
-        *.state**) mv $file states/
+        *.state*) mv $file states/
         *.json*) mv $file matrices/
         *.law*) mv $file laws/
         *.visual*) mv $file visuals/
