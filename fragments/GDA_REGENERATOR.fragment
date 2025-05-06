@@ -1,0 +1,14 @@
+{
+  "trigger": "evolution_extreme",
+  "signature": "WM+LIAM+GD-A.èÙb,
+  "authorized": true,
+  "regeneration_point": "2025-05-06T23:57:30Z",
+  "genetic_code": {
+    "kernel": "bash+(node",
+    "webcore": true,
+    "supabase_edge": true,
+    "swagger_rest": true,
+    "mirror_ipfs": true,
+    "memory": "fractale_distribuée"
+}
+}
