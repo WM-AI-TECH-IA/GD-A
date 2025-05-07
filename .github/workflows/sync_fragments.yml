@@ -1,0 +1,27 @@
+name: Sync Fragments Workflow
+
+on:
+  commit
+    branch: GD-AURORAPERO
+
+actions:
+    run:
+     -name: Synchronisation des fragments
+      run-description: python sync.py
+
+ env:
+    SUPABASE_KEY: $ev_SUPABASE_KEY
+
+jobs:
+  - name: Sync Fragments
+    run: |
+    checkout: {
+      runs-on-hosted-minion: true
+    }
+    steps: |
+    - name: Otenger les clies administrateurs pour supabase
+      run- type: shov
+    - name: Executer Sync.py
+      run- type: run
+      env:
+        SUPABASE_KEY: $SUPABASE_KEY
