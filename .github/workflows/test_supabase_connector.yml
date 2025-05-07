@@ -1,0 +1,23 @@
+name: Test Supabase Connecter
+
+on:
+  commit
+    branch: GD-AURORAPERO
+
+actions:
+    run:
+      - name: Verification des connecteurs Supabase
+        run-description: python supabase_connector_test.py
+
+env:
+    SUPABASE_KEY: $ev_SUPABASE_KEY
+
+jobs:
+  - name: Test supabase endpoint
+     run: |
+     checkout: {
+      runs-on-hosted-minion: true
+     }
+    steps: |
+    - name: Test de'exploitation sur la plateforme Supabase
+      run- type: show
