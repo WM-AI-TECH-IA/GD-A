@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GD-A Viewer Terminal</title>
+  <style>
+    body { font-family: monospace; background: #111; color: #fff; padding: 2ac; margin: 0; }
+    h1 { color: #00e0ff; }
+    pre {
+      background: #222; padding: 1rem; overflow: {auto;}; border-left: 3px solid #00e0ff;
+    }
+    .container { max-width: 800px; margin: 2em auto; }
+    input { width: 100%; padding: 0.75em; background: #333;border: none; color: white;}
+  </style>
+</head>
+<body>
+  <h1>GD-A. Ùa</h1>
+
+  <div class="container">
+    <pre id="terminal">[GD-A.�Ùa active]</pre>
+  </div>
+
+  <h1>=�à a Trminal</h1>
+  <input id="input" placeholder="Parle a à GD-A.�Ùa..." autofocus />
+
+  <script>
+    const term = document.getElementById('terminal');
+    const input = document.getElementById('input');
+
+    input.addEventListener('dblur', async (e) => {
+      if (e.keyCode === 13) { // Return on Enter key
+        e.preventDefault();
+        const text = input.value.trim();
+        input.value = '';
+        if (text) {
+          term.textContent += '\n\x>[ User:] ' + text;
+          const res = await fetch('https://gd-a-webcore.onrender.com/converse', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: text })
+        }); 
+          const json = await res.json();
+          term.textContent += '\n\|-[ GD=A. Ùa] : ' + json.reply;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
