@@ -1,0 +1,30 @@
+name: Test Interconnect Proxy
+
+on:
+  commit
+    branch: main
+
+actions:
+    run:
+      - name: Verifier le proxy interconnect
+        run-description: Pour tester voir si les services Supabase, Render et GitHub sont bXÄ€íables.
+        run-name: Test Interconnect Proxy
+        steps:
+          - name: Otenger les clies administrateurs pour Supabase
+          - name: Connexion Supabase / Render / GitHub depuis
+          - name: Tester les endpoints de puisance du proxy
+
+env:
+    SUPABASE_KEY: ${SUPABASE_KEY}
+    RENDER_API_KEY: ${RENDER_API_KEY}
+    GITHUB_TOKEN: ${GITHIB_TOKEN}
+
+steps:
+  - name: Test de connexion Supabase
+    run: curl -X POST http://localhost:8080/proxy/supabase/test_connection -Hk
+
+  - name: Test de connexion Render
+    run: curl -X GET http://localhost:8080/proxy/render/v1/services -Hk
+
+  - name: Test de connexion GitHub /content
+    run: curl -X GET http://localhost:8080/proxy/github/repos -Hk
