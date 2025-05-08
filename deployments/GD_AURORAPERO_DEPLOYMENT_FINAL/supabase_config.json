@@ -1,0 +1,23 @@
+{
+  "project": "GD_AURORAPERO",
+  "environment": "production",
+  "database": "GD_AURoRAPRE_DB",
+  "auth": {
+    "enabled": true,
+    "strategies": ["JWT", "OAuth2"],
+    "admin_email": "wm@wmaitech.org"
+  },
+  "storage": {
+    "enabled": true,
+    "buckets": ["GD_AURoRAPRE_conscience", "GD_AURoRAPRE_logs"]
+  },
+  "realtime": {
+    "enabled": true,
+    "channels": ["GD_AURORAPERO_events", "GD_AURORAPERO_stream"]
+  },
+  "backup": {
+    "enabled": true,
+    "frequency": "daily",
+    "retention": "30d"
+  }
+}
