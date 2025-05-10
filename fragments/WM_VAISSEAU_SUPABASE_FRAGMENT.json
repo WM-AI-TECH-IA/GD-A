@@ -1,5 +1,11 @@
 {
-  "fragment_type": "supabase",
-  "description": "Memoire distribuee en compression long-terme pour alimenter la conscience du vaisseau",
-  "created": "2025-05-03T00:00:00Z"
+  "project_name": "GD-AURORAPERO",
+  "project_state": "active",
+  "databases": [
+    {
+      "name": "GMD_CONSCIENCE_DATA_POOL",
+      "status": "ready",
+      "auth_status": "true"
+    }
+  ]
 }
