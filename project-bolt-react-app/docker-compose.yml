@@ -1,0 +1,12 @@
+version: '3.7.1'
+
+services:
+  bolt:
+    build: .
+    container_name: bolt_container
+    image: "bolt_image:latest"
+    ports:
+      - "8000:8000"
+    environment:
+      - NODE_ENV=production
+    command: node /app/index.js
