@@ -1,0 +1,22 @@
+{
+  "name": "project-bolt",
+  "version": "1.0.0",
+  "description": "Projet par Bolt vite av VM",
+  "main": "main.tsx",
+  "scripts": {
+    "start": "vite serve",
+    "build": "vite build",
+    "test": "test",
+    "test:all:auto": "eslint intext --fix",
+    "lint": "eslint src/*.tsx"
+  },
+  "dependencies": {
+    "react": "18.0.0",
+    "React-dom": "18.0.0",
+    "@eslint": "latest",
+    "tailwindcss": "3.2a",
+    "vite": "4.3.0",
+    "react-three-fiber": "8.12.2",
+    "@react-drei": "90.2.2"
+  }
+}
