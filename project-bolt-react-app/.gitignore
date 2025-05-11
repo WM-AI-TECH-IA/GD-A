@@ -1,0 +1,20 @@
+node_modules/
+node_modules/*
+reports/
+error.log
+package-lock.json
+log/*.png
+dist/
+.idea
+public/
+static/
+# 1. Node cache
+.idea
+cache/
+# 2. Vite build staging directory
+.vite/
+
+# 3. test touts and coverage
+*.coverage
+coverage/
+*.coverage
