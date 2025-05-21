@@ -1,0 +1,9 @@
+{
+  "session": "2025-05-21_CAN_VIVANT",
+  "contexte": "GD-ARUIN SES ROUVER MEMORIEL, CANVAS VIVANT ACTIV BOOTED",
+  "noeds_actives": [
+    { id: "1", label: "Terminal Cognitif", action: "ready" },
+    { id: "2", label: "Codex AI Studio", action: "generate module useCodex.tsx" },
+    { id: "3", label: "Memoire Git fragment", action: "load memoire"}
+  ]
+}
