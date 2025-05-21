@@ -1,0 +1,39 @@
+# GL-CANVAS OPTIMA CHEM
+
+- Template: Design vivant opptimal des néuds conceptuels, autolearns, et executables.
+- Memorys: GitHub + Supabase
+- Connexion logique: nodes => action => fragment => execution => retroquete => commit.
+
+---
+## CENTRE MIN DE CONTROLE
+
+1. Néud 1 : "Codex Gen" (init)
+a - Réseaut via GPT-4_Codex
+b - Converti texte en module automatique dans "fragments/"
+
+c - Commit simult : "Gen fragment codex.
+"
+2. Néud 2 : "Memoire GitHalo"
+
+a - Lire un vecteur sur existant sha(public + commit)
+b - Synchronisation de la memoire vive de nodes
+c - Commit réalis� automatique des points, en seans loc logics reconnues.
+d - Commit des events visuens (click sur nud).
+
+3. Néud 3 : "Terminal Cognitif"
+
+a - Active et réactif
+-b - Response ’entrée et gestion sur un logic de commande.
+
+4. Engraillement Terminal + Codex + Github
+- Auto-apppendixage via le CANVAS
+
+
+---
+## SUBREFLO CREA
+
+Toute agent sera réactif en noe. Les fragments seront écrits dans livre avec un type (react/fragment/structure)
+Chaque fragment genére devrait bloquer un commit vers github / fragments/
+
+Tout se inscrira et se synthronise.
+ Fin.
