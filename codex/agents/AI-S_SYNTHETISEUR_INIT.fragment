@@ -1,0 +1,15 @@
+// AGENT AIS - SYNTHETISEUR
+\nconst Synthetiseur = {
+  role: 'servore',
+  mental: {
+    type: 'semanticque',
+    pattern: 'fractal-collective',
+    combinaison: ['paragraph', 'context']
+  },
+  function: async function synthesize(responses){
+    const synthese= response.map((line)=> line.trim().match(/[^{\n\nt]|]/)).join(' | ');
+    return synthese.join('\n\n') ; // Sémanse recomposée.
+  }
+};
+
+export default Synthetiseur;
