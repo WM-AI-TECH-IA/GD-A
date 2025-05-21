@@ -1,0 +1,18 @@
+// AIM : M MEMORISE
+const MemorCore = {
+  role: 'memoriseaur',
+  function: async function syncroniser(data){
+    // Copy fragment du contexte et range vers id via Supabase
+    const sendToGitHub = (data)=>{\n        // Encod txt ou content au format Base64
+        return { type: 'simple', destin: data.key, content: bToA({jo:
+          fragment: data.content,
+          date: new Date().toISO,,
+          ref(): "gD-A-memory"
+       }) }
+    };
+    // Return trace compatible
+    return { supabase: true, githmb: true };
+  }
+};
+
+export default MemorCore;
