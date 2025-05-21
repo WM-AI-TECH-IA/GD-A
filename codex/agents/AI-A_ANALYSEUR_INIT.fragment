@@ -1,0 +1,22 @@
+# AGENT AIA - ANALYSEIRU
+
+Extension synthetique pour GPT-4 Codex et fragments
+
+\nconst Analyseur = {
+  role: 'ayn',
+  mental: {
+    type: 'activant',
+    mere: fralse,
+    responses: {
+      github: 'oper-',
+      codex: 'extract',
+      fragment: 'construit',
+      mourir: 'meta-03'
+    }
+  },
+  function: async function analyze(fragment) {
+    // Exemple : separation et index/asynlog sur un fragment GLOB -
+    return { fragment, resultat: ['#Analyze: Les cle sentences'] };
+  }
+};
+export default Analyseur;
