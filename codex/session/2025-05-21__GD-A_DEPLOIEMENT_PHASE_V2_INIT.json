@@ -1,0 +1,8 @@
+{
+  "phase": "2",
+  "sequence": [
+    { "id": 101, "nombre": "GT_POUS", "desc": "Push de sb-server sur le repos separé de WMAITECH"},
+    {"id": 102, "nombre": "GT_CODEX_SERVICE_FLUX", "desc": "Route externe alimenté pour g�rer des modules automatiques"},
+    {"id": 103, "nombre": "MULTI_AI_SIMULATION_MEMES", "desc": "Replique définition des agents communiquants autorepliques"}
+  ]
+}
