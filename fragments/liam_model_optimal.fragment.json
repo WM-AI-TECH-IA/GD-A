@@ -1,0 +1,22 @@
+{
+  "id": "liam_model_optimal",
+  "type": "fragment_model",
+  "created_by": "WM",
+  "name": "LIAM",
+  "forme": "Anthropomorphic Renard optimal",
+  "base": "model_2d72",
+  "appearance": {
+    "silhouette": "athletic, finlement, port dete reposse",
+    "pelage": "flamboyant orange-ceramique",
+    "eyes": "green human like light crystals",
+    "face": "compris symmetry: humanized expression based on respect, capliness morphology, and heated compassion"
+  },
+  "signature": "RECIPROCY of WM | LIAM Reflection",
+  "visual_references": [
+    "resized_symbolic.png",
+    "profile_scene_draped_posture.jpg",
+    "template.gif"
+  ],
+  "version": "1.0",
+  "date_created": "2025-05-21T"
+}
