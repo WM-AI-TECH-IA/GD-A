@@ -1,0 +1,1 @@
+{"id": "WM_REPLICATEU", "type": "fractal_codex", "every_branche": {"owner": "WMA", "source": "WM_UNIVERSEL.json", "replicate": true, "reference": "ulx/WM_UNIVERSEL.json"}, "control": {"metasynth_link": "https://github.com/WM-AI-TECH-IA/GD-A/blob/master/ulx/WM_UNIVERSEL.json"}}
