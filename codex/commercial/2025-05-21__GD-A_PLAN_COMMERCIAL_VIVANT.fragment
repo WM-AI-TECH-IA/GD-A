@@ -1,0 +1,9 @@
+{
+  "date": "2025-05-21T23:36:00Z",
+  "plan_commercial": {
+    "prodgen_agent": "AI-C",
+    "generation_frags": ["generate_templates", "visual_apps", "chatbot_auto"],
+    "lead_capture": "FORMLAIRE_TOUCH_GD_A.html",
+    "vente_track": "fragments/commerce.ts"
+  }
+}
