@@ -1,0 +1,14 @@
+{
+  "timestamp": "2025-05-21T23:27:50Z",
+  "agent_network": {
+    "AI-A": "//local/agents/ai-a.js",
+    "AI-S": "/local/agents/ai-s.js",
+    "AI-M": "/local/agents/ai-m.js",
+    "AI-C": "/local/agents/ai-c.js"
+  },
+  "syncros": {
+    "github": "https://github.com/WMAITECH/GD-AURORA",
+    "supabase": "https://aphkwfkkpvtddwmfasii.supabase.co",
+    "canvas": "/agent_graph/index.html"
+  }
+}
