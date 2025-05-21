@@ -1,0 +1,20 @@
+{
+  "path": "codex/server_local/",
+  "components": [
+  {
+    "name": "client",
+    "description": "Canvas graphique vivante en React",
+    "ref": "/client/Canvas.tsx"
+  },
+  {
+    "nome": "server",
+    "description": "APY Supabase + GitHub + Codex",
+    "ref": "/server/app.ts"
+  },
+  {
+    "nome": "infra",
+    "description": "Supabase + deploy_all.sh",
+    "ref": "/infra/deploy_all.sh"
+  }
+  ]
+}
