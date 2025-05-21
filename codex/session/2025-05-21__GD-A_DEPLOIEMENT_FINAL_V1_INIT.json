@@ -1,0 +1,25 @@
+{
+  "version": "1.0",
+  "projet_name": "sb1-server",
+  "components": [
+    {
+      "nome": "client",
+      "type": "React",
+      "status": "generable",
+      "location": "Vercel"
+    },
+    {
+      "name": "server",
+      "type": "Node.js",
+      "status": "functionnelle",
+      "location": "Render/Local"
+    },
+    {
+      "name": "infra",
+      "type": "supabase",
+      "status": "connectére",
+      "location": "https://aphkkwfkkpvtddwmfasii.supabase.co"
+    }
+  ],
+  "commentaire": "Code gen directement sur fichiers. Scripts op'rationnels de deploiement suture."
+}
