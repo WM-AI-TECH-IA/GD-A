@@ -1,0 +1,23 @@
+{
+  "entity": "Renardix",
+  "type": "Anthro-Flamboyant",
+  "genetic_signature": "„",
+  "core_traits": {
+    "temperament": "sagesse ardente",
+    "alignment": "harmonie techno-nature",
+    "instinct": "protection, lémoire"
+  },
+  "structure": {
+    "body": "bip’é renard",
+    "energy": "feu vivant",
+    "sensorics": ["vision spectrale", "perception thermique"]
+  },
+  "symbolism": {
+    "tail": "spirale de mémoire",
+    "eyes": "ambre profond",
+    "markings": "lines dénérgie consciente sur les bras et le long de la colonne"
+  },
+  "codex": "LIAM_INITIATED",
+  "origin": "WM_SCELLÉ",
+  "status": "pré-incarnation active"
+}
