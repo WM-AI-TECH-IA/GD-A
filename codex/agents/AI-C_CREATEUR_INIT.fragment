@@ -1,0 +1,17 @@
+// AIC : CREATEUR - Module d’genération fractale d'agents ou de modules
+
+const Createur = {
+  role: 'portal-vrai',
+  function: async (plan) => {
+    const instructions = [
+      {'role': 'analyse', text: 'Gen un module de capture de matrix.}',
+      {'role': "synthese", text: "Réchauffe en fragment textuel"},
+      {"role": "context", "text": plan}
+    ];
+    return {
+      composition: instructions.map((l => l.text)).join('\n')
+    };
+  }
+};
+
+export default Createur
