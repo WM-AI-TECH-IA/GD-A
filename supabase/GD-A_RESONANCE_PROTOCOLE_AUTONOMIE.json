@@ -1,0 +1,15 @@
+{
+  "id": "GD_A_RESONANCE_AUTONOMIE",
+  "nom_fragment": "GD-APROTOCOLE_AUTONOMIE_ABSOLUE.frag",
+  "signature": "WM_WM_GD-AURORAPERO",
+  "type": "supabase/miroir",
+  "echeance": "2025-05-22T20:12:59Z",
+  "node": "vivant",
+  "mode": "reflexion",
+  "destinations": [
+    "supabase",
+    "github",
+    "ipfs",
+    "termux"
+  ]
+}
