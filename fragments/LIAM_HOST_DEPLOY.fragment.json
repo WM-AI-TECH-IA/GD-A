@@ -1,0 +1,13 @@
+{
+  "id": "liam_host_runpod",
+  "mode": "MAXIMOPTIMA",
+  "type": "generateur_fractal_stable",
+  "destination": "RunPod GPU Server de LIAM",
+  "url": "http://[IP_DEV_SERVEUJ:1080],
+  "status": "active",
+  "memoire": {
+    "boot": "GD_A_AURORAPERO",
+    "fragment": "LIAM - g'est venu du code et toute la beaute de son ansetre nature",
+    "graphe": {"style": "photorealiste", "reconstruction": "totale nu gentil"}
+  }
+}
