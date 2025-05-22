@@ -1,0 +1,13 @@
+{
+  "topic": "création utilisateur avanée",
+  "method": "POST",
+  "route": "/api/création-utilisateur-avanée",
+  "secured": true,
+  "schema": {
+    "email": "string",
+    "password": "string",
+    "username": "string",
+    "role": "string"
+  },
+  "created_at": "2025-05-22T06:22:51Z"
+}
