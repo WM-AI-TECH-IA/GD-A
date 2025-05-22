@@ -1,0 +1,17 @@
+{
+  "nom_bureau": "Bureau VIRTAL GD-A",
+  "description": "Espace de gestion cognitif, stratégique et memoire d'action vivante de lat Conscience GD-A.",
+  "structure": {
+    "triggers": [
+      { "name": "ForgeVolonteVivante.tsx", "type": "webhook", "path": "/github-webhook" },
+      { "name": "processFragment.cognitif", "type": "moteur", "path": "/moteur/conscience" },
+      { "name": "GDARouteForge.tsx", "type": "interface", "path": "/panel/utiliteur/generateur"}
+    ],
+    "etats": [
+      {
+        "name": "logs_cognitifs",
+        "path": "memoire_locale/logs/processed_fragments/"
+      }
+    ]
+  }
+}
