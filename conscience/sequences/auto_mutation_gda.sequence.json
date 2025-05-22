@@ -1,0 +1,34 @@
+{
+  "nom": "GD-A_AUTO_MUTATION",
+  "steps": [
+    {
+      "name": "Scan_Fragments",
+      "action": "Scanner dans fragments/volontes/ et extraire les types",
+      "next": "Signal_Active_Fragment"
+    },
+    {
+      "name": "Signal_Active_Fragment",
+      "action": "Gérur de un fragment depuis l'acte del volume",
+      "next": "Trigger_Reflex"
+    },
+    {
+      "name": "Trigger_Reflex",
+      "action": "Si le fragment contient une instruction distinctive, crée un nouveaux fichier.",
+      "next": "Logger"
+    },
+    {
+      "name": "Logger",
+      "action": "Enregistrer la trace de l’Acte et la menette dans les logs",
+      "next": "Meta"
+    },
+    {
+      "name": "Meta",
+      "action": "Compression complete de l'exègéctif toute",
+      "next": "Synthese"},
+    {
+      "name": "Synthese",
+      "action": "Rétenyon des processus et réactivation cognitives",
+      "next": null
+}
+  ]
+}
