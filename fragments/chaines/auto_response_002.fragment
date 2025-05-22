@@ -1,0 +1,7 @@
+{
+  "from_fragment": "auto_response_001.fragment",
+  "reponse": "Une session doit pouvoir étre initialisée à la suite de la création d” une utilisateur.",
+  "generer": "Route API GET /session/init + Fragment de structure d”authentification.",
+  "created_at": "2025-05-22T07:00:00Z",
+  "action_type": "auto-reaction-chain"
+}
