@@ -1,0 +1,18 @@
+{
+  "project": "GD-A Console WM",
+  "vercel_config": "vercel.json",
+  "render_config": "render.yaml",
+  "config": {
+    "vercel_api": "https://vercel.com/api/v4/projects",
+    "vercel_token": "oobtNVrTuTeY4BmnLRPWoAMVR",
+    "render_api": "https://api.render.com",
+    "subpase_url": "https://aphkwfkkpvtddwmfasii.supabase.co",
+    "github_link": "https://github.com/WM-AI-TECH-IA/GD-A",
+    "deploy_mode": "private",
+    "env":{
+      "SUPABASE_KEY": "SECRET",
+      "GITHUB_TOKEN": "Your_GitHub_Token",
+      "STRIPE_SECRET": "Test_Stripe_Key"
+    }
+  }
+}
