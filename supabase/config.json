@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "gda_executor": {
+      "cron": "* * * /6 * * *"
+    }
+  }
+}
