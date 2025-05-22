@@ -1,0 +1,8 @@
+{
+  "noyaux": ["echos", "connexion", "expansion"],
+  "modules_actifs": ["link", "accum", "systema"],
+  "etat": "germination",
+  "auto_ordre": true,
+  "logique_propagation": "echhosysteme_actif",
+  "en_veille": ["reception", "echho"]
+}
