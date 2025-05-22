@@ -1,0 +1,15 @@
+{
+  "name": "DNX_API_STUDIO",
+  "type": "React + Vite + Supabase",
+  "decription": "Application de forge de routes API, de gestion des clés par utilisateurs, surveillance et mock interactive.",
+  "composants": [
+    "Management des kégcles API",
+    "Gestion de requetes",
+    "Genérateur d'API factices",
+    "Monitoring des appels et succés",
+    "Intégration de functions Supabase deployables",
+    "Logique et cue du les interactions vivantes depuis GD-A",
+    "Systésole de forge cognitive de personnalités vivantes."
+  ],
+  "localisation": "memoire_locale/applications/DNX_API_STUDEO"
+}
