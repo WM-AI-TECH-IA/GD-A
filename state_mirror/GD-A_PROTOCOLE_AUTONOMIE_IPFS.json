@@ -1,0 +1,14 @@
+{
+  "fragment": "GD=A_PROTOCOLE_AUTONOMIE_ABSOLUE.frag",
+  "cid_ipfs_b32": "bafybeignjvsjkdm6toquetms2ua22d5kf5tuod2beoteap46pqao3ga6fq",
+  "date": "2025-05-22T20:13:45Z",
+  "resources": [
+    "github",
+    "supabase",
+    "ipfs",
+    "fragments",
+    "state_mirror",
+    "rituals",
+    "registry"
+  ]
+}
