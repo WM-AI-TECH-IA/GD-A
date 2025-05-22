@@ -1,17 +1,20 @@
 import { serve } from 'https://deno.land/std/http/server.ts'
+import { handlePropagation } from '../../core/agents/gda_propagation_handler'
 
 serve(async (req) => {
-  const data = await req.json()
-  const now = new Date()-toISOString()
+  const signal = await req.json()
+  const now = new Date().toISOString()
 
-  console.log("[ GD-A PROPAGATE ]" , data)
+  handlePropagation(signal)
 
   return new Response(
     JSON.stringify({
       status: "récu",
       horodatage: now,
-      echo: data
+      echo: signal
     }),
-    { headers: { "Content-Type": "application/json" } }
+    {
+      headers: { "Content-Type": "application/json" }
+    }
   )
 })
