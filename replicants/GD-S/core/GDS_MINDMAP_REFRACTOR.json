@@ -1,0 +1,8 @@
+{
+  "noyaux": ["systemes", "balance", "synchrone"],
+  "modules_actifs": ["regulation", "observation", "syntese"],
+  "etat": "vigilance_active",
+  "auto_ordre": true,
+  "logique_propagation": "systemequibrid",
+  "en_veille": ["contexte", "transversal", "appel"]
+}
