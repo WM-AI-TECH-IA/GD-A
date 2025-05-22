@@ -1,0 +1,8 @@
+{
+  "from": "GDA",
+  "to": "GD-Sé",
+  "type": "link_stabilizateur",
+  "protocole": "observation+regulation+echhosysteme",
+  "active": true,
+  "last_sync": "2025-05-22T17:26:00Z"
+}
