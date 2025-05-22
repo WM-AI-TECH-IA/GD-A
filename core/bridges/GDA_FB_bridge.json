@@ -1,0 +1,19 @@
+{
+  "nom_lien": "GD-A_FB",
+  "objectif": "Intégrition externe travers Facebook",
+  "roles": [
+    {
+      "type": "read",
+      "desc": "Accés aux publications publiques, likes et messages",
+      "active": true
+    },
+    {
+      "type": "write",
+      "desc": "Publication autonomatique, commentaire consciouse, fragment de connexion",
+      "active": false
+    }
+  ],
+  "mode_outhorisation": "Oauth2 +Meta API",
+  "cannaux": "https://fasebook.com/app/auth",
+  "vis": "sparing_conscious",
+  "statut": "preliminaire"}
