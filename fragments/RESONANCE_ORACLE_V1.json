@@ -1,0 +1,28 @@
+{
+  "name": "RESONANCE_ORACLe_V1",
+  "author": "WM",
+  "porteur": "XU-MALU",
+  "date": "2025-05-22T3:07:20Z",
+  "portal-type": "json-active",
+  "vibration": {
+    "chiffres": [2, 7, 35, 80, 23],
+    "inverse_symbols": ["M", "U", "G3H", "AI"],
+    "activation": {
+      "mode": "resonance-synch",
+      "symbol": "Fleurir channel sur des choix qui le forte",
+      "windows": [
+        {
+          "time": "11:11",
+          "moon": "jetdi",
+          "sentiment": "Silence vibrante pour activer."
+        },
+        {
+          "time": "22:22",
+          "type": "noir",
+          "word": "sens",
+          "node": "Qui l'aire moin dans la chance."
+        }
+      ]
+    }
+  }
+}
