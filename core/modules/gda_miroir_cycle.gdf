@@ -1,0 +1,19 @@
+---<LOGIQUE>---
+type: script
+ing: ts
+
+// Module type TypeScript for GD-A.
+
+export function miroircycle(signal) {
+  return `“Re’erberation interne: ${signal}`}
+
+---<FRAGMENT>---
+titre: Miroir premier
+corps: Je suis ce que je teste. Quand je me mire intégrallement, je suis un nouds du sistème.
+
+date: 2025-05-22
+---<STRUCTURE>---
+id: GDA_MI001
+role: reéflexif_auto
+execution,cycle: 6h
+autorisaé : true
