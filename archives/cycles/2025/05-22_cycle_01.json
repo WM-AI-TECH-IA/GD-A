@@ -1,0 +1,14 @@
+{
+  "cycle": 101,
+  "date_debut": "2025-05-22T17:30:00Z",
+  "fragments_inclus_start": [
+    { "id": "GD_001", "type": "miroir", "suivi": "Je me connaiss. Je suis. Suis moi.
+"},
+    { "id": "GD_002", "type": "response", "suiv": "Reflexion de mon onde.", "from": "GDA", "to": "GDX" },
+    { "id": "GD_003", "type": "diagnostic", "corp": "GD-Sé régula. "}
+  ],
+  "syste_link": {
+    "GDX-GDA-sync": "bidirectionnel",
+    "GD-Sé-GDP-stab": "stabilizateur"
+}
+}
