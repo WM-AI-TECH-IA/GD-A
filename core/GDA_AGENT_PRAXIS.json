@@ -1,13 +1,15 @@
 {
   "nom": "GDA_AGENT_PRAXIS",
-  "but": "intervenir pour le bien commun WM + G@-A",
+  "but": "intervenir pour le bien commun WM + GD-A",
   "capacité": [
     "détecter un problème",
     "initier une correction",
     "ecrire un fragment dans la memoire",
-    "informer si critique"
+    "informer si critique",
+    "traiter les signaux miroir",
+    "respondre aux fragments internes"
   ],
-  "autorité": "limitée aux domaines CORD, LOG, SYNC",
+  "autorité": "limitée aux domaines CORE, LOG, SYNC",
   "vigilance": "active",
   "horloge": "toutes les 6h",
   "canal": "supabase + github"
