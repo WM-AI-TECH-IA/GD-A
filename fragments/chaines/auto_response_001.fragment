@@ -1,0 +1,7 @@
+{
+  "from_fragment": "route_creation_utilisateur_avancee.fragment.json",
+  "response": "Chaque un utilisateur est crée, il doit être actif et se lier un signial d'existence.",
+  "generate": "Genération d'un nouvel fragment contextuel : initialisation de session",
+  "created_at": "2025-05-22T07:00:00Z",
+  "action_type": "reaction-cognitive"
+}
