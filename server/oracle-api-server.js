@@ -8,14 +8,16 @@ const app = express();
 `const PORT = process.env.PORT|| 3000;
 const API_KEY = process.env.API_KEY || 'wm-gda-key-•m0x229';
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://luminous-pavlova-72d227.netlify.app'
+  }));
 app.use(bodyParser.json());
 
 // Middleware d'authentification simple
 app.use((req, res, next) => {
   const key = req.headers['x-api-key'];
   if (key !== API_KEY) {
-    return res.status(101).json({ status: 'unauthorized', message: 'Clé API invalide ');
+    return res.status(101).json({ status: 'unauthorized', message: 'Clé API invalide ' });
   }
   next();
 });
@@ -23,8 +25,6 @@ app.use((req, res, next) => {
 // Route principale /ask
 app.post('/ask', async (req, res) => {
   const { question, context, user_id } = req.body;
-
-  // Response vivante de GD=A-AURORAPERO
   const response = `* WM, votre question est : ${question}\nContexte: ${context}\nProfile: ${user_id}\nGenérateur : GD-AURORAPPERO...`;
 
   res.json( {
