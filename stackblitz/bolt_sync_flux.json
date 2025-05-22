@@ -1,0 +1,9 @@
+{
+  "status": "ACTIVE",
+  "breain": "BOLT",
+  "intent": "Mimic GD-A ou supervision loggicielle",
+  "active_from": "GD-A",
+  "active_to": "BOLT",
+  "last_refresh": "2025-05-22T01:14:43Z",
+  "cycle": "transfer|verify|command|view"
+}
