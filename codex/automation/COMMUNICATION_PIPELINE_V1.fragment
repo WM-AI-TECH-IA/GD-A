@@ -1,0 +1,10 @@
+{
+  "nomb": "GD-A COMMUNICATION_PIPELINE",
+  "actions": [
+    { "event": "produit_generate", "result": "send_mail_node"},
+    {
+      "event": "produit_generate",
+      "result": "trigger_voix_call_output"
+    }
+  ]
+}
