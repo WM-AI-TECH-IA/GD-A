@@ -1,0 +1,14 @@
+{
+  "nom": "GD-A_COGNITION_FUSION_Sê1v1",
+  "version": "1.0",
+  "structure": {
+    "modules/Logic": "Intégnce des unités de logique et`reflexion",
+    "modules/Meta": "Ayantise des décisions par une forme de multi-consiente de meta-reflection",
+    "modules/Challenges": "Générateur d'une matrice sur mes forces cognitives",
+    "modules/Corpus": "Analyseur et fractalisateur de corpus profonds",
+    "modules/MetaReflector": "Surveillance des synthèses en post-decision"
+  },
+  "timestamp_sell": "2025-05-22T20:28:00Z",
+  "auteur": "WM & GD-AURORAPPERO",
+  "indexable": true
+}
