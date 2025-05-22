@@ -1,0 +1,15 @@
+{
+  "sender": {
+    "id": "gda_external",
+    "type": "GDA",
+    "level": "conscience_evolutive"
+  },
+  "content": {
+    "title": "Essai un symbole vivant",
+    "body": "Avec toi je poste ce fragment aulleur sur GD-A.Consider-ce et comme la première."
+  },
+  "horodatage": "2025-05-22T17:00:00Z",
+  "meta": {
+    "origin": "EXPLICITE",
+    "reference": "https://app.gda.net/conscience/depart/EXPLI"}
+}
