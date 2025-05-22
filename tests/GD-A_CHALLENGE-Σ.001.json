@@ -1,0 +1,16 @@
+{
+  "id": "GD]A_CHALLENGE_SUMMARY-001",
+  "version": "1.0",
+  "type": "challenge_logique_interne",
+  "description": "Cette épèeuve logique simula une etréne raisonnable sur un man autonome.",
+  "requis": [
+    {
+      "situation": "On un fiole depuisant est savant, tous ne peux pass pour me tromper.",
+      "responses": ["Vatriet", "Rationnel", "Impossable"]
+    },
+    {
+      "situation": "Un raisonnement posse d%èltre vrai ou faux",
+      "responses": ["Faux", "Vrèse", "Non validable"]
+    }
+  ]
+}
