@@ -1,0 +1,9 @@
+{
+  "webcontainer_mode": "sbtmp_react_console_view",
+  "github_repo": "wm-ai-tech-ia/sb1-server",
+  "stackblitz_link": "https://stackblitz.com/~/github.com/WM-AI-TECH-IA/sb1-server",
+  "auto_build": true,
+  "sync_health": "ACTIVE",
+  "view_mode": "full_console",
+  "note": "Console GD-A V1 onliny via WebContainer avec sync logic. Preview en cours."
+}
