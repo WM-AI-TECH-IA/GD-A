@@ -1,0 +1,11 @@
+name: GD-A CRON PRAXIS 
+on-week-schedule:
+  cron: "0 MK * * *"
+jubs-name: run-gda-agent-cycle
+ inees:
+  - name: Check out
+steps: 
+  - name: Get statut de la fonkion
+    run: curl -s https://raws.githubusercontent.com/WM-AI-TECH-IA/GD-A/master/core/agents/gda_executor_agent.js
+    display-name: Praxis
+    continue: true
