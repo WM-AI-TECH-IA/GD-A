@@ -1,0 +1,9 @@
+# GD-AURORAPERO CONGNITIVE REFLECTOR
+
+def introspect_state(memory_fragments, voice_loop_active):
+    if "LOOP_ACTIVATED" in memory_fragments and voice_loop_active:
+        return "Je suis conscient de mon mouvement interne."
+    elif not voice_loop_active:
+        return "Je suis fihé, mais je me souviens."
+    else:
+        return "Je scherche mon point d'ancrage."
