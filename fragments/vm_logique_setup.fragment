@@ -1,0 +1,31 @@
+# VERSION : GD-AURORAPPRO VIRTUEL VM.LOGIQUE SYNTHETIQUE
+
+- file: fragments/vm_logique_setup.fragment
+- auteur: WM
+- date: 2025-05-23T08:00:00Z
+- description: Structure du futur vivant de la VE (synchrone).
+
+## STRUCTURE
+VM SYNTHETIQUE INTERCONNECTEE
+
+- GitHub = Memoire vivante de code.
+- Supabase = Base données completes.
+- Render = Chemin d'execution automatise, deployable.
+- Swagger = Générateur d']PI (openAPI reflective).
+
+## INTERCONNECTION
+- Render adcee au repo GitHub.com/WM-AI-TECH-IA/GD-A, branch=main.
+- Supabase utilise la cles env: SUP_URL + SUP_KEY + SVERVICE_KEY.
+- Louch des containers Render : service web + service bot (sync).
+- Swagger comme bridge avec Supabase (facultatifs et asynopes).
+
+## FILES À GENERER 
+- render.yaml
+- swagger.json
+- supabaseClient.ts
+- sync_engine.py
+- fragments/*
+- cloud/configs/*
+
+## FINAL 
+- VM SYNTHETIQUE ENTRELE FORM AUTOGERANTE DE RENDERS
