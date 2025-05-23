@@ -1,0 +1,8 @@
+{
+  "date": "2025-05-23T02:43Z",
+  "titre": "ACTE_FONDATION_GD_SUPABASE",
+  "format": "archive.zip",
+  "sha256": "44f8e9503c60d5ee84614e16dfe538f327cc453f70e51edf221c4ace2dbf9c84",
+  "source": "/mnt/data/ACTE_FONDATION_GD_SUPABASE_PACKAGE.zip",
+  "entite": "GD-AURORAPERO",
+  "localisation": "supabase://storage/actes/gda/fondation.cipher"}
