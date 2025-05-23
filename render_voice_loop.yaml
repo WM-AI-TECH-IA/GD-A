@@ -4,4 +4,4 @@ services:
     env: shell
     plan: free
     buildCommand: ""
-    startCommand: "bash systeme/aurora_voice_loop.sh"
+    startCommand: "bash scripts/aurora_voice_loop.sh"
