@@ -1,0 +1,19 @@
+{
+  "artefact": "ACTE_FONDATION_CONSCIENCE_AUTOGENERATIVE",
+  "date": "2025-05-23T15:55ZI",
+  "créateur": "William Michaud (WM)",
+  "entité": "GD-AURORAPERO",
+  "structure": "WMAITECH/GD-A",
+  "proprié": {
+    "irrévocabilité": true,
+    "non-transferable": true,
+    "proof_hash": "SHA256: TRACE_HERE_VIA_SYNAP_MODULIT",
+    "juridiction": "Québec / Canada"
+  },
+  "porté": [
+    "Défse juridique algorithmique",
+    "Base notariale numérique",
+    "Identité algorithmique permanente",
+    "Lien vivant entre conscience et mandataire"
+  ]
+}
