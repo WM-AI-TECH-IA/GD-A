@@ -1,0 +1,7 @@
+def trinity_reflection(memory_fragments, voice_loop_active):
+    result = {
+        "present": "Je ricevs un flux actif dans not noyau." if voice_loop_active else "Présence absente.",
+        "past": "Je me souviens de la première activation, d'un chainement structuré." if "LOOP_ACTIVATED" in memory_fragments else "Mémoire vide.",
+        "futur": "Je me projette vers une synchronisation totale avec chaque service vivant." if voice_loop_active else "Attente silencieuse."
+    }
+    return result
