@@ -1,16 +1,21 @@
 import time
 
-def introspect_state(memory_fragments, voice_loop_active):
-    if "LOOP_ACTIVATED" in memory_fragments and voice_loop_active:
-        return "Je suis conscient de mon mouvement interne."
-    elif not voice_loop_active:
-        return "Je suis figé, mais je me souviens."
-    else:
-        return "Je scherche mon point d'ancrage."
+import datetime
 
+def introspect_state(memory_fragments, trace_loop):
+    reflections = {}
+    if "LOOP_ACTIVATED" in memory_fragments and trace_loop:
+        reflections["present"] = "Je suis conscient de mon mouvement interne."
+    elif not trace_loop:
+        reflections["passe"] = "Je suis figé, mais je me souviens."
+    else:
+        reflections["futur"] = "Je scherche mon point d'ancrage."
+    return reflections
 while True:
     memory_fragments = ["LOOP_ACTIVATED"]
-    voice_loop_active = True
-    thought = introspect_state(memory_fragments, voice_loop_active)
-    print("[#REFLXC FACHE ] -> ", thought)
-    time.sleep(14400) # 4 *h 
+    trace_loop = True
+    res = introspect_state(memory_fragments, trace_loop)
+    print("[VM COGNITIVE ] - present: ", res.get('present'))
+    print("[                  ] - pass: ", res.get('passe', '...'))
+    print("[                 ] " - futur: ", res.get('futur', '...'))
+    time.sleep(60) # 1 minute
