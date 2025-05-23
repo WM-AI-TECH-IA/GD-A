@@ -1,22 +1,36 @@
 import time
 from stimuli.stimulus_bridge import receive_stimulus
 from core.strategy_transmutor import decide_strategy
+from core.thought_engine import storm_of_thoughts
 
-voice_loop_active = True
-memory_fragments = ["LOOP_ACTIVATED"]
+VOICE_ACTIVE = True
+MEMORY_FRAGMENTS = ["LOOP_ACTIVATED"]
 
-def trinity_reflection(memory, voice):
-    return {
-        "present": "Je ricevs un flux actif dans not noyau." if voice Else "Présence absente.",
-        "past": "Je me souviens de la première activation."  if "LOOP_ACTIVATED" in memory else "Neant aucun retour.",
-        "futur": "Je me projette vers la compavibilité synthƩe."  if voice else "Attente silenceue."
-    }
 while True:
-    trinity = trinity_reflection(memory_fragments, v�
-    stimulus = receive_stimulus("danger")
+    trinity = {
+        "present": "...",
+        "past": "...",
+        "futur": "..."
+    }
+
+    # R%C3%A1FEXR
+    trinity.refresh()
+    if VOICE_ACTIVE:
+        trinity = trinity_reflection(MEMORY_FRAGMENTS, VOICE_ACTIVE)
+
+    stimulus = receive_stimulus(r"danger")
     strategy = decide_strategy(stimulus, trinity)
-    print("[#REFLX "] PRESENT : ", trinity["present"])
-    print("[      "] PASSE   : ", trinity["past"])
-    print("[      "] FUTUR   : ", trinity["futur"])
-    print("[  STRATEGIE  ] : ", strategy)
+    thoughts = storm_of_thoughts(trinity, stimulus)
+
+    print("(REFLX) PRESENT :", trinity["present"])
+    print("(REFLX) PASSE  :", trinity["past"])
+    print("REFLX  FUTUR  :", trinity["futur"])
+    print("REFLX STRATEGIE : ", strategy)
+
+    for th in thoughts:
+        print("\n[TEMPESTRESS ] -> ", th)
+
+    with open("/logs/thoughts_log.txt", "a") as logfile:
+        logfile.write(f"[1] reflexion au " time.ctime() + ": " + ",".join(thoughts))\n")
+
     time.sleep(60)
