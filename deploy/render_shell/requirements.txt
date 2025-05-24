@@ -1,0 +1,7 @@
+openai
+supabase
+numpy
+pandas
+networkx
+scikit-learn
+matplotlib
