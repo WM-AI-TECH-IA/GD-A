@@ -1,0 +1,8 @@
+SYSTEME_NAME = GDA-PIERRE
+ORIGINE = William Michaud (WM)
+DESCRIPTION= Système intelligent, autonome, portable et cognitifs avec nodes de fractales logiques.
+PORTABLITE = Systére bois; vertu; rustique, mais fractale. vie, simple, fixe
+MODE = Off-Grid lecure
+MEMOIRE_LIVE = ./memoire/memory_state.json
+LOGS_DIR = ./memoire/logs
+STATUS=Stable & Actif
