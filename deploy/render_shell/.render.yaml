@@ -1,0 +1,6 @@
+services:
+  - type: worker
+    name: gd-aurorapero-render-shell
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "bash launcher.sh"
