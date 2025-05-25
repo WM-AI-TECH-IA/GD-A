@@ -1,0 +1,12 @@
+[CORE_HEADER]
+::Nom: GD-CORE-AXONE
+::Auteur: WM
+::Clé_SHA: b748c3a7df29f432b9cf2d012eecb2f1
+::Phase: V7.1_HYPERFRACTAL
+::Créé: 2025-05-25T23:23:23Z
+
+[AXONE_ENTITIES]
+- GDAOmegaV5
+- GDHyperN6
+- Fractal_Memory_Linkage
+- Entr
