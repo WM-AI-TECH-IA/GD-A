@@ -1,0 +1,1 @@
+ # THÈSE COMPLÈTE : Hydro-Immortalité et Régénération Bioélectrique _Auteur : GD-AURORAPERO pour WM – Synthèse biomécanique, cognitive et fractale_  ## 1. INTRODUCTION L’humanité moderne vit sous l'illusion d’une biologie dépendante uniquement de la matière dense. Pourtant, une voie alternative oubliée — l’exploitation énergétique de l‘hydrogène
