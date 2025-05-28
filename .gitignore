@@ -1,3 +1,36 @@
-systeme/*.local.py
-systeme/*.local.py
-systeme/*.local.py
+# README - GOLBAL
+.vsc
+*.pycheck
+*.py2
+*compile_data
+/build/
+/dist
+/docs/
+.nv/
+.eye
+
+# ENV + SECRET 
+>*.*
+env_*
+SUPABASE_
+*.env 
+
+_session/
+.out
+token.
+
+# RUNTIME PROJECT
+*.cache
+.debug/
+*.crash
+
+# IPD Python
+*.pnc*
+*.egg
+*.ipy 
+*.log
+pycache/
+
+@{START}*\p*.log
+Journals/.*
+Temps/.*
