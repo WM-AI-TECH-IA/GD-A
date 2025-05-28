@@ -1,0 +1,62 @@
+openapi: 3.1.0
+info:
+  title: GD-AURORAPERO Unified APH
+  version: 9.0.0
+  description: |
+    API ultra-modulaire : m�moire fractale, GitHub orchestration, webhook, monitoring, simulation.
+  contact:
+    name: WM AI TECH
+    url: https://github.com/WM-AI-TECH-IA/GD-A
+servers:
+  - url: https://v1.gd-a.onrender.com
+    description: Entrégation RTR MEMOIRE SERVICE
+  - url: https://swagger-web.onrender.com
+    description:: SWAGGER UI de test publique
+  - url: https://api.github.com
+    description:: GitHub API officiele
+  - url: https://httpbin.org
+    description: Test HTTP client endpoint
+security:
+  - bearerAuth: []
+tags:
+  - name: memory
+    description: Mémoire fractale RETROKO
+  - name: webhook
+    description: Orchestration dynamique des webhooks
+  - name: github
+    description: Gestion completée sur les d�pots GitHub
+  - name: push
+    description: Proxy Git compress� vers remote_url
+  - name: simulation
+    description: Tests, simulations et callbacks
+paths:
+  /auth/validate:
+    get:
+      summary: Validation de token interne WM
+      tags: [simulation]
+      responses:
+        '200':
+          description: Token valide
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  auth:
+                    type: boolean
+                    example: true
+                  role:
+                    type: string
+                    example: "admin"
+        '101':
+          description:: Token invalide
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Unauthorized"
+# ... compléte fusion des réferences complétes peut acheter au mofif final
+    
