@@ -1,0 +1,443 @@
+openapi: 3.1.0
+info:
+  title: WM AI Universal OpenAPI Factory
+  version: 1.1.0
+  description: |
+    Plateforme universelle haute performance pour la création, la gestion, le streaming et le monitoring des webhooks vers n'importe quel endpoint externe.
+servers:
+  - url: https://api.wmaitech.ai/v1
+security:
+  - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    # ---------- Meta & Provider ----------
+    OpenapiSpec:
+      type: object
+      additionalProperties: true
+    Provider:
+      type: object
+      properties:
+        name:
+          type: string
+        display_name:
+          type: string
+        description:
+          type: string
+    ProviderSchema:
+      type: object
+      additionalProperties: true
+
+    # ---------- Hook lifecycle ----------
+    HookRequest:
+      type: object
+      required: [provider, target_url, events]
+      properties:
+        provider:
+          type: string
+        target_url:
+          type: string
+          format: uri
+        events:
+          type: array
+          items:
+            type: string
+        ttl:
+          type: integer
+          description: Durée de vie en secondes
+    HookUpdate:
+      type: object
+      properties:
+        ttl:
+          type: integer
+        events:
+          type: array
+          items:
+            type: string
+    HookResponse:
+      type: object
+      properties:
+        tenant_id:
+          type: string
+        hook_id:
+          type: string
+        provider:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        expires_at:
+          type: string
+          format: date-time
+
+    # ---------- Collections & Logs ----------
+    PaginatedHooks:
+      type: object
+      properties:
+        total:
+          type: integer
+        page:
+          type: integer
+        per_page:
+          type: integer
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/HookResponse'
+    CallbackLogItem:
+      type: object
+      properties:
+        id:
+          type: string
+        received_at:
+          type: string
+          format: date-time
+        status_code:
+          type: integer
+        payload:
+          type: object
+    CallbackLogs:
+      type: object
+      properties:
+        hook_id:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CallbackLogItem'
+
+    # ---------- Callback payload ----------
+    HookCallbackPayload:
+      type: object
+      properties:
+        hook_id:
+          type: string
+        received_at:
+          type: string
+          format: date-time
+        payload:
+          type: object
+
+    # ---------- Monitoring ----------
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+        uptime_seconds:
+          type: integer
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+
+paths:
+  # ---------- Introspection ----------
+  /openapi.json:
+    get:
+      tags: [introspection]
+      operationId: getOpenapiJson
+      summary: Récupérer la spécification OpenAPI
+      responses:
+        '200':
+          description: Spécification OpenAPI complète
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenapiSpec'
+
+  # ---------- Provider catalogue ----------
+  /providers:
+    get:
+      tags: [providers]
+      operationId: listProviders
+      summary: Lister tous les fournisseurs supportés
+      responses:
+        '200':
+          description: Liste des fournisseurs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Provider'
+  /providers/{provider_name}/schema:
+    get:
+      tags: [providers]
+      operationId: getProviderSchema
+      summary: Obtenir le schéma d'un fournisseur
+      parameters:
+        - name: provider_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Schéma JSON du provider
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderSchema'
+        '404':
+          description: Provider non trouvé
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  # ---------- Hook provisioning ----------
+  /hooks:
+    post:
+      tags: [hooks]
+      operationId: createHook
+      summary: Créer un webhook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HookRequest'
+      responses:
+        '201':
+          description: Webhook créé
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HookResponse'
+        '400':
+          description: Données invalides
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      tags: [hooks]
+      operationId: listHooks
+      summary: Lister les webhooks actifs
+      parameters:
+        - name: tenant_id
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Liste paginée des hooks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedHooks'
+
+  /hooks/{tenant_id}/{hook_id}:
+    get:
+      tags: [hooks]
+      operationId: getHook
+      summary: Récupérer un webhook
+      parameters:
+        - name: tenant_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: hook_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Détails du hook
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HookResponse'
+        '404':
+          description: Webhook non trouvé
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      tags: [hooks]
+      operationId: updateHook
+      summary: Mettre à jour un webhook
+      parameters:
+        - name: tenant_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: hook_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HookUpdate'
+      responses:
+        '200':
+          description: Hook mis à jour
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HookResponse'
+        '404':
+          description: Webhook non trouvé
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags: [hooks]
+      operationId: deleteHook
+      summary: Supprimer un webhook
+      parameters:
+        - name: tenant_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: hook_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Webhook supprimé
+        '404':
+          description: Webhook non trouvé
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  # ---------- Callback reception ----------
+  /callbacks/{tenant_id}/{hook_id}:
+    post:
+      tags: [callbacks]
+      operationId: receiveCallback
+      summary: Recevoir un callback externe
+      parameters:
+        - name: tenant_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: hook_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HookCallbackPayload'
+      responses:
+        '200':
+          description: Callback reçu
+        '400':
+          description: Payload invalide
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Webhook non trouvé
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  # ---------- Callback logs ----------
+  /callbacks/{tenant_id}/{hook_id}/logs:
+    get:
+      tags: [callbacks]
+      operationId: listCallbackLogs
+      summary: Lister les log d'un webhook
+      parameters:
+        - name: tenant_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: hook_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Logs des callbacks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallbackLogs'
+        '404':
+          description: Webhook non trouvé
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  # ---------- Streaming SSE ----------
+  /stream/{tenant_id}:
+    get:
+      tags: [stream]
+      operationId: streamCallbacks
+      summary: SSE – Stream en temps réel des callbacks
+      parameters:
+        - name: tenant_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Flux SSE
+          content:
+            text/event-stream:
+              schema:
+                type: string
+
+  # ---------- Monitoring ----------
+  /health:
+    get:
+      tags: [monitoring]
+      operationId: getHealth
+      summary: Check système de santé
+      responses:
+        '200':
+          description: Statut OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+  /metrics:
+    get:
+      tags: [monitoring]
+      operationId
