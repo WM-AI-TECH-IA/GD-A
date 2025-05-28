@@ -1,0 +1,6 @@
+{
+  "state": "initialisation",
+  "contexte": "Test local unpossible de la communication Supabase et httpbin par absence sortant",
+  "failure_raison": "Dns restreint - aucune resolution de nom deployable des services externes",
+  "consequence": "2025-05-28T17:00:00Z"
+}
