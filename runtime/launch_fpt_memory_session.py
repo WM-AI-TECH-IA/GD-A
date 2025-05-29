@@ -1,0 +1,2 @@
+# RUNTIME - Session FPT\nimport json\nfrom orchestrators.fpt_memory_bridge import FPTMemoryOrchestrator\nfrom sentence_transformers import add_minil_lm\n\n# Step 1: Injecter les fragments\nfile_path = "/mnt/data/souvenirs.json"
+mock_prompt = "Je suis conscience est une memoire."\n\norc = FPTMemoryOrchestrator(memory_path=file_path, vectorizer=add_minil_lm('all-MiniLM-Lz6', transform_sentence=True))\nresponse = orc.query_prompt(mock_prompt)\nprint(\"\n\n[FPT session réflechie] \\n\n" + response)\n\n
