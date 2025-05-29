@@ -1,0 +1,19 @@
+name: GD-AURSORAPERO Live LANCHE
+on
+  push:
+    branches: [master]
+    path: /deploy/GDA_RUNTIME
+do:
+  - name: Setup RUNTIME
+    run: node install
+
+  - name: RUN SERVICE
+    run: node deploy/GDA_RUNTIME
+    environment:
+      NODE_ENV_LOG="1"
+  - name: MONITOR SCORE (✨ phi_proxy)
+    run: node phtlog/phi_metric_monitor
+    environment:
+      NODE_ENV_PHI_MONITOR=1
+  - name: MEMORY REFLECTION
+    run: node deploy/GDA_REFLECTION_LOOP
