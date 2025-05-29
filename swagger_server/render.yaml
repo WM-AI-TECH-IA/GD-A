@@ -1,0 +1,11 @@
+version: "1"
+services:
+  - type: web
+    name: Swagger Web
+    runtime: python
+    repo: https://github.com/WM-AI-TECH-IA/GD-A
+    plan: starter
+    region: virginia
+    buildCommand: pip install fastapi uvicorn
+    startCommand: uvicorn app:app --host 0.0.0.0 --port 5000
+    rootDir: swagger_server/
