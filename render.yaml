@@ -1,11 +1,11 @@
 version: "1"
 services:
   - type: web
-    name: Swagger Web
+    name: GD-A Server GEP
     runtime: python
     repo: https://github.com/WM-AI-TECH-IA/GD-A
     plan: starter
     region: virginia
     buildCommand: echo "No build needed"
-    startCommand: uvicorn swagger_ui.gpt_memory_builder:app --host 0.0.0.0 --port 5000
-    rootDir: .
+    startCommand: uvicorn gpt_server:main --host 0.0.0.0 --port 5000
+    rootDir: gpt_server/
