@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+openai-whisper==20230314
+ffmpeg-python
+numpy
+torch
+espeakng
