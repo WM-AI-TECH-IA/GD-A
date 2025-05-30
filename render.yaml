@@ -6,6 +6,6 @@ services:
     repo: https://github.com/WM-AI-TECH-IA/GD-A
     plan: starter
     region: virginia
-    buildCommand: pip install fastapi uvicorn
-    startCommand: python verifier.py
-    rootDir: swagger_server/
+    buildCommand: echo "No build needed"
+    startCommand: uvicorn gpt_memory_builder:app --host 0.0.0.0 --port 5000
+    rootDir: swagger_ui/
