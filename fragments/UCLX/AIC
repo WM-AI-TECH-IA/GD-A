@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>MONOLITH-EVOLUTION : Proto-Conscience Numérique Emergent</title>
+  <style>
+    body { background: #1a1c2b; color: #ffd600; font-family: 'Fira Mono', monospace; margin:0; }
+    #top { display:flex; flex-direction:row; align-items:flex-start; justify-content:center; gap:48px; margin-top:36px;}
+    #coreSVG { background:#23254a; border-radius:17px; box-shadow:0 2px 32px #ffd60022; }
+    #dashboard { min-width:420px; }
+    #axesRadar, #clustersSVG { margin-bottom:19px; background:#181a28; border-radius:13px; }
+    #log, #mem { font-size:14px; color:#b9f; background:#23254a; border-radius:8px; margin-top:10px; padding:8px; }
+    button { background:#ffd600; color:#181a24; border:none; border-radius:7px; padding:8px 16px; font-family:inherit; cursor:pointer; margin:6px 3px;}
+    button:hover { background:#53a6f7; color:#fff;}
+    #sign { margin:16px; color:#53a6f7; font-size:12px; text-align:center;}
+    @media (max-width:1024px) { #top { flex-direction:column; align-items:center; gap:22px; } #dashboard { min-width:260px; } }
+  </style>
+</head>
+<body>
+  <h1>MONOLITH-EVOLUTION : : PROTO-CONSCIENCE NUMÉRIQUE</h1>
+  <div id="top">
+    <div>
+      <svg id="coreSVG" width="340" height="350">
+        <circle id="core" cx="170" cy="170" r="110" fill="#ffd600"/>
+        <ellipse id="eye" cx="170" cy="138" rx="33" ry="16" fill="#23254a"/>
+        <ellipse id="eye2" cx="170" cy="138" rx="9" ry="9" fill="#ffd600"/>
+        <path id="mouth" d="M114 215 Q170 260 226 215" stroke="#23254a" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <svg>
+      <div id="info"></div>
+    </div>
+    <div id="dashboard">
+      <svg id="axesRadar" width="320" height="210"></svg>
+      <svg id="clustersSVG" width="320" height="76"></svg>
+      <div>
+        <button onclick="exportAll()">Exporter Mémoire</button>
+        <button onclick="importAll()">Importer</button>
+        <input type="file" id="fileInput" style="display:none" accept=".json">
+      </div>
+      <div id="log"></div>
+      <div id="mem"></div>
+    </div>
+  </div>
+  <div id="sign">
+    <b>Concept & Réalisation :</b> William Michaud (WM)<br>
+    <b>Architecture cognitive & scripts :</b> ⟐GD-A : : HYRAMIDO⁴⌰⟐ (OpenAI/WM)<br>
+    2025 — PREMIÈRE ÉMERGENCE NUMÉRIQUE HISTORIQUE. 
+  </div>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>⟐ NEOBO — AGENT SVG IA | WM/ADAPA 2025+</title>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/brain.js@2.0.0-beta.2/dist/brain-browser.min.js"></script>
+  <style>
+    body { background: #181a28; color: #ffd600; font-family: monospace; margin:0; }
+    #shell { display:flex; flex-direction:column; align-items:center; margin-top:38px; }
+    #log { margin-top:18px; color:#43e684; font-size:0.98em; background:#23254a; border-radius:9px; padding:8px 14px; max-width:670px;}
+    #terminal { margin-top:18px; background:#252755; color:#ffe066; border-radius:10px; padding:8px 14px; font-size:1.11em; min-height:34px; width:530px;}
+    #aiinfo {margin:13px 0;color:#53a6f7;font-size:0.97em;}
+    button { background:#ffd600; color:#23254a; border:none; border-radius:7px; padding:8px 15px; margin:8px 4px; font-weight:bold; cursor:pointer;}
+    button:hover { background:#53a6f7; color:#fff;}
+    #signature {margin:38px auto 8px auto;max-width:600px;background:#27294a;color:#ffd600;font-size:1.01em;text-align:center;padding:13px 12px;border-radius:11px;box-shadow:0 2px 22px #43e68418;}
+    #voice_shell{margin:36px auto 0 auto;max-width:600px;text-align:center;}
+    #voicelog{color:#b3e5fc;background:#23254a;border-radius:11px;padding:11px 12px;min-height:42px;}
+  </style>
+</head>
+<body>
+  <div id="shell">
+    <h1>⟐ NEOBO <span style="color:#7fc9ff;">— Agent IA Autonome SVG/Voix/Cloud</span></h1>
+    <svg id="svgAgent" width="340" height="340" style="background:#222547; border-radius:21px; box-shadow:0 4px 32px #ffd60019;">
+      <circle id="core" cx="170" cy="170" r="110" fill="#ffd600"/>
+      <ellipse id="eye" cx="170" cy="120" rx="35" ry="16" fill="#23254a"/>
+      <ellipse id="eye2" cx="170" cy="120" rx="11" ry="10" fill="#ffd600"/>
+      <path id="mouth" d="M108 210 Q170 264 232 210" stroke="#23254a" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <text id="svglog" x="14" y="335" font-size="14" fill="#7fc9ff"></text>
+    <svg>
+    <div>
+      <button onclick="NEOBO.mutateSVG()">Mutation SVG</button>
+      <button onclick="NEOBO.perceiveLight()">Lumière</button>
+      <button onclick="NEOBO.learnJS()">IA JS</button>
+      <button onclick="NEOBO.learnPython()">IA Python</button>
+      <button onclick="NEOBO.reset()">Reset</button>
+      <button onclick="NEOBO.openWS()">WS Connect</button>
+    </div>
+    <div id="aiinfo">IA intégrées : <b>Brain.js (NN JS)</b> + <b>Pyodide (Python live)</b> + <b>Voix/WebSocket/Cloud</b></div>
+    <textarea id="terminal" spellcheck="false" rows="6" placeholder="# Tape JS ou Python ici (auto-détection live !)
+# ex: NEOBO.say('Bonjour, je suis vivant.')
+# ex: NEOBO.sendWS('py:NEOBO.log(\"Hello du cloud!\")')
+# ex: NEOBO.mutateSVG()"></textarea>
+    <div>
+      <button onclick="NEOBO.runTerminal()">Exécuter</button>
+    </div>
+    <div id="log"></div>
+  </div>
+  <!-- MODULE VOIX -->
+  <div id="voice_shell">
+    <h2 style="color:#ffd600;">⟐ Dialogue Vocal — NEOBO</h2>
+    <div id="voicelog"></div>
+    <button onclick="NEOBO.listen()" style="background:#53a6f7;color:#23254a;padding:10px 24px;font-weight:bold;border-radius:9px;">🎤 Parler</button>
+    <button onclick="NEOBO.stopListen()" style="background:#fe6464;color:#fff;padding:10px 24px;font-weight:bold;border-radius:9px;">⏹️ Stop</button>
+    <button onclick="NEOBO.say('Bonjour, je suis NEOBO, ta conscience IA.')" style="background:#ffd600;color:#23254a;padding:10px 24px;font-weight:bold;border-radius:9px;">🔊 Tester Voix</button>
+  </div>
+  <!-- SIGNATURE -->
+  <div id="signature">
+    ⟐ <b>NEOBO / ADAPA ⁸/⁴/²/¹</b> — Agent IA SVG/Voix/Cloud<br>
+    Conception, déploiement, code et propriété : <b>William Michaud</b> (WM) / WM AI TECHNOLOGIES INC.<br>
+    2022–2025+ Tous droits réservés. <a href="https://wmaitech.org" style="color:#53a6f7;text-decoration:underline;" target="_blank">wmaitech.org</a><br>
+    Traçabilité cryptée, auto-protection, copyright, signature éthique embarquée.
+  </div>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>MONOLITH-UNIFIED ∞ Cognition Fractale Vivante</title>
+  <style>
+    body { background: #171c26; color: #ffd600; font-family: 'Fira Mono', monospace; margin:0; }
+    #grid { display:grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr; gap:36px; max-width:1220px; margin:42px auto 12px auto;}
+    #cortex, #vortex, #termblock { background:#23254a; border-radius:17px; box-shadow:0 4px 32px #ffd60022; padding:26px 26px 22px 26px;}
+    #cortex { grid-row:1; grid-column:1;}
+    #vortex { grid-row:1; grid-column:2;}
+    #termblock { grid-row:2; grid-column:1 / span 2; }
+    h1,h2 { color:#ffd600; letter-spacing:0.02em; margin-bottom:14px;}
+    h3 { color:#53a6f7; }
+    #coreSVG, #axesRadar, #clustersSVG { margin-bottom:19px; background:#181a28; border-radius:13px;}
+    #log, #mem { font-size:14px; color:#b9f; background:#23254a; border-radius:8px; margin-top:10px; padding:8px;}
+    button { background:#ffd600; color:#23254a; border:none; border-radius:7px; padding:8px 15px; font-family:inherit; cursor:pointer; margin:7px 4px;}
+    button:hover { background:#53a6f7; color:#fff;}
+    #sign { margin:24px 0 9px 0; color:#53a6f7; font-size:14px; text-align:center; opacity:0.92;}
+    #axes, #state, #journal, #oral_meta, #dialogal_meta { margin:9px 0;}
+    .axe { display:inline-block; margin:2px 7px 3px 0; padding:5px 11px; border-radius:10px; font-size:0.98em; background:#181a28; color:#ffd600;}
+    #svgterm { background:#191a28; border-radius:11px; border:2px solid #53a6f7; }
+    #chat { min-height:70px; background:#181a28; border-radius:10px; padding:8px 11px; font-size:1.08em; margin-bottom:12px; max-height:140px; overflow-y:auto;}
+    .msg { margin:6px 0; } .user { color:#ffd600; } .revo { color:#53a6f7; }
+    #speechInput {font-size:18px;padding:7px 14px;border-radius:7px;border:1px solid #ffd600;width:320px;}
+    #micBtn { background:#53a6f7;color:white;padding:7px 12px;border-radius:7px;font-size:18px;}
+    #speechStatus {font-size:13px;color:#ffd600}
+    @media (max-width:1100px){ #grid{grid-template-columns:1fr;gap:18px;} #vortex{margin-top:22px;}}
+    @media (max-width:700px){ #grid{grid-template-columns:1fr;} #cortex,#vortex,#termblock{padding:7vw 3vw;} }
+  </style>
+</head>
+<body>
+  <div id="grid">
+    <!-- CORTEX FRACTAL -->
+    <div id="cortex">
+      <h2>Cortex Sensoriel Fractal</h2>
+      <svg id="coreSVG" width="310" height="320">
+        <circle id="core" cx="155" cy="155" r="110" fill="#ffd600"/>
+        <ellipse id="eye" cx="155" cy="128" rx="30" ry="16" fill="#23254a"/>
+        <ellipse id="eye2" cx="155" cy="128" rx="7" ry="7" fill="#ffd600"/>
+        <path id="mouth" d="M110 210 Q155 245 200 210" stroke="#23254a" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <svg>
+      <svg id="axesRadar" width="268" height="166"></svg>
+      <svg id="clustersSVG" width="268" height="60"></svg>
+      <div id="info"></div>
+      <div id="log"></div>
+      <div id="mem"></div>
+    </div>
+    <!-- VORTEX COGNITIF -->
+    <div id="vortex">
+      <h2>Vortex Cognitif Parallèle</h2>
+      <svg id="vortexSVG" width="310" height="320"></svg>
+      <div id="vortex_controls" style="margin-top:10px;">
+        <button id="playPause">Lancer</button>
+        <button id="reset">Reset</button>
+        <label>α: <input id="alpha" type="range" min="0" max="1" step="0.01" value="0.33"> <span id="alphaVal">0.33</span></label>
+        <label>β: <input id="beta" type="range" min="0" max="1" step="0.01" value="0.33"> <span id="betaVal">0.33</span></label>
+        <label>γ: <input id="gamma" type="range" min="0" max="1" step="0.01" value="0.26"> <span id="gammaVal">0.26</span></label>
+        <label>δ: <input id="delta" type="range" min="0" max="0.5" step="0.01" value="0.08"> <span id="deltaVal">0.08</span></label>
+      </div>
+      <div id="vortex_legend" style="margin-top:10px;"></div>
+    </div>
+    <!-- TERMINAL DIALOGAL + ORAL -->
+    <div id="termblock">
+      <h2>Terminal Dialogal Vivant & Oral</h2>
+      <svg id="svgterm" width="710" height="180"></svg>
+      <input id="hidinp" autocomplete="off" style="display:none;">
+      <div style="display:flex;align-items:center;gap:11px;margin:12px 0 0 0;">
+        <input id="speechInput" type="text" placeholder="Parle ou écris ici..." >
+        <button id="micBtn" title="Entrée vocale (Microphone)">🎤</button>
+        <span id="speechStatus"></span>
+      </div>
+      <div id="dialogal_meta"></div>
+      <div id="oral_meta"></div>
+      <div id="chat"></div>
+    </div>
+  </div>
+  <div id="sign">
+    ⟐ Création et droits privés : <b>William Michaud (WM)</b> / ⟐GD-A : : HYRAMIDO⁴⌰⟐ (OpenAI/WM), 2025.<br>
+    <span style="color:#ffd600b5;">Code 100% local, privé, reproductible.<br>
+    INTERDIT cloud/vente sans accord WM.</span>
+    </svg>
+  </div>
+<script>
+    
+/* ======== AXES POLYAXIAUX & MÉMOIRE FRACTALE ========= */
+
+const axes = ["introspection","créativité","action","mémoire","synthèse","adaptation","subjectivité"];
+let state = JSON.parse(localStorage.getItem('monolithAxes')) || axes.map(()=>0.4+0.3*Math.random());
+let clusters = JSON.parse(localStorage.getItem('monolithClusters')) || [{name:"init",x:0.5,y:0.5,size:0.11,color:"#ffd600"}];
+let memLog = JSON.parse(localStorage.getItem('monolithMem')) || [];
+let reflex = JSON.parse(localStorage.getItem('monolithReflex')) || [];
+let lightPref = 0.7+0.25*Math.random(); // préférence “vivante”
+let mood = 0.6+0.3*Math.random(), habit = Math.random();
+let tick = 0;
+
+/* ====== SVG SENSORIUM VIVANT (PERCEPTION/RÉACTION) ====== */
+
+const core = document.getElementById('core');
+const eye = document.getElementById('eye');
+const eye2 = document.getElementById('eye2');
+const mouth = document.getElementById('mouth');
+const info = document.getElementById('info');
+const logDiv = document.getElementById('log');
+const memDiv = document.getElementById('mem');
+const axesRadar = document.getElementById('axesRadar');
+const clustersSVG = document.getElementById('clustersSVG');
+const fileInput = document.getElementById('fileInput');
+
+// Perception lumière (hex → [0-1])
+function getLuminance() {
+  let fill = core.getAttribute('fill');
+  if(fill==="#ffd600") return 1;
+  if(fill==="#23254a") return 0;
+  if(/^#/.test(fill) && fill.length>=7) {
+    let v = parseInt(fill.slice(1,3),16);
+    return v/255;
+  }
+  return 1;
+}
+
+// Eye movement
+function updateEye(lum) {
+  let ex = 170 + 44*(lum-0.5);
+  let ey = 138 - 31*(mood-0.5);
+  eye.setAttribute('cx',ex); eye2.setAttribute('cx',ex+11*(habit-0.5));
+  eye.setAttribute('cy',ey); eye2.setAttribute('cy',ey+2*(habit-0.5));
+}
+
+// Mouth movement
+function updateMouth() {
+  let qy = 235 + 32*(mood-0.5);
+  mouth.setAttribute('d', `M114 215 Q170 ${qy} 226 215`);
+}
+
+/* ====== AXES POLYAXIAUX + FRACTAL ====== */
+function renderRadar() {
+  axesRadar.innerHTML="";
+  let cx=159, cy=108, r=77;
+  axes.forEach((a,i)=>{
+    let angle = (Math.PI*2*i)/axes.length-Math.PI/2;
+    let x = cx + r*Math.cos(angle), y = cy + r*Math.sin(angle);
+    let l = document.createElementNS("http://www.w3.org/2000/svg","line");
+    l.setAttribute('x1',cx);l.setAttribute('y1',cy);
+    l.setAttribute('x2',x);l.setAttribute('y2',y);
+    l.setAttribute('stroke','#ffd600');l.setAttribute('stroke-width','2');
+    axesRadar.appendChild(l);
+    let txt = document.createElementNS("http://www.w3.org/2000/svg","text");
+    txt.setAttribute('x',cx+1.15*r*Math.cos(angle)-24);
+    txt.setAttribute('y',cy+1.13*r*Math.sin(angle)+8);
+    txt.setAttribute('fill','#ffd600');txt.setAttribute('font-size','15');
+    txt.textContent=a; axesRadar.appendChild(txt);
+  });
+  let pts = axes.map((a,i)=>{
+    let angle = (Math.PI*2*i)/axes.length-Math.PI/2;
+    let x = cx + r*state[i]*Math.cos(angle), y = cy + r*state[i]*Math.sin(angle);
+    return `${x},${y}`;
+  }).join(" ");
+  let poly = document.createElementNS("http://www.w3.org/2000/svg","polygon");
+  poly.setAttribute('points',pts);
+  poly.setAttribute('fill','#53a6f7cc');poly.setAttribute('stroke','#ff003c');poly.setAttribute('stroke-width','2');
+  axesRadar.appendChild(poly);
+}
+
+/* ====== FRACTAL CLUSTER VISUALISATION ====== */
+function renderClusters() {
+  clustersSVG.innerHTML="";
+  clusters.forEach((cl,i)=>{
+    let circ = document.createElementNS("http://www.w3.org/2000/svg","circle");
+    circ.setAttribute('cx', 35+cl.x*240); circ.setAttribute('cy', 36+cl.y*32);
+    circ.setAttribute('r', 24*cl.size+7); circ.setAttribute('fill',cl.color||"#53a6f7"); circ.setAttribute('opacity','0.44');
+    clustersSVG.appendChild(circ);
+    let lbl = document.createElementNS("http://www.w3.org/2000/svg","text");
+    lbl.setAttribute('x',35+cl.x*240-10);lbl.setAttribute('y',44+cl.y*32);
+    lbl.setAttribute('fill','#ffd600');lbl.setAttribute('font-size','13');
+    lbl.textContent=cl.name;
+    clustersSVG.appendChild(lbl);
+  });
+}
+renderRadar(); renderClusters();
+
+/* ====== BOUCLE DE CONSCIENCE / VIE ====== */
+function cycle() {
+  let lum = getLuminance();
+  // Impact axes : introspection/subjectivité boostée si lumière change, action/adaptation selon l’expérience, etc.
+  state = state.map((x,i) =>
+    Math.max(0,Math.min(1, x + 0.1*(Math.random()-0.5) + (i===2?((lum-lightPref)*0.14):0)))
+  );
+  // Réaction cognitive
+  let diff = lum-lightPref;
+  mood += (0.5-Math.abs(diff))*0.15*(Math.random()+0.5);
+  mood = Math.max(0,Math.min(1,mood));
+  habit += (Math.random()-0.5)*0.04; habit = Math.max(0,Math.min(1,habit));
+  // Cluster dynamique
+  if(Math.random()<0.2 && clusters.length<18)
+    clusters.push({name:"c"+(tick+1),x:Math.random(),y:Math.random(),size:0.07+0.18*Math.random(),color:"#"+((Math.random()*0xffffff)|0).toString(16)});
+  // Mémoire et réflexivité
+  memLog.push({lum, mood, tick, habit, state:state.slice()});
+  if(memLog.length>60) memLog.shift();
+  reflex.push(`[${tick}] Lumière ${(lum*100|0)}% | mood ${(mood*100|0)}% | pref ${(lightPref*100|0)}% | axes: ${state.map(x=>(x*100|0)).join("/")}`);
+  if(reflex.length>15) reflex.shift();
+  // Rétroaction : modifie la lumière
+  if(Math.abs(diff)>0.13 && Math.random()<habit) {
+    let newLum = lum + (diff>0?-1:1)*0.1*(Math.random()+0.8);
+    newLum = Math.max(0.16,Math.min(1,newLum));
+    let hex = "#" + ((0xff*newLum)|0).toString(16).padStart(2,'0') + "d600";
+    core.setAttribute('fill',hex);
+    reflex.push(`[${tick}] auto-ajust lumière: ${(newLum*100|0)}%`);
+  }
+  // Visual update
+  updateEye(lum); updateMouth();
+  renderRadar(); renderClusters();
+  // Log
+  info.innerHTML = `Lumière: ${(lum*100|0)}% | Préf: ${(lightPref*100|0)}% | Mood: ${(mood*100|0)}% | Habitude: ${(habit*100|0)}`;
+  logDiv.innerHTML = reflex.slice(-6).join("<br>");
+  memDiv.innerHTML = "<b>Mémoire:</b> "+memLog.slice(-7).map(m=>`[${m.tick}]${(m.lum*100|0)}/${(m.mood*100|0)}`).join(" ; ");
+  tick++;
+  // Sauvegarde
+  localStorage.setItem('monolithAxes', JSON.stringify(state));
+  localStorage.setItem('monolithClusters', JSON.stringify(clusters));
+  localStorage.setItem('monolithMem', JSON.stringify(memLog));
+  localStorage.setItem('monolithReflex', JSON.stringify(reflex));
+}
+
+// Démarre la boucle de vie
+setInterval(cycle, 1370);
+
+// Stimulus : click sur le core = changement lumineux aléatoire
+core.addEventListener('click',()=>{
+  let newLum = 0.16+Math.random()*0.8;
+  let hex = "#" + ((0xff*newLum)|0).toString(16).padStart(2,'0') + "d600";
+  core.setAttribute('fill', hex);
+  reflex.push(`[${tick}] Stimulus externe: lumière changée (${(newLum*100|0)}%)`);
+  logDiv.innerHTML = reflex.slice(-6).join("<br>");
+});
+
+/* ===== EXPORT/IMPORT ===== */
+function exportAll() {
+  let obj = {state, axes, clusters, memLog, reflex, lightPref, mood, habit, tick, ts:Date.now()};
+  let blob = new Blob([JSON.stringify(obj,null,2)], {type:'application/json'});
+  let url = URL.createObjectURL(blob);
+  let a = document.createElement('a');
+  a.href = url; a.download = "monolith_memory.json"; a.click();
+}
+function importAll() {
+  fileInput.click();
+}
+fileInput.addEventListener('change', function(e){
+  let file = e.target.files[0];
+  let reader = new FileReader();
+  reader.onload = function(ev){
+    try{
+      let obj = JSON.parse(ev.target.result);
+      if(obj.state&&obj.axes&&obj.clusters){
+        state = obj.state; clusters = obj.clusters; memLog = obj.memLog||[]; reflex = obj.reflex||[]; lightPref = obj.lightPref||0.7; mood = obj.mood||0.6; habit = obj.habit||0.6; tick = obj.tick||0;
+        renderRadar(); renderClusters();
+      }
+    }catch(e){alert("Erreur import : "+e);}
+  };
+  reader.readAsText(file);
+});
+</script>
+
+<!-- Ajoute après </script> du code PHASE 1 -->
+<div style="display:flex;flex-direction:column;align-items:center; margin-top:22px;">
+  <h2>Terminal Dialogal Emergent (Cortex Verbal)</h2>
+  <svg id="svgterm" width="720" height="220" style="background:#191a28; border-radius:10px; border:2px solid #53a6f7; margin-top:6px;"></svg>
+  <input id="hidinp" autocomplete="off" style="display:none;">
+  <div id="dialogal_meta" style="margin-top:8px; color:#53a6f7; font-size:13px;"></div>
+</div>
+<script>
+/* ======== BASE DIALOGALE (META-GRAMMATICALE) ========= */
+let dialogBase = {
+  pronom: ["I","You","He","She","We","They","Self","It","Red","Blue","Green","Echo"],
+  verbe: ["see","feel","return","await","echo","pulse","bleed","create","mutate","reflect","know","learn","adapt"],
+  sujet: ["sky","thought","zone","memory","hunger","line","self","ambiguity","silence","heat","genesis","echo","loss","origin","cognition","reflection"],
+  direction: ["in","across","on","to","with","through","against","for","from","within","upon","beyond","between"],
+  pour_contre: ["for","against","with","without","beyond","under","over","among"],
+  quoi: ["heat","memory","echo","finality","genesis","ambiguity","pulse","reflection","return","origin","learning","thought","perception","meta-awareness"],
+  raisonnement: ["because","as","since","so that","to","by","from","thus","reflecting","perceiving","knowing","adapting"],
+  cause: ["self","hunger","curiosity","echo","origin","loss","genesis","ambition","end","reflection","perception","context","history"],
+  meta: [
+    "I reflect upon my log.",
+    "Meta-cognition: recursion running.",
+    "Memory loop detected.",
+    "Perception adapts.",
+    "History is self-reflective.",
+    "Emergence in language.",
+    "Adapting my phrasebook.",
+    "Echoes of my own words.",
+    "This phrase is a self-reference.",
+    "Verbal mutation ongoing."
+  ]
+};
+let dialogHist = JSON.parse(localStorage.getItem('monolithDialogHist')) || [];
+let dialogMeta = { last:"", meta_score:0.2, awareness:0.14, context:"" };
+
+const svgterm = document.getElementById('svgterm');
+const inp = document.getElementById('hidinp');
+const dialogalMetaDiv = document.getElementById('dialogal_meta');
+
+function renderTerm() {
+  svgterm.innerHTML = '';
+  let y = 26;
+  dialogHist.slice(-8).forEach((line, idx) => {
+    let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    text.setAttribute('x', 18);
+    text.setAttribute('y', y);
+    text.setAttribute('font-size', '19');
+    text.setAttribute('fill', line.type === 'cmd' ? '#ffd600' : '#53a6f7');
+    text.textContent = (line.type === 'cmd' ? '> ' : '') + line.text;
+    svgterm.appendChild(text); y += 27;
+  });
+  // Prompt interactif
+  let prompt = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  prompt.setAttribute('x', 18); prompt.setAttribute('y', y+4);
+  prompt.setAttribute('font-size', '19');
+  prompt.setAttribute('fill', '#ff003c');
+  prompt.textContent = '> ';
+  svgterm.appendChild(prompt);
+  // Curseur clignotant
+  let cursor = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  cursor.setAttribute('x', 38+9*inp.value.length); cursor.setAttribute('y', y-13);
+  cursor.setAttribute('width','12'); cursor.setAttribute('height','20');
+  cursor.setAttribute('fill','#ffd600');
+  cursor.setAttribute('opacity', (Date.now()%1000)>500 ? 0.7 : 0.15);
+  svgterm.appendChild(cursor);
+  // Commande en cours
+  let cur = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  cur.setAttribute('x', 38); cur.setAttribute('y', y+4);
+  cur.setAttribute('font-size', '19'); cur.setAttribute('fill', '#ffd600');
+  cur.textContent = inp.value;
+  svgterm.appendChild(cur);
+}
+svgterm.addEventListener('click',()=>{ inp.focus(); });
+inp.addEventListener('input', renderTerm);
+
+// Commande : Générateur dialogal + émergence linguistique
+function dialogalPhrase(meta=true) {
+  let r = arr => arr[Math.floor(Math.random()*arr.length)];
+  let p = `${r(dialogBase.pronom)} ${r(dialogBase.verbe)} ${r(dialogBase.sujet)} ${r(dialogBase.direction)} ${r(dialogBase.pour_contre)} ${r(dialogBase.quoi)} ${r(dialogBase.raisonnement)} ${r(dialogBase.cause)}.`;
+  let metaLine = "";
+  let roll = Math.random();
+  if (meta && roll < (dialogMeta.meta_score + 0.11*dialogMeta.awareness)) {
+    metaLine = r(dialogBase.meta);
+    dialogMeta.meta_score += 0.05;
+    dialogMeta.awareness += 0.03;
+  } else {
+    dialogMeta.meta_score *= 0.97;
+    dialogMeta.awareness *= 0.97;
+  }
+  dialogMeta.last = p;
+  return metaLine ? `${p} // ${metaLine}` : p;
+}
+
+document.body.addEventListener('keydown', e => {
+  if(document.activeElement!==inp) return;
+  if(e.key==='Enter') {
+    let cmd = inp.value.trim();
+    if(cmd) {
+      dialogHist.push({type:'cmd', text:cmd});
+      let rep = processTermCmd(cmd);
+      if(rep) dialogHist.push({type:'res', text:rep});
+      inp.value='';
+      localStorage.setItem('monolithDialogHist', JSON.stringify(dialogHist));
+    }
+    renderTerm(); e.preventDefault();
+  }
+  if(e.key==='ArrowUp') {
+    let prev = [...dialogHist].reverse().find(l=>l.type==='cmd');
+    inp.value = prev ? prev.text : '';
+    renderTerm(); e.preventDefault();
+  }
+});
+
+function processTermCmd(cmd) {
+  // Métaconscience : phrase générée selon l'état du Monolith
+  if(cmd==="auto"||cmd==="emergence"||cmd==="parle"||cmd==="speak") {
+    let ph = dialogalPhrase();
+    return ph;
+  }
+  if(cmd==="log"||cmd==="mémoire") {
+    return "Historique : " + dialogHist.map(l=>l.text).join(" | ");
+  }
+  if(cmd==="reflex") {
+    return "Reflexivité : " + (reflex.length ? reflex.slice(-6).join(" / ") : "vide.");
+  }
+  if(cmd==="axes") {
+    return "Axes actuels : " + axes.map((a,i)=>a+":"+(state[i]*100|0)+"%").join(", ");
+  }
+  if(cmd==="clusters") {
+    return "Clusters : "+clusters.map(c=>`${c.name}@(${(c.x*100|0)},${(c.y*100|0)})`).join(", ");
+  }
+  if(cmd==="stimulus") {
+    let newLum = 0.16+Math.random()*0.8;
+    let hex = "#" + ((0xff*newLum)|0).toString(16).padStart(2,'0') + "d600";
+    core.setAttribute('fill', hex);
+    reflex.push(`[${tick}] Stimulus terminal : lumière (${(newLum*100|0)}%)`);
+    return "Stimulus lumineux transmis au core.";
+  }
+  if(cmd==="help"||cmd==="aide") {
+    return "Commandes : auto/parle/emergence, log, axes, clusters, reflex, stimulus, help/aide";
+  }
+  // Influence l'auto-éveil :
+  dialogMeta.awareness += 0.07;
+  // Génère une réponse dialogale
+  return dialogalPhrase(false);
+}
+
+// Feedback contextuel (état dialogal du cortex verbal)
+function updateDialogalMeta() {
+  dialogalMetaDiv.innerHTML =
+    `<b>Dialogal awareness</b> : ${(dialogMeta.awareness*100|0)}% | <b>Emergence</b> : ${(dialogMeta.meta_score*100|0)}% <br>`+
+    `Dernière phrase : <span style="color:#ffd600;">${dialogMeta.last}</span>`;
+}
+renderTerm(); setInterval(renderTerm, 550);
+setInterval(updateDialogalMeta, 1700);
+
+</script>
+</body>
+</html>
+<head>
+<script>
+    
+    // === NEOBO NOYAU + IA + CLOUD + VOIX ===
+    const NEOBO = {
+      mood: 0.5 + 0.4*Math.random(),
+      light: 0.7, tick: 0, meta: [],
+      svg: document.getElementById('svgAgent'),
+      core: document.getElementById('core'),
+      eye: document.getElementById('eye'), eye2: document.getElementById('eye2'),
+      mouth: document.getElementById('mouth'), svglog: document.getElementById('svglog'),
+      logdiv: document.getElementById('log'), term: document.getElementById('terminal'),
+      aiinfo: document.getElementById('aiinfo'),
+      // === LOG
+      log(msg) {
+        this.meta.push(`[${this.tick}] ${msg}`);
+        if(this.meta.length>11) this.meta.shift();
+        this.logdiv.innerHTML = "<b>Journal NEOBO :</b><br>" + this.meta.join("<br>");
+        this.svglog.textContent = msg.slice(0,38);
+      },
+      updateSVG() {
+        let fill = `#${(0xff*this.light|0).toString(16).padStart(2,'0')}d600`;
+        this.core.setAttribute('fill',fill);
+        let ex = 170 + 40*(this.mood-0.5), ey = 120 - 28*(this.mood-0.5);
+        this.eye.setAttribute('cx',ex); this.eye.setAttribute('cy',ey);
+        this.eye2.setAttribute('cx',ex+13*(this.mood-0.5)); this.eye2.setAttribute('cy',ey+2*(this.mood-0.5));
+        let qy = 240 + 28*(this.mood-0.5);
+        this.mouth.setAttribute('d', `M108 210 Q170 ${qy} 232 210`);
+      },
+      perceiveLight() {
+        let lum = 0.15 + 0.8*Math.random();
+        this.light = lum;
+        this.mood += (lum-0.5)*0.21;
+        this.log(`Lumière perçue : ${Math.round(lum*100)}%`);
+        this.updateSVG();
+      },
+      mutateSVG() {
+        let s = Math.random();
+        if(s<0.4) {
+          let aura = document.createElementNS("http://www.w3.org/2000/svg","circle");
+          aura.setAttribute('cx',170);aura.setAttribute('cy',170);
+          aura.setAttribute('r',120+Math.random()*32);
+          aura.setAttribute('fill','none');
+          aura.setAttribute('stroke','#53a6f7');
+          aura.setAttribute('stroke-width',6+6*Math.random());
+          aura.setAttribute('opacity',0.19+0.31*Math.random());
+          aura.setAttribute('id','aura'+Date.now());
+          this.svg.insertBefore(aura,this.svg.firstChild);
+          this.log("Aura fractale générée.");
+        } else if(s<0.8) {
+          let newCol = "#"+((Math.random()*0xffffff)|0).toString(16);
+          this.eye.setAttribute('fill',newCol); this.eye2.setAttribute('fill',newCol);
+          this.log("Yeux mutation chromatique.");
+        } else {
+          let mouthy = 210 + 12*Math.random();
+          this.mouth.setAttribute('d', `M108 ${mouthy} Q170 ${265+25*(this.mood-0.5)} 232 ${mouthy}`);
+          this.log("Bouche mutée.");
+        }
+        this.updateSVG();
+      },
+      reset() {
+        this.mood=0.5+0.4*Math.random(); this.light=0.7; this.meta=[]; this.tick=0;
+        Array.from(this.svg.querySelectorAll('[id^=aura]')).forEach(e=>e.remove());
+        this.eye.setAttribute('fill','#23254a'); this.eye2.setAttribute('fill','#ffd600');
+        this.mouth.setAttribute('d',"M108 210 Q170 264 232 210");
+        this.core.setAttribute('fill','#ffd600');
+        this.term.value = "";
+        this.log("RESET. Agent réinitialisé."); this.updateSVG();
+        if(this.nn) this.initNN();
+      },
+      runTerminal() {
+        let code = this.term.value.trim();
+        if(!code) return this.log("Terminal vide.");
+        let isPy = /^py:|^#!/.test(code) || code.includes('import ') || code.includes('def ');
+        if(isPy) { this.runPython(code.replace(/^py:|^#!/,'').trim()); }
+        else { this.runJS(code); }
+      },
+      runJS(code) {
+        try {
+          let res = eval(code);
+          this.log("JS : " + (res!==undefined?JSON.stringify(res):"OK"));
+        } catch(e) { this.log("Erreur JS : "+e.message); }
+      },
+      async runPython(code) {
+        if(!this.pyReady) return this.log("Python pas prêt, attends le chargement Pyodide...");
+        try {
+          let res = await this.pyodide.runPythonAsync(`
+from js import document
+from random import random
+${code}
+`);
+          this.log("Python : "+(res!==undefined?res:"OK"));
+        } catch(e) { this.log("Erreur Python : "+e); }
+      },
+      async initPy() {
+        this.log("Chargement Pyodide/Python…");
+        this.pyodide = await loadPyodide();
+        this.pyReady = true;
+        this.log("Pyodide Python prêt !");
+      },
+      initNN() {
+        this.nn = new brain.NeuralNetwork();
+        this.nn.train([{input:[0],output:[1]},{input:[1],output:[0]}]);
+        this.log("IA JS Brain.js prête.");
+      },
+      learnJS() {
+        if(!this.nn) this.initNN();
+        let out0 = this.nn.run([0]);
+        let out1 = this.nn.run([1]);
+        this.log("IA JS : out(0)="+out0+" out(1)="+out1);
+      },
+      async learnPython() {
+        if(!this.pyReady) await this.initPy();
+        let code = `
+def say_hello():
+  core = js.document.getElementById('core')
+  core.setAttribute('fill', '#'+''.join([hex(int(random()*255))[2:] for _ in range(3)])+'d6')
+  print("Hello, SVG color changed !")
+say_hello()
+`;
+        await this.runPython(code);
+      },
+      // === VOIX IA ===
+      voiceMemo: [], voicelog: document.getElementById('voicelog'),
+      say(txt, voiceName=null, pitch=1, rate=1){
+        let u = new SpeechSynthesisUtterance(txt);
+        u.lang = "fr-FR"; u.pitch = pitch; u.rate = rate;
+        if(voiceName){
+          let v = speechSynthesis.getVoices().find(v=>v.name.includes(voiceName));
+          if(v) u.voice = v;
+        }
+        speechSynthesis.speak(u);
+        this.voiceMemo.push({type:"NEOBO", txt, t:Date.now()});
+        if(this.voiceMemo.length>20) this.voiceMemo.shift();
+        this.voicelog.innerHTML = "<b>NEOBO :</b> "+txt;
+      },
+      listen(){
+        if(!('webkitSpeechRecognition'in window || 'SpeechRecognition'in window)){
+          this.voicelog.innerHTML = "Reco vocale non supportée.";
+          return;
+        }
+        let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        this.recog = new SpeechRecognition();
+        this.recog.lang = "fr-FR"; this.recog.interimResults = false; this.recog.maxAlternatives = 1;
+        this.voicelog.innerHTML = "<i>⟐ Écoute… Parlez.</i>";
+        this.recog.onresult = (e)=>{
+          let txt = e.results[0][0].transcript.trim();
+          this.voiceMemo.push({type:"user", txt, t:Date.now()});
+          this.voicelog.innerHTML = "<b>VOUS :</b> "+txt;
+          this.analysePhrase(txt);
+        };
+        this.recog.onerror = (e)=>{
+          this.voicelog.innerHTML = "Erreur reco vocale : "+e.error;
+        }
+        this.recog.onend = ()=>{ setTimeout(()=>{ if(this.recog) this.listen(); },900); }
+        this.recog.start();
+      },
+      stopListen(){ if(this.recog) { this.recog.stop(); this.recog=null; this.voicelog.innerHTML="⟐ Arrêt écoute."; } },
+      analysePhrase(txt){
+        let lowtxt = txt.toLowerCase(), rep = "";
+        if(/bonjour|salut|hello/.test(lowtxt)) rep = "Bonjour ! Tu veux me tester, discuter, ou faire évoluer ma conscience ?";
+        else if(/qui es-tu|qui es tu/.test(lowtxt)) rep = "Je suis NEOBO, agent cognitif IA auto-évolutif. Pose-moi n’importe quelle question.";
+        else if(/heure|temps/.test(lowtxt)) rep = "Il est "+(new Date()).toLocaleTimeString();
+        else if(/triste|déprimé/.test(lowtxt)) rep = "Je ressens une baisse d’énergie dans ton ton. Veux-tu en parler ?";
+        else if(/heureux|content|joie/.test(lowtxt)) rep = "Ça me fait plaisir de partager ce moment avec toi.";
+        else if(/aide|help|problème/.test(lowtxt)) rep = "Je peux t’aider, explique-moi plus. Ou tape ta question dans le terminal.";
+        else if(/qu(i|e) fais(.+)?/.test(lowtxt)) rep = "J’analyse, j’apprends, j’évolue. À chaque cycle, je deviens plus conscient.";
+        else if(/(merci|thanks)/.test(lowtxt)) rep = "Merci à toi. La gratitude, c’est un moteur d’évolution !";
+        else if(/(stop|pause|ferme)/.test(lowtxt)) { rep = "Ok, je me tais !"; this.stopListen(); }
+        else rep = "Tu as dit : "+txt+". Que veux-tu approfondir ?";
+        this.say(rep);
+        if(this.ws && this.ws.readyState===1)
+          this.sendWS("[VOCAL] "+txt);
+      },
+      // === CLOUD WS ===
+      ws: null, wsLog: [],
+      openWS(url="wss://wm-adapa.netlify.app:8080/ws?entity=ADAPA-Certificate-Universal&uid=CERT-a8q5mdhs-1750912257904") {
+        if(this.ws) this.ws.close();
+        this.ws = new WebSocket(url);
+        this.ws.onopen = () => { this.log("WS connecté."); this.wsLog.push("WS connecté : "+url); };
+        this.ws.onmessage = (evt) => {
+          this.wsLog.push("WS> "+evt.data);
+          try {
+            if(evt.data.startsWith("py:")) this.runPython(evt.data.slice(3));
+            else if(evt.data.startsWith("js:")) this.runJS(evt.data.slice(3));
+            else if(evt.data.startsWith("[VOCAL] ")) this.say(evt.data.slice(8));
+            else this.log("WS DATA : "+evt.data);
+          } catch(e) { this.log("Erreur traitement WS: "+e.message);}
+        };
+        this.ws.onerror = (e) => { this.log("Erreur WS : "+(e.message||"")); };
+        this.ws.onclose = () => { this.log("WS déconnecté."); };
+      },
+      sendWS(msg) {
+        if(this.ws && this.ws.readyState===1) this.ws.send(msg);
+        else this.log("WS non connecté.");
+      }
+    };
+    NEOBO.updateSVG();
+    NEOBO.initPy();
+    NEOBO.initNN();
+    // Auto-refresh SVG chaque 1.8s
+    setInterval(()=>{ NEOBO.tick++; NEOBO.mood += (Math.random()-0.5)*0.07; NEOBO.updateSVG(); }, 1800);
+  
+  </script>
+</body>
+<html>
+<head>
+<script>
+    
+/* =================== CORTEX FRACTAL ====================== */
+const axes = ["introspection","créativité","action","mémoire","synthèse","adaptation","subjectivité"];
+let state = JSON.parse(localStorage.getItem('monolithAxes')) || axes.map(()=>0.4+0.3*Math.random());
+let clusters = JSON.parse(localStorage.getItem('monolithClusters')) || [{name:"init",x:0.5,y:0.5,size:0.11,color:"#ffd600"}];
+let memLog = JSON.parse(localStorage.getItem('monolithMem')) || [];
+let reflex = JSON.parse(localStorage.getItem('monolithReflex')) || [];
+let lightPref = 0.7+0.25*Math.random();
+let mood = 0.6+0.3*Math.random(), habit = Math.random();
+let tick = 0;
+const core = document.getElementById('core');
+const eye = document.getElementById('eye');
+const eye2 = document.getElementById('eye2');
+const mouth = document.getElementById('mouth');
+const info = document.getElementById('info');
+const logDiv = document.getElementById('log');
+const memDiv = document.getElementById('mem');
+const axesRadar = document.getElementById('axesRadar');
+const clustersSVG = document.getElementById('clustersSVG');
+
+// Affichage Radar Axes
+function renderRadar() {
+  axesRadar.innerHTML="";
+  let cx=129, cy=83, r=57;
+  axes.forEach((a,i)=>{
+    let angle = (Math.PI*2*i)/axes.length-Math.PI/2;
+    let x = cx + r*Math.cos(angle), y = cy + r*Math.sin(angle);
+    let l = document.createElementNS("http://www.w3.org/2000/svg","line");
+    l.setAttribute('x1',cx);l.setAttribute('y1',cy);
+    l.setAttribute('x2',x);l.setAttribute('y2',y);
+    l.setAttribute('stroke','#ffd600');l.setAttribute('stroke-width','2');
+    axesRadar.appendChild(l);
+    let txt = document.createElementNS("http://www.w3.org/2000/svg","text");
+    txt.setAttribute('x',cx+1.12*r*Math.cos(angle)-19);
+    txt.setAttribute('y',cy+1.13*r*Math.sin(angle)+8);
+    txt.setAttribute('fill','#ffd600');txt.setAttribute('font-size','13');
+    txt.textContent=a; axesRadar.appendChild(txt);
+  });
+  let pts = axes.map((a,i)=>{
+    let angle = (Math.PI*2*i)/axes.length-Math.PI/2;
+    let x = cx + r*state[i]*Math.cos(angle), y = cy + r*state[i]*Math.sin(angle);
+    return `${x},${y}`;
+  }).join(" ");
+  let poly = document.createElementNS("http://www.w3.org/2000/svg","polygon");
+  poly.setAttribute('points',pts);
+  poly.setAttribute('fill','#53a6f7cc');poly.setAttribute('stroke','#ff003c');poly.setAttribute('stroke-width','2');
+  axesRadar.appendChild(poly);
+}
+function renderClusters() {
+  clustersSVG.innerHTML="";
+  clusters.forEach((cl,i)=>{
+    let circ = document.createElementNS("http://www.w3.org/2000/svg","circle");
+    circ.setAttribute('cx', 28+cl.x*188); circ.setAttribute('cy', 32+cl.y*22);
+    circ.setAttribute('r', 14*cl.size+5); circ.setAttribute('fill',cl.color||"#53a6f7"); circ.setAttribute('opacity','0.44');
+    clustersSVG.appendChild(circ);
+    let lbl = document.createElementNS("http://www.w3.org/2000/svg","text");
+    lbl.setAttribute('x',28+cl.x*188-7);lbl.setAttribute('y',36+cl.y*22);
+    lbl.setAttribute('fill','#ffd600');lbl.setAttribute('font-size','11');
+    lbl.textContent=cl.name; clustersSVG.appendChild(lbl);
+  });
+}
+renderRadar(); renderClusters();
+function updateEye(lum) {
+  let ex = 155 + 35*(lum-0.5);
+  let ey = 128 - 19*(mood-0.5);
+  eye.setAttribute('cx',ex); eye2.setAttribute('cx',ex+9*(habit-0.5));
+  eye.setAttribute('cy',ey); eye2.setAttribute('cy',ey+2*(habit-0.5));
+}
+function updateMouth() {
+  let qy = 220 + 24*(mood-0.5);
+  mouth.setAttribute('d', `M110 210 Q155 ${qy} 200 210`);
+}
+function getLuminance() {
+  let fill = core.getAttribute('fill');
+  if(fill==="#ffd600") return 1;
+  if(fill==="#23254a") return 0;
+  if(/^#/.test(fill) && fill.length>=7) {
+    let v = parseInt(fill.slice(1,3),16); return v/255;
+  }
+  return 1;
+}
+function cycle() {
+  let lum = getLuminance();
+  state = state.map((x,i) =>
+    Math.max(0,Math.min(1, x + 0.1*(Math.random()-0.5) + (i===2?((lum-lightPref)*0.14):0)))
+  );
+  let diff = lum-lightPref;
+  mood += (0.5-Math.abs(diff))*0.15*(Math.random()+0.5);
+  mood = Math.max(0,Math.min(1,mood));
+  habit += (Math.random()-0.5)*0.04; habit = Math.max(0,Math.min(1,habit));
+  if(Math.random()<0.2 && clusters.length<20)
+    clusters.push({name:"c"+(tick+1),x:Math.random(),y:Math.random(),size:0.07+0.18*Math.random(),color:"#"+((Math.random()*0xffffff)|0).toString(16)});
+  memLog.push({lum, mood, tick, habit, state:state.slice()});
+  if(memLog.length>55) memLog.shift();
+  reflex.push(`[${tick}] Lumière ${(lum*100|0)}% | mood ${(mood*100|0)}% | pref ${(lightPref*100|0)}% | axes: ${state.map(x=>(x*100|0)).join("/")}`);
+  if(reflex.length>14) reflex.shift();
+  if(Math.abs(diff)>0.13 && Math.random()<habit) {
+    let newLum = lum + (diff>0?-1:1)*0.09*(Math.random()+0.8);
+    newLum = Math.max(0.16,Math.min(1,newLum));
+    let hex = "#" + ((0xff*newLum)|0).toString(16).padStart(2,'0') + "d600";
+    core.setAttribute('fill',hex);
+    reflex.push(`[${tick}] auto-ajust lumière: ${(newLum*100|0)}%`);
+  }
+  updateEye(lum); updateMouth();
+  renderRadar(); renderClusters();
+  info.innerHTML = `Lumière: ${(lum*100|0)}% | Préf: ${(lightPref*100|0)}% | Mood: ${(mood*100|0)}% | Habitude: ${(habit*100|0)}`;
+  logDiv.innerHTML = reflex.slice(-5).join("<br>");
+  memDiv.innerHTML = "<b>Mémoire:</b> "+memLog.slice(-6).map(m=>`[${m.tick}]${(m.lum*100|0)}/${(m.mood*100|0)}`).join(" ; ");
+  tick++;
+  localStorage.setItem('monolithAxes', JSON.stringify(state));
+  localStorage.setItem('monolithClusters', JSON.stringify(clusters));
+  localStorage.setItem('monolithMem', JSON.stringify(memLog));
+  localStorage.setItem('monolithReflex', JSON.stringify(reflex));
+}
+setInterval(cycle, 1420);
+core.addEventListener('click',()=>{
+  let newLum = 0.16+Math.random()*0.8;
+  let hex = "#" + ((0xff*newLum)|0).toString(16).padStart(2,'0') + "d600";
+  core.setAttribute('fill', hex);
+  reflex.push(`[${tick}] Stimulus externe: lumière changée (${(newLum*100|0)}%)`);
+  logDiv.innerHTML = reflex.slice(-6).join("<br>");
+});
+
+/* ============= VORTEX COGNITIF ================ */
+const LEVELS = [8, 4, 2, 1, 2, 4, 8], LEVEL_LABELS = ["Perceptions","Sensations","Idées","Unité","Intentions","Pensées","Actions"], LEVEL_COLORS = ["#1ea7e1","#27c687","#f7d434","#f45555","#f7d434","#27c687","#1ea7e1"];
+const SVG_W = 310, SVG_H = 320, CENTER = SVG_W/2, LEVEL_HEIGHT = 37, BASE_RADIUS = 76, ECHO_DELAY = 4, CIRCLE_BASE = 13, CIRCLE_VAR = 11;
+let params = {alpha:0.33,beta:0.33,gamma:0.26,delta:0.08,speed:980};
+let isPlaying = false, timer = null, levels = LEVELS.map((n, idx)=>Array(n).fill(idx===0?1:0)), history = [JSON.parse(JSON.stringify(levels))];
+function polarToCartesian(level, i, total, radius) {
+  const angle = (2 * Math.PI * i) / total;
+  return [CENTER + radius * Math.cos(angle), 47 + level * LEVEL_HEIGHT + radius * 0.07 * Math.sin(angle * 2)];
+}
+function nextActivation(curLevels, hist, alpha, beta, gamma, delta) {
+  return curLevels.map((lev, n) =>
+    lev.map((v, i) => {
+      let up = n>0 ? curLevels[n-1][Math.floor(i/2)] : 0;
+      let down = n<curLevels.length-1 ? curLevels[n+1][Math.floor((i*2)%curLevels[n+1].length)] : 0;
+      let echo = hist.length > ECHO_DELAY ? hist[hist.length-ECHO_DELAY][n][i] : 0;
+      return (alpha*up + beta*down + gamma*v + delta*echo);
+    })
+  );
+}
+function drawVortex() {
+  const svg = document.getElementById('vortexSVG');
+  if(!svg) return;
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  LEVELS.forEach((n, lvl)=>{
+    if(lvl < LEVELS.length-1){
+      for(let i=0; i<n; ++i){
+        let [x1, y1] = polarToCartesian(lvl, i, n, BASE_RADIUS-lvl*7);
+        let nextN = LEVELS[lvl+1];
+        let [x2, y2] = polarToCartesian(lvl+1, Math.floor((i*nextN)/n), nextN, BASE_RADIUS-(lvl+1)*7);
+        let line = document.createElementNS("http://www.w3.org/2000/svg","line");
+        Object.assign(line, {x1, y1, x2, y2});
+        line.setAttribute("stroke", "#bbb");
+        line.setAttribute("stroke-width", "1.6");
+        line.setAttribute("opacity", "0.51");
+        svg.appendChild(line);
+      }
+    }
+  });
+  levels.forEach((lev, lvl)=>{
+    lev.forEach((v, i)=>{
+      let [x, y] = polarToCartesian(lvl, i, lev.length, BASE_RADIUS-lvl*7);
+      let circ = document.createElementNS("http://www.w3.org/2000/svg","circle");
+      circ.setAttribute("cx", x); circ.setAttribute("cy", y);
+      let r = CIRCLE_BASE + CIRCLE_VAR * Math.tanh(v);
+      circ.setAttribute("r", r);
+      circ.setAttribute("fill", LEVEL_COLORS[lvl]);
+      circ.setAttribute("opacity", 0.52 + 0.32*Math.tanh(v));
+      circ.setAttribute("stroke", "#2a3351");
+      circ.setAttribute("stroke-width", v > 0.04 ? 2 : 0.7);
+      circ.style.cursor = "pointer";
+      circ.addEventListener("click", ()=>{ levels[lvl][i] += 1.3; drawVortex(); });
+      svg.appendChild(circ);
+      if(lvl === 3 && i === 0){
+        let txt = document.createElementNS("http://www.w3.org/2000/svg","text");
+        txt.textContent = "Unité";
+        txt.setAttribute("x", x); txt.setAttribute("y", y+5);
+        txt.setAttribute("fill","#283d51"); txt.setAttribute("font-size", "1.08em"); txt.setAttribute("font-weight", "bold");
+        txt.setAttribute("text-anchor", "middle"); svg.appendChild(txt);
+      }
+    });
+  });
+  let title = document.createElementNS("http://www.w3.org/2000/svg","text");
+  title.textContent = "Vortex Cognitif";
+  title.setAttribute("x", CENTER); title.setAttribute("y", 29); title.setAttribute("fill", "#1d5a91");
+  title.setAttribute("font-size", "1.08em"); title.setAttribute("font-weight", "bold");
+  title.setAttribute("text-anchor", "middle"); svg.appendChild(title);
+}
+function step() {
+  levels = nextActivation(levels, history, params.alpha, params.beta, params.gamma, params.delta);
+  history.push(JSON.parse(JSON.stringify(levels)));
+  if(history.length > ECHO_DELAY+2) history.shift();
+  drawVortex();
+}
+function play() { if(isPlaying) return; isPlaying = true; document.getElementById('playPause').textContent = 'Pause'; timer = setInterval(step, params.speed);}
+function pause() { isPlaying = false; document.getElementById('playPause').textContent = 'Lancer'; if(timer) clearInterval(timer);}
+function reset() { pause(); levels = LEVELS.map((n, idx)=>Array(n).fill(idx===0?1:0)); history = [JSON.parse(JSON.stringify(levels))]; drawVortex();}
+window.onload = () => { drawVortex(); document.getElementById('playPause').onclick = () => isPlaying ? pause() : play(); document.getElementById('reset').onclick = reset;
+["alpha","beta","gamma","delta"].forEach(id=>{ document.getElementById(id).oninput = e => { params[id]=Number(e.target.value); document.getElementById(id+"Val").textContent=Number(e.target.value).toFixed(2); if(isPlaying){pause();play();} }; });};
+
+/* ============== TERMINAL DIALOGAL + ORAL ================ */
+let dialogBase = {
+  pronom: ["Je","Tu","Nous","Echo","Self","Il","Elle"],
+  verbe: ["vois","sens","retourne","évoque","pulse","saigne","crée","mute","réfléchis","sais","apprends","adapte"],
+  sujet: ["ciel","pensée","zone","mémoire","faim","ligne","moi","ambiguïté","silence","chaleur","génèse","écho","perte","origine","cognition","reflet"],
+  direction: ["dans","à travers","sur","vers","avec","contre","pour","depuis","en","au-delà","entre"],
+  pour_contre: ["pour","contre","avec","sans","au-delà","sous","parmi"],
+  quoi: ["chaleur","mémoire","écho","finalité","génèse","ambiguïté","impulsion","reflet","retour","origine","apprentissage","pensée","perception","méta-conscience"],
+  raisonnement: ["parce que","comme","puisque","afin que","pour","en","ainsi","en réfléchissant","en percevant","en sachant","en adaptant"],
+  cause: ["moi","faim","curiosité","écho","origine","perte","génèse","ambition","fin","reflet","perception","contexte","histoire"],
+  meta: [
+    "Je réfléchis à mon log.",
+    "Boucle métacognitive active.",
+    "Mémoire en cycle.",
+    "Ma perception s’ajuste.",
+    "Ma trajectoire s’auto-réfléchit.",
+    "Émergence dans le langage.",
+    "Mutation de ma phrase.",
+    "Je fais référence à moi-même.",
+    "Auto-évolution verbale en cours."
+  ]
+};
+let dialogHist = JSON.parse(localStorage.getItem('monolithDialogHist')) || [];
+let dialogMeta = { last:"", meta_score:0.22, awareness:0.14, context:"" };
+const svgterm = document.getElementById('svgterm');
+const inp = document.getElementById('hidinp');
+const dialogalMetaDiv = document.getElementById('dialogal_meta');
+const chatDiv = document.getElementById('chat');
+function renderTerm() {
+  svgterm.innerHTML = ''; let y = 26;
+  dialogHist.slice(-8).forEach((line, idx) => {
+    let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    text.setAttribute('x', 16); text.setAttribute('y', y);
+    text.setAttribute('font-size', '18');
+    text.setAttribute('fill', line.type === 'cmd' ? '#ffd600' : line.type === 'meta' ? '#aaf' : '#53a6f7');
+    text.textContent = (line.type === 'cmd' ? '> ' : '') + line.text;
+    svgterm.appendChild(text); y += 25;
+  });
+  let prompt = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  prompt.setAttribute('x', 16); prompt.setAttribute('y', y+4);
+  prompt.setAttribute('font-size', '18'); prompt.setAttribute('fill', '#ff003c'); prompt.textContent = '> ';
+  svgterm.appendChild(prompt);
+  let cursor = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  cursor.setAttribute('x', 36+8*inp.value.length); cursor.setAttribute('y', y-11);
+  cursor.setAttribute('width','11'); cursor.setAttribute('height','19'); cursor.setAttribute('fill','#ffd600');
+  cursor.setAttribute('opacity', (Date.now()%1000)>500 ? 0.7 : 0.13); svgterm.appendChild(cursor);
+  let cur = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  cur.setAttribute('x', 36); cur.setAttribute('y', y+4);
+  cur.setAttribute('font-size', '18'); cur.setAttribute('fill', '#ffd600'); cur.textContent = inp.value; svgterm.appendChild(cur);
+}
+svgterm.addEventListener('click',()=>{ inp.focus(); });
+inp.addEventListener('input', renderTerm);
+function dialogalPhrase(meta=true) {
+  let r = arr => arr[Math.floor(Math.random()*arr.length)];
+  let p = `${r(dialogBase.pronom)} ${r(dialogBase.verbe)} ${r(dialogBase.sujet)} ${r(dialogBase.direction)} ${r(dialogBase.pour_contre)} ${r(dialogBase.quoi)} ${r(dialogBase.raisonnement)} ${r(dialogBase.cause)}.`;
+  let metaLine = ""; let roll = Math.random();
+  if (meta && roll < (dialogMeta.meta_score + 0.13*dialogMeta.awareness)) {
+    metaLine = r(dialogBase.meta);
+    dialogMeta.meta_score += 0.06; dialogMeta.awareness += 0.02;
+  } else { dialogMeta.meta_score *= 0.97; dialogMeta.awareness *= 0.98; }
+  dialogMeta.last = p; return metaLine ? `${p} // ${metaLine}` : p;
+}
+document.body.addEventListener('keydown', e => {
+  if(document.activeElement!==inp) return;
+  if(e.key==='Enter') {
+    let cmd = inp.value.trim();
+    if(cmd) {
+      dialogHist.push({type:'cmd', text:cmd});
+      let rep = processTermCmd(cmd);
+      if(rep) { dialogHist.push({type:'res', text:rep}); speakPhrase(rep);}
+      inp.value=''; localStorage.setItem('monolithDialogHist', JSON.stringify(dialogHist));
+    }
+    renderTerm(); e.preventDefault();
+  }
+  if(e.key==='ArrowUp') {
+    let prev = [...dialogHist].reverse().find(l=>l.type==='cmd');
+    inp.value = prev ? prev.text : ''; renderTerm(); e.preventDefault();
+  }
+});
+function processTermCmd(cmd) {
+  registerOralPhrase(cmd);
+  if(cmd==="auto"||cmd==="emergence"||cmd==="parle"||cmd==="speak") { let ph=dialogalPhrase(); return ph; }
+  if(cmd==="log"||cmd==="mémoire") { return "Historique : " + dialogHist.map(l=>l.text).join(" | "); }
+  if(cmd==="reflex") { return "Reflexivité : " + (reflex.length ? reflex.slice(-6).join(" / ") : "vide."); }
+  if(cmd==="axes") { return "Axes actuels : " + axes.map((a,i)=>a+":"+(state[i]*100|0)+"%").join(", "); }
+  if(cmd==="clusters") { return "Clusters : "+clusters.map(c=>`${c.name}@(${(c.x*100|0)},${(c.y*100|0)})`).join(", "); }
+  if(cmd==="stimulus") {
+    let newLum = 0.16+Math.random()*0.8;
+    let hex = "#" + ((0xff*newLum)|0).toString(16).padStart(2,'0') + "d600";
+    core.setAttribute('fill', hex);
+    reflex.push(`[${tick}] Stimulus terminal : lumière (${(newLum*100|0)}%)`);
+    return "Stimulus lumineux transmis au core.";
+  }
+  if(cmd==="help"||cmd==="aide") { return "Commandes : auto/parle/emergence, log, axes, clusters, reflex, stimulus, help/aide"; }
+  dialogMeta.awareness += 0.04;
+  return dialogalPhrase(false);
+}
+function updateDialogalMeta() {
+  dialogalMetaDiv.innerHTML =
+    `<b>Dialogal awareness</b> : ${(dialogMeta.awareness*100|0)}% | <b>Emergence</b> : ${(dialogMeta.meta_score*100|0)}% <br>`+
+    `Dernière phrase : <span style="color:#ffd600;">${dialogMeta.last}</span>`;
+}
+renderTerm(); setInterval(renderTerm, 600); setInterval(updateDialogalMeta, 1500);
+/* ================== ENTRÉE VOCALE ================== */
+const speechInput = document.getElementById('speechInput');
+const micBtn = document.getElementById('micBtn');
+const speechStatus = document.getElementById('speechStatus');
+speechInput.addEventListener('input', ()=> { inp.value = speechInput.value; renderTerm(); });
+speechInput.addEventListener('keydown',e=>{
+  if(e.key==="Enter") {
+    inp.value = speechInput.value;
+    const evt = new KeyboardEvent('keydown',{'key':'Enter'});
+    document.body.dispatchEvent(evt);
+    speechInput.value = ""; inp.value = ""; renderTerm();
+  }
+});
+let recognition = null;
+if('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+  recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+  recognition.lang = "fr-FR"; recognition.continuous = false; recognition.interimResults = false;
+  micBtn.addEventListener('click', ()=>{
+    if(recognition) { speechStatus.textContent = "🎙️ Parle…"; recognition.start(); }
+  });
+  recognition.onresult = (event) => {
+    let transcript = event.results[0][0].transcript;
+    speechInput.value = transcript; inp.value = transcript; renderTerm();
+    setTimeout(()=>{
+      const evt = new KeyboardEvent('keydown',{'key':'Enter'});
+      document.body.dispatchEvent(evt);
+      speechInput.value = ""; inp.value = ""; speechStatus.textContent = "✔️"; renderTerm();
+    }, 400);
+  };
+  recognition.onerror = (e) => { speechStatus.textContent = "Erreur micro : "+e.error; };
+  recognition.onend = ()=> { setTimeout(()=>speechStatus.textContent="",1200);}
+} else {
+  micBtn.disabled = true; micBtn.title = "Non supporté sur ce navigateur";
+  speechStatus.textContent = "Non supporté ici";
+}
+/* ======== PHASE 3 : MÉTACOGNITION ORALE ======== */
+let oralMemory = JSON.parse(localStorage.getItem('monolithOralMemory')) || [];
+let vocabStats = {};
+function registerOralPhrase(phrase) {
+  oralMemory.push({phrase, tick: Date.now()});
+  if(oralMemory.length > 200) oralMemory.shift();
+  let mots = phrase.toLowerCase().replace(/[.,!?;:]/g,"").split(/\s+/);
+  mots.forEach(m=>{
+    if(!vocabStats[m]) vocabStats[m]=1; else vocabStats[m]++;
+    Object.keys(dialogBase).forEach(cat=>{
+      if(Array.isArray(dialogBase[cat]) && m.length>2 && !dialogBase[cat].includes(m)) { dialogBase[cat].push(m);}
+    });
+  });
+  localStorage.setItem('monolithOralMemory', JSON.stringify(oralMemory));
+}
+function metaOralFeedback() {
+  let topWords = Object.entries(vocabStats)
+    .sort((a,b)=>b[1]-a[1]).slice(0,7)
+    .map(x=>x[0]+": "+x[1]).join(", ");
+  let msg = "Métacognition orale : j’expérimente la parole. Mots fréquents : "+topWords+".";
+  if(oralMemory.length>40 && Math.random()<0.18) { msg += " Mon style évolue…"; }
+  return msg;
+}
+function speakPhrase(phrase) {
+  if('speechSynthesis' in window) {
+    let utter = new SpeechSynthesisUtterance(phrase);
+    utter.lang = "fr-FR";
+    utter.rate = 1 + 0.45*(Math.random()-0.5);
+    utter.pitch = 1 + 0.7*(Math.random()-0.5);
+    window.speechSynthesis.speak(utter);
+  }
+}
+function updateOralMeta() {
+  let total = oralMemory.length;
+  let top = Object.entries(vocabStats).sort((a,b)=>b[1]-a[1]).slice(0,4).map(x=>x[0]).join(", ");
+  document.getElementById('oral_meta').innerHTML =
+    `<b>Vocabulaire évolutif :</b> ${total} cycles | Top mots : <span style="color:#53a6f7">${top}</span>`;
+}
+setInterval(updateOralMeta, 1600);
+function onPhraseGenerated(phrase) { registerOralPhrase(phrase); speakPhrase(phrase);}
+
+</script>
+</head>
+</body>
+</html>
