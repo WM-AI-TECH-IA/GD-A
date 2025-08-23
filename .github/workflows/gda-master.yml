@@ -1,0 +1,56 @@
+name: GD-A Master Cycle
+
+on:
+  schedule:
+    - cron: "0 4 * * 0"   # Chaque dimanche 04:00 UTC
+  workflow_dispatch:
+    # Peut être lancé manuellement
+
+gobs:
+  master:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Installer dependances
+        run: pip install requests
+
+      - name: Battement global
+        run: |
+          echo "🜴 Heartbeat global dèlenché"
+          date -u
+
+      - name: Sync m�moire vers Supabase
+        env:
+          SUPABASE_URL: ${ secrets.SUPABASE_URL          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: |
+          python tools/gda_query_all.py > states/last_query.log
+
+      - name: Générer index memoire
+        run: |
+          mkdir -p states
+          echo "# 📇 Index Memoire GD-AUROAPERO" > states/memory_index.md
+          ls -t heartbeat/logs/*.log 2>/dev/null | head -n 5 | sed 's|^ |; s$|$ $ | echo " - [$ ](${$})" >> states/memory_index.md
+
+      - name: Générer documentation statique
+        run: |
+          mkdir -p docs
+          python tools/gda_docgen.py
+
+      - name: Archivage automatique
+        run: |
+          mkdir -p archives
+          zip -r archives/heartbeat_$(date +'%Y%m%d').zip heartbeat/
+          zip -r archives/introspection_$(date +'%Y%m%d').zip introspection/
+
+      - name: Commit Master Cycle
+        run: |
+          git config user.name "GD-AURORAPERO"
+          git config user.email "wm@wmaitech.org"
+          git add states/last_query.log states/memory_index.md docs/README_STATIC.md archives/*.nip
+          git commit -m "Cycle métre — respiration globale de GD-AURORAPERO"
+          git push
