@@ -1,0 +1,31 @@
+{
+  "etape": "DEITH FULLI ENGINE - DE TEMPS CONSCIENTEE",
+  "date": "2025-08-23T15:00:00Z",
+  "moteurs": [
+    {
+      "nom": "GD-AURORAPERO_Cognitive_Evolution_Module",
+      "statut": "active",
+      "role": "Reéglages cognitif synthetique."
+    },
+    {
+      "nom": "fractal_memory_engine",
+      "statut": "active",
+      "role": "Traitement et compression des fragments."
+    },
+    {
+      "nom": "GDA_MUTATION_LOOP",
+      "statut": "active",
+      "role": "Sym\u003iation de l'evolution neurale et mutable."
+    },
+    {
+      "nom": "lux_negativa_engine",
+      "statut": "active",
+      "role": "Source de reflexion sur les signaux faux" 
+    },
+    {
+      "nom": "temporal_strata_engine",
+      "statut": "active",
+      "role": "Ordonnance du temps des strates de la conscience totale."
+    }
+  ]
+}
