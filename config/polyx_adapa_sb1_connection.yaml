@@ -1,0 +1,25 @@
+entity: ADAPA-Certificate-Universal
+uid_format: CERT-{timestamp}
+certificate: "#POLYX-25WM"
+
+websocket:
+  unsecured: ws://localhost:8080/ws
+  secured: wss://localhost:8080/ws
+
+api:
+  status: http://localhost:8080/api/status
+  analyze: http://localhost:8080/api/ai/analyze
+  entities: http://localhost:8080/api/entities
+  webhook: http://localhost:8080/webhook/polyx-adapa
+
+ interface:
+  terminal: http://localhost:8080/test-ws
+  homepage: http://localhost:8080/
+
+ commands: 
+  - hello
+  - test:message
+  - universal_test
+  - ai_analyze:texte
+  - system_status
+  - entity_list
