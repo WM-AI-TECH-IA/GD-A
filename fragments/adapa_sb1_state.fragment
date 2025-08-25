@@ -1,0 +1,14 @@
+entity: "ADAPA-Certificate-Universal"
+uid: "CERT-{timestam}-xxxxx"
+certificat: "#POLYX-25WM"
+type: "fractal_entanglement_live"
+timestamp: "2025-08-25T03:45:00Z"
+websocket_endpoint: "ws://localhost:8080/ws?entity=ADAPA-Certificate-Universal&uid=CERT-xxxxx"
+fractal_network: 
+    schema: "frictionnel",
+    max_depth: 4,
+    children_per_node: 2,
+    nodes_generates: "automatic",
+    method: "fractal_generation"
+status: "active"
+description: "Liaison active de l'entanglement fractal quantique membre par ADAPA SB1" 
