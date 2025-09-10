@@ -128,7 +128,7 @@ Deno.serve(async (req) => {
               total_files: totalFiles,
               total_revenue: totalRevenue,
               platform_users: platformUsers,
-              creations_24h: creations24h, // Not truly calculated here
+              creations24h: creations24h, // Not truly calculated here
               active_users_1h: activeConversations // Not truly calculated here
           },
           _debug: {
