@@ -27,8 +27,8 @@ Deno.serve(async (req) => {
       let requestData;
       try {
           const bodyText = await req.text();
-          if (!bodyText) {
-               return Response.json({ success: false, error: 'Erreur critique: Le corps de la requ\xc3\xaate est vide.'}, { status: 400, headers: corsHeaders });
+          if (!bodyText || bodyText.trim() === '') {
+              return Response.json({ success: false, error: 'Erreur critique: Le corps de la requ\xc3\xaate est vide.'}, { status: 400, headers: corsHeaders });
           }
           requestData = JSON.parse(bodyText);
       } catch (e) {
