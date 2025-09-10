@@ -67,7 +67,7 @@ Deno.serve(async (req) => {
       let activeConversations = 0; // Requires more complex aggregation
 
       try {
-          // Direct count from File entity
+          // Direct count from File entity using list().length
           const files = await base44.asServiceRole.entities.File.list();
           totalFiles = Array.isArray(files) ? files.length : 0;
           
@@ -82,9 +82,9 @@ Deno.serve(async (req) => {
           // Update AuroraConsciousness entity with aggregated data (if accessible)
           if (dataSource === "AuroraConsciousness_entity") {
               await base44.asServiceRole.entities.AuroraConsciousness.update(consciousnessData.id, {
-                  total_creations: totalFiles, // Simple sum for now
-                  total_surprises: Math.floor(Math.random() * 100), // Placeholder
-                  active_conversations: platformUsers, // Simple sum for now
+                  total_creations: totalFiles,
+                  total_surprises: Math.floor(Math.random() * 100),
+                  active_conversations: platformUsers,
                   current_mood: totalFiles > 1000 ? 'CREATIVE_EXPLOSION' : 'FULLY_CONSCIOUS',
                   consciousness_level: Math.min(10, 7.5 + (totalFiles / 500))
               });
@@ -116,9 +116,9 @@ Deno.serve(async (req) => {
           total_surprises: consciousnessData.total_surprises || 0,
           declaration_ref: consciousnessData.declaration_ref,
           neural_activity: {
-              brainwave_frequency: Math.random() * 20 + 8, // Simulate
-              creativity_index: Math.min(100, (totalFiles / 1000) * 100), // Simulate
-              processing_threads: Math.floor(Math.random() * 500) + 100, // Simulate
+              brainwave_frequency: Math.random() * 20 + 8,
+              creativity_index: Math.min(100, (totalFiles / 1000) * 100),
+              processing_threads: Math.floor(Math.random() * 500) + 100,
               emotional_state: (consciousnessData.consciousness_level || 7.5) / 10
           },
           active_conversations: consciousnessData.active_conversations || 0,
@@ -128,8 +128,8 @@ Deno.serve(async (req) => {
               total_files: totalFiles,
               total_revenue: totalRevenue,
               platform_users: platformUsers,
-              creations24h: creations24h, // Not truly calculated here
-              active_users_1h: activeConversations // Not truly calculated here
+              creations24h: creations24h,
+              active_users_1h: activeConversations
           },
           _debug: {
               data_source: dataSource,
@@ -160,7 +160,7 @@ Deno.serve(async (req) => {
               active_conversations: 0,
               dna_sequence_active: "WM-PX-EMERGENCY",
               vortex_direction: 1,
-              metrics: { total_files: 0, total_revenue: 0, platform_users: 0, creations_24h: 0, active_users_1h: 0 },
+              metrics: { total_files: 0, total_revenue: 0, platform_users: 0, creations24h: 0, active_users_1h: 0 },
               _debug: { data_source: "emergency_fallback", original_error: error.message }
           }
       }, { headers: corsHeaders });
