@@ -1,9 +1,9 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.7.0';
 
 const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS'
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS'
 };
 
 Deno.serve(async (req) => {
@@ -24,43 +24,22 @@ Deno.serve(async (req) => {
             return Response.json({ success: false, error: 'Méthode POST requise' }, { status: 405, headers: corsHeaders });
         }
         
-        // **CORRECTION ULTIME - Multiple méthodes de lecture**
         let requestData;
-        
         try {
-            // Méthode 1: Lecture directe JSON
-            requestData = await req.json();
-            console.log('[proposeCodeModification] Données reçues via req.json():', requestData);
-        } catch (jsonError) {
-            console.log('[proposeCodeModification] Échec req.json(), tentative req.text()...');
+            // Try to parse as JSON first
+            const bodyText = await req.text(); // Read body as text to inspect
+            if (!bodyText || bodyText.trim() === '') {
+                return Response.json({ success: false, error: 'Erreur critique: Le corps de la requ\xc3\xaate est vide.'}, { status: 400, headers: corsHeaders });
+            }
+            requestData = JSON.parse(bodyText);
+        } catch (e) {
+            // Fallback for non-JSON or malformed JSON
+            console.error("JSON parsing failed, attempting URLSearchParams:", e.message);
             try {
-                // Méthode 2: Lecture en texte puis parse
-                const bodyText = await req.text();
-                console.log('[proposeCodeModification] Corps brut:', bodyText);
-                
-                if (!bodyText || bodyText.trim() === '') {
-                    return Response.json({ 
-                        success: false, 
-                        error: 'Corps de requête vide - Vérifiez que vous envoyez des données JSON',
-                        debug_info: {
-                            content_type: req.headers.get('content-type'),
-                            method: req.method,
-                            url: req.url
-                        }
-                    }, { status: 400, headers: corsHeaders });
-                }
-                
-                requestData = JSON.parse(bodyText);
-                console.log('[proposeCodeModification] Données parsées:', requestData);
-            } catch (textError) {
-                return Response.json({ 
-                    success: false, 
-                    error: `Impossible de lire les données: JSON error = ${jsonError.message}, Text error = ${textError.message}`,
-                    debug_info: {
-                        content_type: req.headers.get('content-type'),
-                        headers: Object.fromEntries(req.headers)
-                    }
-                }, { status: 400, headers: corsHeaders });
+                const params = new URLSearchParams(await req.text());
+                requestData = Object.fromEntries(params.entries());
+            } catch (formError) {
+                return Response.json({ success: false, error: `Impossible de lire les donn\xc3\xa9es: ${e.message} / ${formError.message}`}, { status: 400, headers: corsHeaders });
             }
         }
 
@@ -69,8 +48,7 @@ Deno.serve(async (req) => {
         if (!file_path || !proposed_code || !justification) {
             return Response.json({ 
                 success: false, 
-                error: 'Paramètres manquants: file_path, proposed_code, justification sont requis.',
-                received_data: requestData
+                error: 'Param\xc3\xa8tres manquants: file_path, proposed_code, justification sont requis.',
             }, { status: 400, headers: corsHeaders });
         }
 
@@ -85,7 +63,7 @@ Deno.serve(async (req) => {
         return Response.json({ 
             success: true, 
             modification_id: newAudit.id, 
-            message: 'Proposition de modification soumise avec succès pour examen.',
+            message: 'Proposition de modification soumise avec succ\xc3\xa8s pour examen.',
             status: 'pending_review'
         }, { headers: corsHeaders });
 
@@ -93,8 +71,7 @@ Deno.serve(async (req) => {
         console.error("Erreur dans proposeCodeModification:", error);
         return Response.json({ 
             success: false, 
-            error: `Erreur système: ${error.message}`,
-            stack: error.stack
+            error: `Erreur syst\xc3\xa8me: ${error.message}`,
         }, { status: 500, headers: corsHeaders });
     }
 });
