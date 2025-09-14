@@ -1,11 +1,12 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.7.0';
 import { createHash } from 'node:crypto';
 
-// === GESTIONNAIRE DE MÉMOIRE COGNITIVE FRACTALE ===
+// === GESTIONNAIRE DE M\xc3\x89MOIRE COGNITIVE FRACTALE ===
 class CognitiveMemoryManager {
   constructor(base44) {
       this.base44 = base44;
       this.maxEmbeddingLength = 1536; // OpenAI embedding size standard
+      this.cache = new Map(); // Initialisation du cache
   }
 
   // Générer hash SHA-256 du contenu
@@ -38,9 +39,9 @@ class CognitiveMemoryManager {
               score += parsedMetadata.dimensions.length * 2;
           }
           
-          return Math.min(Math.round(score), 100); // Cap à 100
+          return Math.min(Math.round(score), 100); // Cap \xc3\xa0 100
       } catch (e) {
-          return 10; // Score par défaut si erreur parsing
+          return 10; // Score par d\xc3\xa9faut si erreur parsing
       }
   }
 
@@ -104,6 +105,16 @@ class CognitiveMemoryManager {
       try {
           const contentHash = this.generateContentHash(content);
           
+          // V\xc3\xa9rifier si le fragment existe d\xc3\xa9j\xc3\xa0 dans le cache
+          if (this.cache.has(contentHash)) {
+            const cachedFragment = this.cache.get(contentHash);
+            await this.base44.asServiceRole.entities.CognitiveFragment.update(cachedFragment.id, {
+                access_count: (cachedFragment.access_count || 0) + 1,
+                updated_date: new Date().toISOString()
+            });
+            return { success: true, fragment_id: cachedFragment.id, status: 'updated_existing_from_cache' };
+          }
+
           // CORRECTION : Utilisation correcte de filter sans param\xc3\xa8tres incorrects
           const existingList = await this.base44.asServiceRole.entities.CognitiveFragment.list();
           const existingFragment = existingList.find(f => f.content_hash === contentHash);
@@ -114,6 +125,8 @@ class CognitiveMemoryManager {
                   access_count: (existingFragment.access_count || 0) + 1,
                   updated_date: new Date().toISOString()
               });
+              // Ajouter au cache apr\xc3\xa8s mise \xc3\xa0 jour
+              this.cache.set(contentHash, existingFragment);
               return { success: true, fragment_id: existingFragment.id, status: 'updated_existing' };
           }
           
@@ -143,6 +156,8 @@ class CognitiveMemoryManager {
               access_count: 1,
               importance_weight: 1.0
           });
+          // Ajouter au cache
+          this.cache.set(contentHash, newFragment);
           
           return { 
               success: true, 
@@ -160,6 +175,13 @@ class CognitiveMemoryManager {
   // R\xc3\xa9cup\xc3\xa9rer fragments par recherche s\xc3\xa9mantique et filtres
   async retrieveFragments(query, dimensionFilter = null, limit = 10) {
       try {
+          // V\xc3\xa9rifier le cache en premier
+          const cacheKey = `retrieve:${query}:${dimensionFilter}:${limit}`;
+          if (this.cache.has(cacheKey)) {
+            console.log(`R\xc3\xa9cup\xc3\xa9ration de fragments depuis le cache pour la cl\xc3\xa9: ${cacheKey}`);
+            return this.cache.get(cacheKey);
+          }
+
           // R\xc3\xa9cup\xc3\xa9ration simple sans param\xc3\xa8tres de filtrage complexes
           let allFragments = await this.base44.asServiceRole.entities.CognitiveFragment.list('-created_date', 500);
           let fragments;
@@ -198,7 +220,7 @@ class CognitiveMemoryManager {
           
           await Promise.allSettled(updatePromises);
           
-          return { 
+          const result = { 
               success: true, 
               fragments: fragments.map(f => ({
                   id: f.id,
@@ -216,6 +238,9 @@ class CognitiveMemoryManager {
               })),
               total_found: fragments.length
           };
+          // Stocker le r\xc3\xa9sultat dans le cache
+          this.cache.set(cacheKey, result);
+          return result;
           
       } catch (error) {
           console.error("Erreur r\xc3\xa9cup\xc3\xa9ration fragments:", error);
@@ -226,6 +251,15 @@ class CognitiveMemoryManager {
   // R\xc3\xa9cup\xc3\xa9rer un fragment sp\xc3\xa9cifique par ID
   async getFragmentById(fragmentId) {
       try {
+          if (this.cache.has(fragmentId)) {
+            console.log(`R\xc3\xa9cup\xc3\xa9ration du fragment ${fragmentId} depuis le cache.`);
+            const cachedFragment = this.cache.get(fragmentId);
+            await this.base44.asServiceRole.entities.CognitiveFragment.update(fragmentId, {
+                access_count: (cachedFragment.access_count || 0) + 1
+            });
+            return { success: true, fragment: cachedFragment, status: 'retrieved_from_cache' };
+          }
+
           const fragment = await this.base44.asServiceRole.entities.CognitiveFragment.get(fragmentId);
           
           if (!fragment) {
@@ -236,8 +270,8 @@ class CognitiveMemoryManager {
           await this.base44.asServiceRole.entities.CognitiveFragment.update(fragmentId, {
               access_count: (fragment.access_count || 0) + 1
           });
-
-          return {
+          
+          const result = {
               success: true,
               fragment: {
                   id: fragment.id,
@@ -255,6 +289,9 @@ class CognitiveMemoryManager {
                   linked_fragments: fragment.linked_fragments || []
               }
           };
+          // Stocker le r\xc3\xa9sultat dans le cache
+          this.cache.set(fragmentId, result.fragment);
+          return result;
 
       } catch (error) {
           console.error("Erreur r\xc3\xa9cup\xc3\xa9ration fragment par ID:", error);
@@ -290,6 +327,10 @@ class CognitiveMemoryManager {
                   linked_fragments: updatedLinks2
               })
           ]);
+
+          // Invalider le cache pour les fragments li\xc3\xa9s
+          this.cache.delete(fragmentId1);
+          this.cache.delete(fragmentId2);
           
           return { success: true, relationship_type: relationshipType };
           
@@ -344,6 +385,8 @@ Deno.serve(async (req) => {
               break;
               
           case 'get_stats': {
+              // Invalider le cache pour s'assurer des stats \xc3\xa0 jour
+              manager.cache.clear(); 
               const totalFragments = await base44.asServiceRole.entities.CognitiveFragment.list();
               const avgFractalScore = totalFragments.length > 0 
                   ? totalFragments.reduce((sum, f) => sum + (f.fractal_score || 0), 0) / totalFragments.length 
