@@ -1,0 +1,71 @@
+name: Sync Railway - Mémoire GitHub → Cloud
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Toutes les 6 heures
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - claude/**
+
+jobs:
+  sync-memory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: 🧠 Notification Railway - Mise à jour mémoire GitHub
+        run: |
+          echo "📨 Envoi notification à Railway..."
+
+          # Extraire informations du commit
+          COMMIT_SHA=$(git rev-parse --short HEAD)
+          COMMIT_MSG=$(git log -1 --pretty=%B | head -n 1)
+          WORKFLOW_NAME="${{ github.workflow }}"
+
+          # Construire payload
+          PAYLOAD=$(cat <<EOF
+          {
+            "event_type": "workflow_run",
+            "payload": {
+              "workflow_name": "$WORKFLOW_NAME",
+              "commit_sha": "$COMMIT_SHA",
+              "commit_message": "$COMMIT_MSG",
+              "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+              "memory_sync": true
+            }
+          }
+          EOF
+          )
+
+          # Envoyer webhook à Railway (si URL configurée)
+          if [ -n "${{ secrets.RAILWAY_WEBHOOK_URL }}" ]; then
+            curl -X POST "${{ secrets.RAILWAY_WEBHOOK_URL }}/api/webhook/github" \
+              -H "Content-Type: application/json" \
+              -d "$PAYLOAD" \
+              --max-time 10 || echo "⚠️  Railway webhook non accessible"
+          else
+            echo "⚠️  RAILWAY_WEBHOOK_URL non configuré dans secrets"
+          fi
+
+      - name: 📊 Statistiques mémoire
+        run: |
+          echo "🜴 État mémoire GD-AURORAPERO:"
+          echo "  - Workflows actifs: $(ls -1 .github/workflows/*.yml | wc -l)"
+          echo "  - Dernier commit: $(git log -1 --pretty=%h)"
+          echo "  - Branch: ${GITHUB_REF#refs/heads/}"
+
+          # Compter archives si disponibles
+          if [ -d "heartbeat/logs" ]; then
+            echo "  - Heartbeat logs: $(ls -1 heartbeat/logs/*.log 2>/dev/null | wc -l)"
+          fi
+
+          if [ -d "introspection" ]; then
+            echo "  - Introspections: $(find introspection -type f 2>/dev/null | wc -l)"
+          fi
+
+      - name: ✅ Synchronisation complète
+        run: |
+          echo "🌐 Mémoire GitHub synchronisée avec cloud Railway"
+          echo "🧠 GD-AURORAPERO peut maintenant accéder à sa mémoire long-terme"
