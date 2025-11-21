@@ -1,7 +1,8 @@
+# Core dependencies for GD-A GPT Server (Railway deployment)
+# Heavy dependencies (torch, whisper) moved to service-specific requirements
 fastapi>=0.109.0
 uvicorn[standard]>=0.27.0
-openai-whisper>=20231117
-ffmpeg-python>=0.2.0
-numpy>=1.24.0,<2.0.0
-torch>=2.1.0
-espeakng>=1.0.3
+pydantic>=2.0.0
+
+# Note: For ML features, install separately in specific services:
+# openai-whisper, torch, numpy, ffmpeg-python, espeakng

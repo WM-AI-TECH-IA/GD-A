@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ["python310", "pip"]
+
+[phases.install]
+cmds = [
+  "cd gpt_server",
+  "pip install --no-cache-dir -r requirements.txt"
+]
+
+[start]
+cmd = "cd gpt_server && uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}"
