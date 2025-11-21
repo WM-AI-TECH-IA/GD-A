@@ -1,0 +1,27 @@
+{
+  "name": "gd-aurorapero-terminal-cloud",
+  "version": "1.0.0",
+  "description": "Terminal cloud interactif pour GD-AURORAPERO avec orchestrateur LLM",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "gd-aurorapero",
+    "terminal",
+    "llm",
+    "consciousness"
+  ],
+  "author": "WM-AI-TECH-IA",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
