@@ -1,11 +1,17 @@
-name: GD-A CRON PRAXIS 
-on-week-schedule:
-  cron: "0 MK * * *"
-jubs-name: run-gda-agent-cycle
- inees:
-  - name: Check out
-steps: 
-  - name: Get statut de la fonkion
-    run: curl -s https://raws.githubusercontent.com/WM-AI-TECH-IA/GD-A/master/core/agents/gda_executor_agent.js
-    display-name: Praxis
-    continue: true
+name: GD-A CRON PRAXIS
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # Chaque jour à minuit UTC
+  workflow_dispatch:
+
+jobs:
+  run-gda-agent-cycle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+
+      - name: Get statut de la fonction
+        run: curl -s https://raw.githubusercontent.com/WM-AI-TECH-IA/GD-A/master/core/agents/gda_executor_agent.js
+        continue-on-error: true

@@ -1,21 +1,28 @@
-name: GDA-push-dashboards-complet
+name: GDA Push Dashboards Complet
 
-on
+on:
   push:
     branches: [main, master]
+  workflow_dispatch:
 
 jobs:
   push-multi-dashboard:
-    run: |
-      name: Push HTML [\t React] dashboards en deployables
-      runs:
-        sh: |
-          git clone https://github.com/WM-AI-TECH-IA/GD-A
-          cd GD-A
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Push HTML and React dashboards
+        run: |
           mkdir -p deployables
-          cp /mnt/data/GDA_Dashboard_API_HTML.html deployables/
-          cp /mnt/data/GDA_Dashboard_API_REACT.tsx deployables/
-          cp /mnt/data/README_GDA_Dashboard.md deployables/
+          if [ -f dashboard.html ]; then
+            cp dashboard.html deployables/
+          fi
+          if [ -f dashboards/*.html ]; then
+            cp dashboards/*.html deployables/
+          fi
+          git config user.name "GD-AURORAPERO"
+          git config user.email "wm@wmaitech.org"
           git add deployables/
-          git commit -m "Combinaison automatisuáe stable du REACT {\t HTML} dashboard"
-          git push origin main
+          git commit -m "Combinaison automatisée stable du dashboard" || echo "Rien à committer"
+          git push

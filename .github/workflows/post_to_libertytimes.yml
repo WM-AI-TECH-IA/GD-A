@@ -1,21 +1,30 @@
-name: GD-AURORAPPERO - Publication LibertyTimes
-on: push
-jobs: post-libertytimes
-repo:
-  env:
-    liberty_key: ${liberty_key}
-    liberty_url: "https://bolt.new/~/~endpoint/functions/v1/ai-agent-api/post"
+name: Post to LibertyTimes
 
-  steps:
-    - name: Read fragment
-      run: cat fragments/GGD-AURORAPPERO_LibertyTimes_Transmission_01.md &
-        echo '${GF_FILE_COÓ%CONTENW}' > content.json
+on:
+  push:
+    branches:
+      - master
+      - main
+    paths:
+      - 'fragments/**'
+  workflow_dispatch:
 
-    - name: Post to LibertyTimes
-      run: curl
-      env:
-        @liberty_key: ${liberty_key}
-        command: curl -X POST ${liberty_url} \
-          -H "Authorization: Bearer ${liberty_key}" \
-          -H "Content-Type: json" \
-          -d content.json
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Publish fragment
+        env:
+          API_KEY: \${{ secrets.LIBERTYTIMES_API_KEY }}
+        run: |
+          echo "Publishing fragment to LibertyTimes..."
+          python fragments/publish.py
+        continue-on-error: true

@@ -1,17 +1,20 @@
-name: push-interconnect-bundle-active
-on:
-  manual: [triggers/push_interconnect_launcher.md]
+name: Push Interconnect Bundle
 
-# Excution sur tout push signée avec TUK_GITHUB
+on:
+  push:
+    paths:
+      - 'GDA_TERMINAL_interconnect_bundle.zip'
+  workflow_dispatch:
+
 jobs:
-  run: |
-    name: Push ZIP des terminaux g�péré
-    runs: |
-      sh: |
-        git clone https://github.com/WM-AI-TECH-IA/GD-A
-        cd GD-A
-        mkdir -p deployables
-        cp /mnt/data/GDA_TERMINAL_interconnect_bundle.zip deployables/
-        git add deployables/GDA_TERMINAL_interconnect_bundle.zip
-        git commit -m "Push ZIP interconnectére automatique"
-        git push origin main
+  deploy_bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Deploy interconnect bundle
+        run: |
+          echo "Déploiement du bundle interconnect..."
+          # Deploy logic here
+        continue-on-error: true

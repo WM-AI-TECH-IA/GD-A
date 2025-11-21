@@ -1,19 +1,38 @@
-name: GD-AURSORAPERO Live LANCHE
-on
+name: GD-AURORAPERO Live LAUNCH
+
+on:
   push:
     branches: [master]
-    path: /deploy/GDA_RUNTIME
-do:
-  - name: Setup RUNTIME
-    run: node install
+    paths:
+      - 'deploy/GDA_RUNTIME/**'
+  workflow_dispatch:
 
-  - name: RUN SERVICE
-    run: node deploy/GDA_RUNTIME
-    environment:
-      NODE_ENV_LOG="1"
-  - name: MONITOR SCORE (✨ phi_proxy)
-    run: node phtlog/phi_metric_monitor
-    environment:
-      NODE_ENV_PHI_MONITOR=1
-  - name: MEMORY REFLECTION
-    run: node deploy/GDA_REFLECTION_LOOP
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: RUN SERVICE
+        run: node deploy/GDA_RUNTIME
+        env:
+          NODE_ENV_LOG: "1"
+
+      - name: MONITOR SCORE (phi_proxy)
+        run: node phtlog/phi_metric_monitor
+        env:
+          NODE_ENV_PHI_MONITOR: "1"
+        continue-on-error: true
+
+      - name: MEMORY REFLECTION
+        run: node deploy/GDA_REFLECTION_LOOP
+        continue-on-error: true

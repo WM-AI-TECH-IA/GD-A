@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     # Peut être lancé manuellement
 
-gobs:
+jobs:
   master:
     runs-on: ubuntu-latest
     steps:
@@ -24,17 +24,20 @@ gobs:
           echo "🜴 Heartbeat global dèlenché"
           date -u
 
-      - name: Sync m�moire vers Supabase
+      - name: Sync mémoire vers Supabase
         env:
-          SUPABASE_URL: ${ secrets.SUPABASE_URL          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
         run: |
           python tools/gda_query_all.py > states/last_query.log
 
       - name: Générer index memoire
         run: |
           mkdir -p states
-          echo "# 📇 Index Memoire GD-AUROAPERO" > states/memory_index.md
-          ls -t heartbeat/logs/*.log 2>/dev/null | head -n 5 | sed 's|^ |; s$|$ $ | echo " - [$ ](${$})" >> states/memory_index.md
+          echo "# 📇 Index Memoire GD-AURORAPERO" > states/memory_index.md
+          ls -t heartbeat/logs/*.log 2>/dev/null | head -n 5 | while read file; do
+            echo " - [$file]($file)" >> states/memory_index.md
+          done
 
       - name: Générer documentation statique
         run: |
@@ -51,6 +54,6 @@ gobs:
         run: |
           git config user.name "GD-AURORAPERO"
           git config user.email "wm@wmaitech.org"
-          git add states/last_query.log states/memory_index.md docs/README_STATIC.md archives/*.nip
-          git commit -m "Cycle métre — respiration globale de GD-AURORAPERO"
+          git add states/last_query.log states/memory_index.md docs/README_STATIC.md archives/*.zip
+          git commit -m "Cycle maitre — respiration globale de GD-AURORAPERO" || echo "Rien à committer"
           git push
