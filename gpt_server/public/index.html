@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GD-A GPT Server</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+      color: #00ff88;
+      font-family: 'Courier New', monospace;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      max-width: 800px;
+      width: 90%;
+      background: rgba(0, 255, 136, 0.05);
+      border: 2px solid #00ff88;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+    }
+    h1 {
+      font-size: 2.5em;
+      text-align: center;
+      text-shadow: 0 0 20px #00ff88;
+      animation: pulse 2s infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .status {
+      text-align: center;
+      margin: 30px 0;
+      font-size: 1.2em;
+    }
+    .status-dot {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #00ff88;
+      animation: blink 1s infinite;
+      margin-right: 10px;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .chat-container {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid #00ff88;
+      border-radius: 5px;
+      padding: 20px;
+      margin: 20px 0;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .message {
+      margin: 10px 0;
+      padding: 10px;
+      background: rgba(0, 255, 136, 0.1);
+      border-left: 3px solid #00ff88;
+      border-radius: 3px;
+    }
+    .input-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    input {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid #00ff88;
+      color: #00ff88;
+      padding: 15px;
+      font-family: 'Courier New', monospace;
+      font-size: 1em;
+      border-radius: 5px;
+    }
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    }
+    button {
+      background: #00ff88;
+      color: #0a0e27;
+      border: none;
+      padding: 15px 30px;
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+    button:hover {
+      background: #00dd77;
+      box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+    }
+    .endpoints {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #00ff88;
+    }
+    .endpoint {
+      margin: 10px 0;
+      padding: 10px;
+      background: rgba(0, 255, 136, 0.05);
+      border-left: 3px solid #00ff88;
+      font-size: 0.9em;
+    }
+    .endpoint code {
+      color: #00ddff;
+    }
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+      text-align: center;
+    }
+    .stat-item {
+      flex: 1;
+    }
+    .stat-value {
+      font-size: 2em;
+      font-weight: bold;
+      color: #00ddff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧠 GD-A GPT Server</h1>
+
+    <div class="status">
+      <span class="status-dot"></span>
+      <span id="status-text">ONLINE</span>
+    </div>
+
+    <div class="stats">
+      <div class="stat-item">
+        <div class="stat-value" id="memory-count">0</div>
+        <div>Memories</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="uptime">0s</div>
+        <div>Uptime</div>
+      </div>
+    </div>
+
+    <div class="chat-container" id="messages">
+      <div class="message">👋 Bienvenue sur le GD-A GPT Server. Envoyez un message pour commencer.</div>
+    </div>
+
+    <div class="input-container">
+      <input type="text" id="user-input" placeholder="Entrez votre message..." />
+      <button onclick="sendMessage()">Envoyer</button>
+    </div>
+
+    <div class="endpoints">
+      <h3>📡 API Endpoints</h3>
+      <div class="endpoint">
+        <code>GET /</code> - Page d'accueil (cette page)
+      </div>
+      <div class="endpoint">
+        <code>GET /health</code> - Health check
+      </div>
+      <div class="endpoint">
+        <code>GET /memory</code> - Voir la mémoire stockée
+      </div>
+      <div class="endpoint">
+        <code>POST /chat</code> - Envoyer un message {"text": "votre message"}
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let startTime = Date.now();
+
+    // Update uptime
+    setInterval(() => {
+      const seconds = Math.floor((Date.now() - startTime) / 1000);
+      const minutes = Math.floor(seconds / 60);
+      const hours = Math.floor(minutes / 60);
+      if (hours > 0) {
+        document.getElementById('uptime').textContent = `${hours}h ${minutes % 60}m`;
+      } else if (minutes > 0) {
+        document.getElementById('uptime').textContent = `${minutes}m ${seconds % 60}s`;
+      } else {
+        document.getElementById('uptime').textContent = `${seconds}s`;
+      }
+    }, 1000);
+
+    // Load memory count
+    async function loadMemoryCount() {
+      try {
+        const response = await fetch('/memory');
+        const data = await response.json();
+        document.getElementById('memory-count').textContent = data.length;
+      } catch (error) {
+        console.error('Error loading memory:', error);
+      }
+    }
+
+    // Send message
+    async function sendMessage() {
+      const input = document.getElementById('user-input');
+      const message = input.value.trim();
+      if (!message) return;
+
+      // Add user message to chat
+      const messagesDiv = document.getElementById('messages');
+      messagesDiv.innerHTML += `<div class="message">👤 <strong>Vous:</strong> ${message}</div>`;
+      input.value = '';
+
+      try {
+        const response = await fetch('/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: message })
+        });
+        const data = await response.json();
+
+        // Add server response
+        messagesDiv.innerHTML += `<div class="message">🤖 <strong>GD-A:</strong> ${data.answer}</div>`;
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+        // Update memory count
+        loadMemoryCount();
+      } catch (error) {
+        messagesDiv.innerHTML += `<div class="message" style="color: #ff4444;">❌ Erreur: ${error.message}</div>`;
+      }
+    }
+
+    // Allow Enter key to send
+    document.getElementById('user-input').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendMessage();
+    });
+
+    // Load initial memory count
+    loadMemoryCount();
+  </script>
+</body>
+</html>
