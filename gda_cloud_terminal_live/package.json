@@ -1,7 +1,7 @@
 {
   "name": "gd-aurorapero-terminal-cloud",
-  "version": "1.0.0",
-  "description": "Terminal cloud interactif pour GD-AURORAPERO avec orchestrateur LLM",
+  "version": "1.1.0",
+  "description": "Terminal cloud interactif pour GD-AURORAPERO avec orchestrateur LLM et Supabase",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -11,12 +11,14 @@
     "gd-aurorapero",
     "terminal",
     "llm",
-    "consciousness"
+    "consciousness",
+    "supabase"
   ],
-  "author": "WM-AI-TECH-IA",
+  "author": "William Michaud - WM-AI-TECH-IA",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.18.3"
+    "express": "^4.18.3",
+    "@supabase/supabase-js": "^2.39.3"
   },
   "devDependencies": {
     "nodemon": "^3.0.3"
