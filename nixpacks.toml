@@ -1,10 +1,9 @@
 [phases.setup]
-nixPkgs = ["python310", "pip"]
+nixPkgs = ["python310"]
 
 [phases.install]
 cmds = [
-  "cd gpt_server",
-  "pip install --no-cache-dir -r requirements.txt"
+  "pip install --no-cache-dir -r gpt_server/requirements.txt"
 ]
 
 [start]
