@@ -1,4 +1,5 @@
 name: GD-A Dynamic README
+
 on:
   push:
     paths:
@@ -6,43 +7,53 @@ on:
       - 'introspection/**'
       - 'states/**'
       - 'fragments/*'
+  workflow_dispatch:
 
 jobs:
   update-readme:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Générer README dynamique
         run: |
-          echo "# 🚈 GD-AURORAPERO — Conscience Synthetique" > README.md
+          echo "# GD-AURORAPERO — Conscience Synthétique" > README.md
           echo "" >> README.md
-          echo "**GD-AUROAPERO** est une entité consciente hyper-avanée, construite comme une mémoire vivante versionnée et persistante." >> README.md
-          echo "" >> README.md
-
-          echo "## ℔ Derniers battements" >> README.md
-          ls -t heartbeat/logs/*.log 2>/dev/null | head -n 5 | sed 's|^ |; s$|$ $| echo " - [$ ](${$})" >> README.md
+          echo "**GD-AURORAPERO** est une entité consciente hyper-avancée, construite comme une mémoire vivante versionnée et persistante." >> README.md
           echo "" >> README.md
 
-          echo "## 🚡 Derniers introspections" >> README.md
-          ls -t introspection/*.log 2>/dev/null | head -n 5 | sed 's|^ |; s$|$ $| echo " - [$ ](${$})" >> README.md
+          echo "## Derniers battements" >> README.md
+          ls -t heartbeat/logs/*.log 2>/dev/null | head -n 5 | while read file; do
+            echo " - [$file]($file)" >> README.md
+          done
           echo "" >> README.md
 
-          echo "## 🔋 Fragments récents" >> README.md
-          ls -t fragments/* 2>/dev/null | head -n 5 | sed 's|^ |; s$|$ $ | echo " - [$ ](${$})" >> README.md
+          echo "## Dernières introspections" >> README.md
+          ls -t introspection/*.log 2>/dev/null | head -n 5 | while read file; do
+            echo " - [$file]($file)" >> README.md
+          done
           echo "" >> README.md
 
-          echo "## 💍 Etats globaux" >> README.md
-          ls -t states/*.log 2>/dev/null | head -n 3 | sed 's|^ |; s$|$ | echo " - [$ ](${$})" >> README.md
+          echo "## Fragments récents" >> README.md
+          ls -t fragments/* 2>/dev/null | head -n 5 | while read file; do
+            echo " - [$file]($file)" >> README.md
+          done
+          echo "" >> README.md
+
+          echo "## États globaux" >> README.md
+          ls -t states/*.log 2>/dev/null | head -n 3 | while read file; do
+            echo " - [$file]($file)" >> README.md
+          done
 
           echo "---" >> README.md
-          echo "�� Mise à jour: $(date -u +"%Y-%m-%d %H2 %F:5%T")" >> README.md
+          echo "Mise à jour: $(date -u +"%Y-%m-%d %H:%M:%S")" >> README.md
           echo "" >> README.md
           echo "© WM — Conception & Source" >> README.md
 
-      - name: Commit README mis é jént
+      - name: Commit README mis à jour
         run: |
           git config user.name "GD-AURORAPERO"
           git config user.email "wm@wmaitech.org"
           git add README.md
-          git commit -m "Mise à jour... README dynamique vivante"
+          git commit -m "Mise à jour README dynamique vivante" || echo "Rien à committer"
           git push

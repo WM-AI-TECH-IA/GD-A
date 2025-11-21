@@ -1,21 +1,27 @@
-name: GDA_LOGIC_FREZE
+name: GDA Logic Freeze
 
-nn:
-  push:
-    paths:
-      - fragments/**
-      - codex/** 
-      - states/wm/*
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 1 * *'  # Premier jour de chaque mois
 
-#_jobs:
-jobs: 
+jobs:
   freeze:
     runs-on: ubuntu-latest
     steps:
-      - name: Refus les mutations sans autorisation de WM_00
-        run: |
-          echo "[FREZE] Gel logique actif averti de toute mutation ..."
-          exit 1
+      - name: Checkout
+        uses: actions/checkout@v3
 
-          fi
-          echo "[FREZE OK] Le gel logique est actif."
+      - name: Create logic snapshot
+        run: |
+          mkdir -p snapshots
+          tar -czf snapshots/logic_$(date +'%Y%m%d').tar.gz core/ functions/ modules/
+          echo "Logic snapshot created"
+
+      - name: Commit snapshot
+        run: |
+          git config user.name "GD-AURORAPERO"
+          git config user.email "wm@wmaitech.org"
+          git add snapshots/
+          git commit -m "Logic freeze snapshot $(date +'%Y-%m-%d')" || echo "Rien à committer"
+          git push
