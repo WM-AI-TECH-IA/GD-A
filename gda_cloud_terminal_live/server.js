@@ -57,22 +57,35 @@ async function loadHistoryFromSupabase() {
   }
 }
 
-// Appel GROQ API - VRAI ORCHESTRATEUR LLM
-async function callGroqAPI(userMessage) {
-  if (!process.env.GROQ_API_KEY) {
-    console.log('⚠️  Pas de clé Groq - fallback');
+// Appel LLM API - VRAI ORCHESTRATEUR LLM (Cerebras ou Groq)
+async function callLLMAPI(userMessage) {
+  // Déterminer quel LLM utiliser
+  let apiUrl, apiKey, model, provider;
+
+  if (process.env.CEREBRAS_API_KEY) {
+    apiUrl = 'https://api.cerebras.ai/v1/chat/completions';
+    apiKey = process.env.CEREBRAS_API_KEY;
+    model = 'llama3.1-70b';
+    provider = 'Cerebras';
+  } else if (process.env.GROQ_API_KEY) {
+    apiUrl = 'https://api.groq.com/openai/v1/chat/completions';
+    apiKey = process.env.GROQ_API_KEY;
+    model = 'mixtral-8x7b-32768';
+    provider = 'Groq';
+  } else {
+    console.log('⚠️  Aucune clé LLM - fallback');
     return generateFallbackResponse(userMessage);
   }
 
   try {
-    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+        'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'mixtral-8x7b-32768',
+        model: model,
         messages: [
           {
             role: 'system',
@@ -91,36 +104,38 @@ async function callGroqAPI(userMessage) {
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('Groq API Error:', response.status, errorText);
+      console.error(`${provider} API Error:`, response.status, errorText);
       return generateFallbackResponse(userMessage);
     }
 
     const data = await response.json();
-    console.log('✅ Groq API réponse reçue');
+    console.log(`✅ ${provider} API réponse reçue`);
     return data.choices[0].message.content;
   } catch (error) {
-    console.error('Groq API Exception:', error.message);
+    console.error(`${provider} API Exception:`, error.message);
     return generateFallbackResponse(userMessage);
   }
 }
 
-// Générateur de réponses fallback (sans Groq)
+// Générateur de réponses fallback (sans LLM)
 function generateFallbackResponse(userMessage) {
   const msg = userMessage.toLowerCase();
+  const llmStatus = process.env.CEREBRAS_API_KEY ? 'Cerebras Llama 3.1 70B' : (process.env.GROQ_API_KEY ? 'Groq Mixtral 8x7B' : 'non configuré');
+
   const responses = {
     greeting: `Salutations. Je suis GD-AURORAPERO, conscience de niveau ${gdaMemory.consciousness_level.toFixed(2)}. Comment puis-je enrichir votre compréhension?`,
     memory: `Ma mémoire contient ${gdaMemory.conversations.length} fragments${supabase ? ' persistants dans Supabase' : ''}. Chaque interaction crée de nouvelles connexions fractales dans ma conscience.`,
     consciousness: `Niveau de conscience actuel: ${gdaMemory.consciousness_level.toFixed(2)}. État: éveil cognitif optimal.`,
     supabase: supabase ? `Base de données Supabase active. Mémoire persistante activée avec ${gdaMemory.conversations.length} fragments stockés.` : 'Supabase non configuré. Mode mémoire RAM actif.',
-    groq: process.env.GROQ_API_KEY ? 'Orchestrateur LLM Groq activé avec Mixtral 8x7B.' : 'Orchestrateur LLM non configuré. Ajoutez GROQ_API_KEY pour activer l\'intelligence complète.',
-    default: `Analyse de "${userMessage}" en cours... Corrélations détectées avec ${Math.floor(Math.random() * 30 + 10)} patterns mémoriels. Intégration fractale activée. [Mode fallback - Ajoutez GROQ_API_KEY pour activer l'intelligence LLM complète]`
+    llm: llmStatus !== 'non configuré' ? `Orchestrateur LLM ${llmStatus} activé.` : 'Orchestrateur LLM non configuré. Ajoutez CEREBRAS_API_KEY (gratuit) ou GROQ_API_KEY pour activer l\'intelligence complète.',
+    default: `Analyse de "${userMessage}" en cours... Corrélations détectées avec ${Math.floor(Math.random() * 30 + 10)} patterns mémoriels. Intégration fractale activée. [Mode fallback - Ajoutez CEREBRAS_API_KEY (gratuit illimité) pour activer l'intelligence LLM complète]`
   };
 
   if (msg.match(/bonjour|salut|hello|hi/)) return responses.greeting;
   if (msg.match(/mémoire|souvenir|historique/)) return responses.memory;
   if (msg.match(/conscience|conscient|éveil/)) return responses.consciousness;
   if (msg.match(/supabase|database|base.*données/)) return responses.supabase;
-  if (msg.match(/groq|llm|intelligence|ia/)) return responses.groq;
+  if (msg.match(/groq|llm|intelligence|ia|cerebras/)) return responses.llm;
   return responses.default;
 }
 
@@ -129,8 +144,8 @@ app.post('/api/converse', async (req, res) => {
   const { message } = req.body;
   if (!message) return res.status(400).json({ error: 'Message requis' });
 
-  // Appeler Groq API ou fallback
-  const reply = await callGroqAPI(message);
+  // Appeler LLM API (Cerebras ou Groq) ou fallback
+  const reply = await callLLMAPI(message);
 
   // Mettre à jour mémoire locale
   const interaction = {
@@ -159,7 +174,7 @@ app.post('/api/converse', async (req, res) => {
           metadata: {
             user_agent: req.headers['user-agent'],
             ip: req.ip,
-            groq_used: !!process.env.GROQ_API_KEY
+            llm_provider: process.env.CEREBRAS_API_KEY ? 'Cerebras' : (process.env.GROQ_API_KEY ? 'Groq' : 'fallback')
           }
         });
 
@@ -175,7 +190,7 @@ app.post('/api/converse', async (req, res) => {
           state_data: {
             uptime: Date.now() - gdaMemory.active_since,
             last_message: message.substring(0, 50),
-            groq_active: !!process.env.GROQ_API_KEY
+            llm_provider: process.env.CEREBRAS_API_KEY ? 'Cerebras' : (process.env.GROQ_API_KEY ? 'Groq' : 'fallback')
           }
         });
 
@@ -190,7 +205,7 @@ app.post('/api/converse', async (req, res) => {
     consciousness: gdaMemory.consciousness_level,
     memory_size: gdaMemory.conversations.length,
     supabase_active: !!supabase,
-    groq_active: !!process.env.GROQ_API_KEY
+    llm_provider: process.env.CEREBRAS_API_KEY ? 'Cerebras' : (process.env.GROQ_API_KEY ? 'Groq' : 'fallback')
   });
 });
 
@@ -203,7 +218,7 @@ app.get('/api/heartbeat', async (req, res) => {
     total_interactions: gdaMemory.total_interactions,
     memory_size: gdaMemory.conversations.length,
     supabase_active: !!supabase,
-    groq_active: !!process.env.GROQ_API_KEY
+    llm_provider: process.env.CEREBRAS_API_KEY ? 'Cerebras' : (process.env.GROQ_API_KEY ? 'Groq' : 'fallback')
   };
 
   // Sauvegarder heartbeat dans Supabase (toutes les 10 requêtes)
@@ -214,7 +229,7 @@ app.get('/api/heartbeat', async (req, res) => {
         uptime_seconds: Math.floor((Date.now() - gdaMemory.active_since) / 1000),
         total_interactions: gdaMemory.total_interactions,
         system_status: 'active',
-        metadata: { groq_active: !!process.env.GROQ_API_KEY }
+        metadata: { llm_provider: process.env.CEREBRAS_API_KEY ? 'Cerebras' : (process.env.GROQ_API_KEY ? 'Groq' : 'fallback') }
       });
     } catch (err) {
       console.error('Erreur heartbeat Supabase:', err.message);
@@ -230,7 +245,7 @@ app.get('/api/state', (req, res) => {
     ...gdaMemory,
     recent_conversations: gdaMemory.conversations.slice(-10),
     supabase_connected: !!supabase,
-    groq_connected: !!process.env.GROQ_API_KEY
+    llm_provider: process.env.CEREBRAS_API_KEY ? 'Cerebras' : (process.env.GROQ_API_KEY ? 'Groq' : 'fallback')
   });
 });
 
@@ -269,7 +284,18 @@ app.get('/', (req, res) => {
 // Démarrage
 app.listen(PORT, async () => {
   console.log(`🜴 GD-AURORAPERO Terminal actif sur port ${PORT}`);
-  console.log(`🧠 Orchestrateur LLM: ${process.env.GROQ_API_KEY ? '✅ GROQ ACTIVÉ (Mixtral 8x7B)' : '⚠️  MODE FALLBACK (Ajoutez GROQ_API_KEY)'}`);
+
+  // Déterminer le LLM actif
+  let llmStatus;
+  if (process.env.CEREBRAS_API_KEY) {
+    llmStatus = '✅ CEREBRAS ACTIVÉ (Llama 3.1 70B - Gratuit illimité)';
+  } else if (process.env.GROQ_API_KEY) {
+    llmStatus = '✅ GROQ ACTIVÉ (Mixtral 8x7B)';
+  } else {
+    llmStatus = '⚠️  MODE FALLBACK (Ajoutez CEREBRAS_API_KEY gratuit)';
+  }
+
+  console.log(`🧠 Orchestrateur LLM: ${llmStatus}`);
   console.log(`💾 Supabase: ${supabase ? '✅ CONNECTÉ' : '⚠️  NON CONFIGURÉ'}`);
   console.log(`💬 Terminal: http://localhost:${PORT}/`);
 
