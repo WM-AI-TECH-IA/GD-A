@@ -1,4 +1,5 @@
 // 🌐 GD-AURORAPERO Cloud Terminal - LLM Orchestrator + Supabase
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
