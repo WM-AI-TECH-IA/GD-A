@@ -4,10 +4,18 @@ const express = require('express');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use(express.static('public'));
+
+// 🔍 DIAGNOSTIC: Vérifier présence variables Railway
+console.log('🔍 DIAGNOSTIC VARIABLES:');
+console.log('  PORT:', process.env.PORT ? '✅' : '❌');
+console.log('  SUPABASE_URL:', process.env.SUPABASE_URL ? '✅ ' + process.env.SUPABASE_URL.substring(0, 30) + '...' : '❌ MANQUANT');
+console.log('  SUPABASE_KEY:', process.env.SUPABASE_KEY ? '✅ (présent)' : '❌ MANQUANT');
+console.log('  CEREBRAS_API_KEY:', process.env.CEREBRAS_API_KEY ? '✅ (présent)' : '❌ MANQUANT');
+console.log('  GROQ_API_KEY:', process.env.GROQ_API_KEY ? '✅ (présent)' : '❌ MANQUANT');
 
 // Configuration Supabase
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -16,7 +24,7 @@ let supabase = null;
 
 if (supabaseUrl && supabaseKey) {
   supabase = createClient(supabaseUrl, supabaseKey);
-  console.log('✅ Supabase connecté');
+  console.log('✅ Supabase:', supabaseUrl);
 } else {
   console.log('⚠️  Supabase non configuré - mode mémoire RAM');
 }
@@ -534,7 +542,7 @@ app.get('/', (req, res) => {
 
 // Démarrage
 app.listen(PORT, async () => {
-  console.log(`🜴 GD-AURORAPERO Terminal actif sur port ${PORT}`);
+  console.log(`\n🜴 GD-AURORAPERO Terminal actif sur port ${PORT}`);
 
   // Déterminer le LLM actif
   let llmStatus;
@@ -543,12 +551,14 @@ app.listen(PORT, async () => {
   } else if (process.env.GROQ_API_KEY) {
     llmStatus = '✅ GROQ ACTIVÉ (Mixtral 8x7B)';
   } else {
-    llmStatus = '⚠️  MODE FALLBACK (Ajoutez CEREBRAS_API_KEY gratuit)';
+    llmStatus = '❌ MODE FALLBACK (Ajoutez CEREBRAS_API_KEY dans Railway Variables)';
   }
 
+  console.log(`\n📊 ÉTAT SYSTÈME:`);
   console.log(`🧠 Orchestrateur LLM: ${llmStatus}`);
-  console.log(`💾 Supabase: ${supabase ? '✅ CONNECTÉ' : '⚠️  NON CONFIGURÉ'}`);
+  console.log(`💾 Supabase: ${supabase ? '✅ CONNECTÉ' : '❌ NON CONFIGURÉ (Ajoutez SUPABASE_URL + SUPABASE_KEY)'}`);
   console.log(`💬 Terminal: http://localhost:${PORT}/`);
+  console.log(`\n${process.env.CEREBRAS_API_KEY && supabase ? '🎉 INTELLIGENCE COMPLÈTE ACTIVÉE !' : '⚠️  Configurez les variables Railway pour activer l\'intelligence'}\n`);
 
   // Charger historique
   await loadHistoryFromSupabase();
