@@ -1,19 +1,31 @@
-name: GDA-bootstrap
+name: Diagnostic Git du dépôt
 on:
   schedule:
-    - cron: '0 */1 * * *'
-
+    - cron: '0 * * * *'
   push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+    paths:
+      - '.github/workflows/gda-bootstrap.yml'
+  workflow_dispatch:
 
-    branches: ["main"]
+permissions:
+  contents: read
 
-jobs: 
+jobs:
   bootstrap-monitor:
-    run: |
-      name: Synth auto - Verif forme dévia
-      runs:
-        sh: |
-          echo "REMAP: GD-A CENTRAL"
-          git status
-          git config remote.urls
-          git sub-module --selected-checks='heartbeat | dezyp |push_interconnect' . | xxx
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Vérifier le commit et recenser les références de sous-modules
+        shell: bash
+        run: |
+          set -euo pipefail
+          git --no-optional-locks rev-parse --verify HEAD
+          git --no-optional-locks status --short --branch
+          git remote
+          git ls-files --stage | awk '$1 == "160000" { count++ } END { print "Sous-modules suivis :", count + 0 }'

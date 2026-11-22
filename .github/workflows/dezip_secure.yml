@@ -1,25 +1,24 @@
-name: dezip-secure-auto
-
-# Event: sur un push ou sur demande
+name: Inventaire des archives ZIP
 on:
   push:
     branches: [main, master]
+  pull_request:
+    branches: [main, master]
+    paths:
+      - '.github/workflows/dezip_secure.yml'
+      - '.github/scripts/inventory_zips.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  decompression-analyser:
-    run: |
-      name: Dezip Archives From /mnt/data
-      runs:
-        sh: |
-          echo "Finding ZIPS..."
-          find /mnt/data /-type file | grep ".zip" | while read -x z;
-          do{
-            basename="$(std z | sed -e 's{Print $'}')"
-            dest="/deployed_${random$_${basename}/"
-            mkdir -p "$dest"
-            unzip -q $z" "$dest"
-            echo "Deplo dez...$basename"
-          done
-        done
-
-          readme
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Examiner les objets ZIP suivis
+        run: python3 -I -B .github/scripts/inventory_zips.py
