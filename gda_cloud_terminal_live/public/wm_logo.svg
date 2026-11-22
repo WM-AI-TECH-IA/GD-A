@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- GD-AURORAPERO v2.0.0 — 2026-11-22. William Michaud — WM AI TECHNOLOGIES INC. © 2026. Corp #16527230 — BN 735465023RC0001. Usage interne/démo, aucune cession de PI. Québec (CA). -->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="-128 -128 256 256"
+  role="img"
+  aria-label="Logo WM AI TECHNOLOGIES — hexagone tricolore et sphère"
+>
+  <defs>
+    <filter id="wm-softShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow
+        dx="0"
+        dy="6"
+        stdDeviation="6"
+        flood-color="#000"
+        flood-opacity=".38"
+      />
+    </filter>
+    <radialGradient id="wm-sphere" cx="0" cy="-0.12" r="0.95">
+      <stop offset="0" stop-color="#121225" />
+      <stop offset="0.6" stop-color="#0b0d13" />
+      <stop offset="1" stop-color="#000000" />
+    </radialGradient>
+    <linearGradient id="wm-blueGrad" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#1e64ff" />
+      <stop offset="1" stop-color="#0b45e6" />
+    </linearGradient>
+    <linearGradient id="wm-redGrad" x1="0" x2="1" y1="1" y2="0">
+      <stop offset="0" stop-color="#ff3b30" />
+      <stop offset="1" stop-color="#cc2a22" />
+    </linearGradient>
+    <linearGradient id="wm-inkGrad" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0b0d13" />
+      <stop offset="1" stop-color="#191c28" />
+    </linearGradient>
+  </defs>
+  <g filter="url(#wm-softShadow)">
+    <path
+      d="M0-112 96.99-56 96.99 56 0 112-96.99 56-96.99-56Z M0-72-62.35-36-62.35 36 0 72 62.35 36 62.35-36Z"
+      fill="#0f1118"
+      fill-rule="evenodd"
+    />
+    <polygon
+      points="0,-112 96.99,-56 62.35,-36 0,-72"
+      fill="url(#wm-blueGrad)"
+    />
+    <polygon
+      points="-96.99,-56 -96.99,56 -62.35,36 -62.35,-36"
+      fill="url(#wm-inkGrad)"
+    />
+    <polygon points="0,112 96.99,56 62.35,36 0,72" fill="url(#wm-redGrad)" />
+    <circle r="72" fill="url(#wm-sphere)" />
+    <ellipse cx="-12" cy="-10" rx="18" ry="14" fill="white" opacity=".06" />
+  </g>
+</svg>

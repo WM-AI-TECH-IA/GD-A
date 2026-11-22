@@ -1,0 +1,384 @@
+<!doctype html>
+<!-- GD-AURORAPERO v2.0.0 — Build 2026-11-22T00:00:00Z. Auteur : William Michaud — WM AI TECHNOLOGIES INC. © 2026. Canada Corp #16527230 — BN 735465023RC0001. Sauf accord écrit, usage interne/démo. Aucune cession de PI. Juridiction : Québec (CA). -->
+<html lang="fr" data-legal-owner="WM AI TECHNOLOGIES INC.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GD-AURORAPERO — Mémoire conversationnelle</title>
+    <meta
+      name="description"
+      content="Un espace de dialogue sourcé, de mémoire contrôlée et d’associations documentaires."
+    />
+    <meta name="author" content="William Michaud — WM AI TECHNOLOGIES INC." />
+    <meta name="copyright" content="© 2026 WM AI TECHNOLOGIES INC." />
+    <meta
+      name="x-legal-owner"
+      content="WM AI TECHNOLOGIES INC. (Corp 16527230; BN 735465023RC0001)"
+    />
+    <meta name="theme-color" content="#101318" />
+    <meta property="og:title" content="GD-AURORAPERO" />
+    <meta
+      property="og:description"
+      content="Dialogue, mémoire et sources sous votre contrôle."
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'sha256-P8bNi1f2yshkuou/eowkYhvhOZ/vLeLP1pW7UmBFb4Y='; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "WM AI TECHNOLOGIES",
+            "legalName": "WM AI TECHNOLOGIES INC. (WM TECHNOLOGIES I.A. INC.)"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "GD-AURORAPERO",
+            "version": "2.0.0",
+            "datePublished": "2026-11-22",
+            "applicationCategory": "ProductivityApplication",
+            "operatingSystem": "Web"
+          }
+        ]
+      }
+    </script>
+    <link rel="stylesheet" href="/gda_cloud_terminal_live/public/styles.css" />
+    <script type="module" src="/gda_cloud_terminal_live/public/app.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Aller au contenu</a>
+    <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="blue" x2="1" y2="1">
+          <stop stop-color="#1e64ff" />
+          <stop offset="1" stop-color="#0b45e6" />
+        </linearGradient>
+        <linearGradient id="red" x1="0" y1="1" x2="1" y2="0">
+          <stop stop-color="#ff3b30" />
+          <stop offset="1" stop-color="#cc2a22" />
+        </linearGradient>
+        <linearGradient id="ink" x2="1" y2="1">
+          <stop stop-color="#0b0d13" />
+          <stop offset="1" stop-color="#191c28" />
+        </linearGradient>
+        <radialGradient id="sphere" cx="0" cy="-0.12" r="0.95">
+          <stop stop-color="#121225" />
+          <stop offset=".6" stop-color="#0b0d13" />
+          <stop offset="1" stop-color="#000" />
+        </radialGradient>
+      </defs>
+      <symbol id="wm-logo" viewBox="-128 -128 256 256">
+        <path
+          d="M0-112 96.99-56V56L0 112-96.99 56V-56ZM0-72-62.35-36V36L0 72 62.35 36V-36Z"
+          fill="#0f1118"
+          fill-rule="evenodd"
+        />
+        <polygon points="0,-112 96.99,-56 62.35,-36 0,-72" fill="url(#blue)" />
+        <polygon
+          points="-96.99,-56 -96.99,56 -62.35,36 -62.35,-36"
+          fill="url(#ink)"
+        />
+        <polygon points="0,112 96.99,56 62.35,36 0,72" fill="url(#red)" />
+        <circle r="72" fill="url(#sphere)" />
+        <ellipse cx="-12" cy="-10" rx="18" ry="14" fill="white" opacity=".06" />
+      </symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24">
+        <path
+          d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"
+        />
+      </symbol>
+      <symbol id="i-memory" viewBox="0 0 24 24">
+        <ellipse cx="12" cy="5" rx="9" ry="3" />
+        <path d="M3 5v14a9 3 0 0 0 18 0V5M3 12a9 3 0 0 0 18 0" />
+      </symbol>
+      <symbol id="i-map" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="6" height="6" rx="1" />
+        <rect x="15" y="15" width="6" height="6" rx="1" />
+        <path d="M9 6h9v9M6 9v9h9" />
+      </symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24">
+        <path d="m5 12 7-7 7 7M12 19V5" />
+      </symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4" />
+        <path
+          d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"
+        />
+      </symbol>
+    </svg>
+    <div class="shell">
+      <aside class="sidebar">
+        <a class="brand" href="#chat"
+          ><svg
+            class="logo"
+            role="img"
+            aria-label="Logo WM AI TECHNOLOGIES — hexagone tricolore et sphère"
+          >
+            <use href="#wm-logo" /></svg
+          ><span>WM<span class="brand-small">AI TECHNOLOGIES</span></span></a
+        >
+        <div class="workspace-label">ESPACE COGNITIF / 02</div>
+        <nav aria-label="Navigation principale">
+          <a href="#chat" data-route="chat"
+            ><svg class="icon"><use href="#i-chat" /></svg>Conversation</a
+          ><a href="#memory" data-route="memory"
+            ><svg class="icon"><use href="#i-memory" /></svg>Mémoire
+            contrôlée</a
+          ><a href="#map" data-route="map"
+            ><svg class="icon"><use href="#i-map" /></svg>Associations</a
+          >
+        </nav>
+        <div class="sidebar-note">
+          <span class="tiny-label">VOTRE ESPACE</span>
+          <p>
+            Les sources éclairent les réponses.<br />Vous choisissez ce qui
+            reste.
+          </p>
+          <span class="tag">Archives préservées</span>
+        </div>
+        <footer class="sidebar-bottom">
+          <button id="theme">
+            <svg class="icon"><use href="#i-sun" /></svg>Changer le thème</button
+          ><button id="about-open">À propos de WM</button
+          ><small
+            >GD-AURORAPERO v2.0.0<br />© 2026 WM AI TECHNOLOGIES INC.</small
+          >
+        </footer>
+      </aside>
+      <div class="workspace">
+        <header class="topbar">
+          <div>
+            <span class="eyebrow">GD-AURORAPERO</span>
+            <h1 id="view-title">Conversation</h1>
+          </div>
+          <span class="status" id="service-status"
+            >Vérification des services</span
+          >
+        </header>
+        <div id="notice" class="notice" role="status" hidden></div>
+        <main id="main" tabindex="-1">
+          <section id="view-chat" class="view chat-view">
+            <div id="messages" class="messages" aria-label="Conversation">
+              <div id="welcome" class="welcome">
+                <div class="orb">
+                  <svg
+                    class="logo"
+                    role="img"
+                    aria-label="Logo WM AI TECHNOLOGIES — hexagone tricolore et sphère"
+                  >
+                    <use href="#wm-logo" />
+                  </svg>
+                </div>
+                <span class="eyebrow">LE CONTEXTE FAIT LA DIFFÉRENCE</span>
+                <h2>Un dialogue.<br />Une mémoire qui vous appartient.</h2>
+                <p>
+                  Explorez vos documents, rapprochez les idées et gardez le
+                  contrôle sur ce que votre assistant mémorise.
+                </p>
+                <div class="suggestions">
+                  <button
+                    data-prompt="Quels concepts relient les documents importés ?"
+                  >
+                    Relier les idées</button
+                  ><button
+                    data-prompt="Résume les sources disponibles et leurs limites."
+                  >
+                    Explorer les sources</button
+                  ><button
+                    data-prompt="Quelles contradictions trouve-t-on dans les documents ?"
+                  >
+                    Comparer les points de vue
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="composer-area">
+              <div id="activity" class="activity" role="status">
+                Prêt à rechercher dans vos sources
+              </div>
+              <form id="chat-form" class="composer">
+                <label class="sr-only" for="question">Votre message</label
+                ><textarea
+                  id="question"
+                  rows="2"
+                  maxlength="4000"
+                  placeholder="Posez une question à votre mémoire…"
+                  required
+                ></textarea>
+                <div class="composer-bottom">
+                  <span>Sources citées · Souvenirs validés</span
+                  ><button id="stop" type="button" hidden>Interrompre</button
+                  ><button
+                    id="send"
+                    class="primary"
+                    type="submit"
+                    aria-label="Envoyer le message"
+                  >
+                    <svg class="icon"><use href="#i-arrow" /></svg>
+                  </button>
+                </div>
+              </form>
+              <label class="review-option"
+                ><input id="verify-answer" type="checkbox" /> Relecture critique
+                supplémentaire (un appel IA de plus)</label
+              >
+              <div class="under-composer">
+                <button id="search-only">Recherche documentaire seule</button
+                ><span
+                  >Les réponses peuvent contenir des erreurs. Consultez les
+                  sources.</span
+                >
+              </div>
+            </div>
+          </section>
+          <section id="view-memory" class="view padded" hidden>
+            <span class="eyebrow">RIEN N’EST MÉMORISÉ À VOTRE INSU</span>
+            <h2>La mémoire, sous votre contrôle.</h2>
+            <p class="muted">
+              Les échanges sont conservés dans cet espace. Seuls les souvenirs
+              que vous validez deviennent des éléments de rappel.
+            </p>
+            <div class="section-heading">
+              <h3>Souvenirs validés</h3>
+              <button id="export">Exporter mon espace</button>
+            </div>
+            <form id="memory-form" class="memory-form">
+              <label for="memory-content"
+                >Ajouter une préférence ou corriger un souvenir</label
+              ><textarea
+                id="memory-content"
+                rows="3"
+                maxlength="4000"
+                required
+                placeholder="Ce que je souhaite que l’assistant retienne…"
+              ></textarea
+              ><button class="primary" type="submit">Valider ce souvenir</button
+              ><button id="cancel-edit" type="button" hidden>
+                Annuler la correction
+              </button>
+            </form>
+            <div id="memories" class="memory-list"></div>
+            <div class="section-heading">
+              <h3>Documents autorisés</h3>
+              <button id="refresh">Vérifier les modifications</button>
+            </div>
+            <p class="muted">
+              Import explicite uniquement. Les dossiers privés, secrets,
+              archives exécutables et fichiers volumineux ne sont pas proposés.
+            </p>
+            <form id="document-form">
+              <label for="document-path">Document disponible</label>
+              <div class="inline-form">
+                <select id="document-path" required>
+                  <option value="">Chargement du catalogue…</option></select
+                ><button type="submit" class="primary">
+                  Autoriser l’import
+                </button>
+              </div>
+              <small
+                >Autoriser l’import permet l’envoi de passages à un fournisseur
+                d’IA distant lorsqu’il est disponible.</small
+              >
+            </form>
+            <div id="documents" class="memory-list"></div>
+            <div class="guide">
+              <h3>Guide express</h3>
+              <p>
+                1. Autorisez un document. 2. Recherchez ou posez une question.
+                3. Consultez les citations. 4. Validez les souvenirs utiles.
+              </p>
+              <p>
+                Votre espace est lié à ce navigateur par un cookie privé.
+                Exportez-le avant d’effacer vos cookies. Cette version n’est pas
+                un service privé multi-utilisateur avec connexion.
+              </p>
+              <p>
+                Les modèles locaux WebLLM/MLC ne sont pas activés. Aucun modèle
+                n’est téléchargé automatiquement.
+              </p>
+            </div>
+          </section>
+          <section id="view-map" class="view padded" hidden>
+            <span class="eyebrow"
+              >DES LIENS EXPLICABLES, PAS DES SCORES FICTIFS</span
+            >
+            <h2>Voir ce qui relie les sources.</h2>
+            <p class="muted">
+              Cette carte présente les termes communs à votre dernière recherche
+              et aux passages retrouvés. Elle ne représente pas un réseau
+              neuronal entraîné.
+            </p>
+            <div id="associations" class="association-list"></div>
+          </section>
+        </main>
+      </div>
+      <aside class="sources-panel">
+        <div class="section-heading">
+          <h2>Contexte actif</h2>
+          <span id="source-count" class="count">0</span>
+        </div>
+        <p class="muted small">
+          Les passages qui éclairent votre dernier échange.
+        </p>
+        <div class="pipeline">
+          <span class="tiny-label">PARCOURS DOCUMENTAIRE</span>
+          <div>
+            <span>Recherche</span><span>Associations</span><span>Réponse</span>
+          </div>
+        </div>
+        <div id="sources">
+          <p class="empty">
+            Aucune source consultée.<br />Importez un document depuis la
+            mémoire, puis lancez une recherche.
+          </p>
+        </div>
+        <div class="source-footer">
+          <span class="tiny-label">TRANSPARENCE</span>
+          <p>
+            La mémoire s’enrichit par vos validations. Le modèle ne s’entraîne
+            pas automatiquement.
+          </p>
+        </div>
+      </aside>
+    </div>
+    <dialog id="about">
+      <form method="dialog">
+        <button class="close" aria-label="Fermer">Fermer</button>
+      </form>
+      <h2>WM AI TECHNOLOGIES</h2>
+      <p>
+        Auteur / Titulaire : William Michaud — WM AI TECHNOLOGIES INC. (WM
+        TECHNOLOGIES I.A. INC.)
+      </p>
+      <p>
+        Canada Corp #16527230 — BN 735465023RC0001<br />14 rue Francheville #7,
+        Québec, QC G1E 5Z9, Canada<br />Juridiction : Québec (CA)<br />wm-ai@outlook.be
+      </p>
+      <p>
+        © 2026 WM AI TECHNOLOGIES INC. / William Michaud — Tous droits
+        réservés. Sauf accord écrit, usage interne/démo. Aucune cession de
+        propriété intellectuelle.
+      </p>
+      <p>
+        GD-AURORAPERO v2.0.0 · Build gda-20261122 · Date 2026-11-22. Empreinte
+        Git indisponible : dossier sans dépôt Git.
+      </p>
+      <p>
+        Cette organisation logicielle n’est pas une preuve de conscience
+        subjective.
+      </p>
+      <p id="runtime-meta"></p>
+      <p id="performance-meta">Mesures de performance locales en cours.</p>
+      <h3>Licences tierces</h3>
+      <p>
+        Express, Supabase JS et Vite : MIT. dotenv : BSD-2-Clause. Icônes Lucide
+        : ISC. Les licences tierces restent applicables indépendamment des
+        droits WM.
+      </p>
+    </dialog>
+    <!-- GUIDE EXPRESS : autoriser un document, rechercher, consulter les citations, valider un souvenir. Exporter avant de supprimer les cookies. Modèles locaux non activés. -->
+  </body>
+</html>

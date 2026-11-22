@@ -1,0 +1,27 @@
+{
+  "name": "gd-aurorapero",
+  "version": "2.0.0",
+  "private": true,
+  "author": "William Michaud — WM AI TECHNOLOGIES INC.",
+  "license": "UNLICENSED",
+  "wmLegal": {
+    "corp": "16527230",
+    "bn": "735465023RC0001",
+    "build": "2026-11-22T00:00:00Z",
+    "jurisdiction": "Québec (CA)"
+  },
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "test": "node --test gda_cloud_terminal_live/*.test.js",
+    "start": "node gda_cloud_terminal_live/server.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.3",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "vite": "^6.1.0"
+  }
+}
