@@ -34,3 +34,4 @@ pycache/
 @{START}*\p*.log
 Journals/.*
 Temps/.*
+.env
