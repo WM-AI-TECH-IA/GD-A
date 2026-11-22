@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout uI des codes
-        uses: actions/checkout@v3
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Reclasser fragments et 'etats
         run: |
           echo "[GD-A MODE: RUN OK - Controle executé en ligne selon";
